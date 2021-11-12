@@ -34,7 +34,13 @@ git clone https://github.com/vilabs/Families_Share-platform
 ```javascript
 npm install
 ```
+# Come runnare l'app
+1. apri 2 terminali
+2. sul primo terminale vai nella cartella principale ed esegui il comando npm start
+3. sul secondo terminale vai nella cartella client ed esegui il comando npm run dev
+IMPORTANTE: Il server deve essere runnato prima del client altrimenti non funziona una tega perchè non sono buoni a fare le cose (lo avessi fatto io funzionerebbe comunque ma hanno la mamma fatta male)
 
+# This is complete fucking bullshit (still leaving this here)
    - An .env file needs to be created both for the [server](./.env.sample) and [client](./client/.env.sample) folder (based on the corresponding .env.sample files).
    - In order to run the application in development mode the user needs to run the following command in the projects main folder.
  
