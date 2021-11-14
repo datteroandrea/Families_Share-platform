@@ -40,17 +40,13 @@ npm install
 3. sul secondo terminale vai nella cartella client ed esegui il comando npm run dev
 IMPORTANTE: Il server deve essere runnato prima del client altrimenti non funziona una tega perchè non sono buoni a fare le cose (lo avessi fatto io funzionerebbe comunque ma hanno la mamma fatta male)
 
-# This is complete fucking bullshit (still leaving this here)
-   - An .env file needs to be created both for the [server](./.env.sample) and [client](./client/.env.sample) folder (based on the corresponding .env.sample files).
-   - In order to run the application in development mode the user needs to run the following command in the projects main folder.
- 
+# How to run the Application
+To run the server side of the application use this while in the main project directory:
+```javascript
+npm start
+```
+To run the client side of the application use this while in the main project directory:
 ```javascript
 npm run dev
 ```
-
-   - In order for the application to run in production mode the user needs to execute the following commands in the client and main folder correspondingly:
-
-```javascript
-npm run build
-npm start
-```
+It's important to run the server before the client
