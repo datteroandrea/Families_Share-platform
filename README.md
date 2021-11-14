@@ -34,13 +34,7 @@ git clone https://github.com/vilabs/Families_Share-platform
 ```javascript
 npm install
 ```
-# Come runnare l'app
-1. apri 2 terminali
-2. sul primo terminale vai nella cartella principale ed esegui il comando npm start
-3. sul secondo terminale vai nella cartella client ed esegui il comando npm run dev
-IMPORTANTE: Il server deve essere runnato prima del client altrimenti non funziona una tega perchè non sono buoni a fare le cose (lo avessi fatto io funzionerebbe comunque ma hanno la mamma fatta male)
-
-# How to run the Application
+# How to run the application
 To run the server side of the application use this while in the main project directory:
 ```javascript
 npm start
