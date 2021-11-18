@@ -134,6 +134,9 @@ class MyFamiliesShareHeader extends React.Component {
       case "mycalendar":
         history.push(`/myfamiliesshare/calendar`);
         break;
+      case "myfriendships":
+        history.push("/friendships");
+        break;
       case "faqs":
         history.push("/faqs");
         break;
@@ -291,6 +294,20 @@ class MyFamiliesShareHeader extends React.Component {
                 </div>
                 <div className="col-3-4">
                   <h1>{texts.myCalendar}</h1>
+                </div>
+              </div>
+            </Menu.Item>
+            <Menu.Item
+              style={menuItemWithLine}
+              key="myfriendships"
+              onClick={this.handleDrawerClick}
+            >
+              <div className="row no-gutters">
+                <div className="col-1-4">
+                  <i className="fas fa-users" />
+                </div>
+                <div className="col-3-4">
+                  <h1>{texts.myFriendships}</h1>
                 </div>
               </div>
             </Menu.Item>

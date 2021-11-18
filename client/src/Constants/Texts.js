@@ -183,6 +183,9 @@ const en = {
     addChildPrompt:
       "You haven't added any children yet. Click the child icon to add a new child"
   },
+  myFriendshipsScreen: {
+    backNavTitle: "My Friendships"
+  },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
   },
@@ -918,6 +921,7 @@ const en = {
     homeButton: "Home page",
     myProfile: "My profile",
     myCalendar: "My calendar",
+    myFriendships: "My friendships",
     createGroup: "Create a group",
     searchGroup: "Search a group",
     inviteFriends: "Invite friends",
@@ -1503,6 +1507,9 @@ const nl = {
   profileChildren: {
     addChildPrompt:
       "Je hebt nog geen kinderen toegevoegd. Klik op het kindpictogram om een ​​nieuw kind toe te voegen"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "Mijn Vriendschappen"
   },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
@@ -2223,6 +2230,7 @@ const nl = {
     homeButton: "Home",
     myProfile: "Mijn profiel",
     myCalendar: "Mijn kalender",
+    myFriendships: "Mijn vriendschappen",
     createGroup: "Start een groep",
     searchGroup: "Zoek een groep",
     inviteFriends: "Nodig vrienden uit",
@@ -2782,6 +2790,9 @@ const it = {
   profileChildren: {
     addChildPrompt:
       "Non hai ancora aggiunto figli. Fare clic sull'icona figlio per aggiungere un nuovo figlio"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "Le mie amicizie"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -3496,6 +3507,7 @@ const it = {
     homeButton: "Home page",
     myProfile: "Il mio profilo",
     myCalendar: "Il mio calendario",
+    myFriendships: "Le mie amicizie",
     createGroup: "Crea un gruppo",
     searchGroup: "Cerca un gruppo",
     inviteFriends: "Invita amici",
@@ -4082,6 +4094,9 @@ const el = {
   profileChildren: {
     addChildPrompt:
       "Δεν έχετε προσθέσει ακόμη παιδιά. Κάντε κλικ στο εικονίδιο για να προσθέσετε ένα νέο παιδί"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "τις φιλίες μου"
   },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
@@ -4802,6 +4817,7 @@ const el = {
     homeButton: "Αρχική σελίδα",
     myProfile: "Το προφίλ μου",
     myCalendar: "Το ημερολόγιο μου",
+    myFriendships: "Οι φιλίες μου",
     createGroup: "Δημιουργήστε μια ομάδα",
     searchGroup: "Αναζήτηστε  μια ομάδα",
     inviteFriends: "Προσκαλέστε φίλους",
@@ -5377,6 +5393,9 @@ const hu = {
   profileChildren: {
     addChildPrompt:
       "Még nem adott meg gyermeket. Kattintson a gyermek ikonra új gyermek hozzáadásáért"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "a barátságaim"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6126,6 +6145,7 @@ const hu = {
     homeButton: "Főoldal",
     myProfile: "Profilom",
     myCalendar: "Eseménynaptáram",
+    myFriendships: "A barátságaim",
     createGroup: "Csoport létrehozása",
     searchGroup: "Csoport keresése",
     inviteFriends: "Barátok meghívása",
@@ -6696,6 +6716,9 @@ const fr = {
   "profileChildren": {
     "addChildPrompt": "Vous n'avez pas encore ajouté d'enfants. Cliquez sur l'icône enfant pour ajouter un nouvel enfant"
   },
+  "myFriendshipsScreen": {
+    "backNavTitle": "mes amitiés"
+  },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
   },
@@ -7215,6 +7238,7 @@ const fr = {
     "homeButton": "Page d'accueil",
     "myProfile": "Mon profil",
     "myCalendar": "Mon calendrier",
+    "myFriendships": "Mon amitiés",
     "createGroup": "Créer un groupe",
     "searchGroup": "Rechercher un groupe",
     "inviteFriends": "Inviter des amis",
