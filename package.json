@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\""
   },
   "engines": {
-    "node": "10.14.2"
+    "node": "16.13.0"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
