@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  friends_id: [String],
+  pending_friend_requests_id: [String],
+  covid_state: Boolean,
   auth0_token: String,
   last_login: Date,
   language: {
