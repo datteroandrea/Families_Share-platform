@@ -865,7 +865,8 @@ const en = {
     activitiesTab: "Activities",
     membersTab: "Members",
     infoTab: "About",
-    calendarTab: "Calendar"
+    calendarTab: "Calendar",
+    boardTab: "Board"
   },
   groupMembersAdminOptions: {
     invite: "Invite people",
@@ -2179,7 +2180,8 @@ const nl = {
     activitiesTab: "Activiteiten",
     membersTab: "Leden",
     infoTab: "Over",
-    calendarTab: "Kalender"
+    calendarTab: "Kalender",
+    boardTab: "Schwarzes Brett"
   },
   groupMembersAdminOptions: {
     invite: "Nodig mensen uit",
@@ -3456,7 +3458,8 @@ const it = {
     activitiesTab: "Attività  ",
     membersTab: "Membri",
     infoTab: "Info",
-    calendarTab: "Calendario"
+    calendarTab: "Calendario",
+    boardTab: "Bacheca"
   },
   groupMembersAdminOptions: {
     invite: "Invita altre persone",
@@ -4763,7 +4766,8 @@ const el = {
     activitiesTab: "Δραστηριότητες",
     membersTab: "Μέλη",
     infoTab: "Σχετικά με",
-    calendarTab: "Ημερολόγιο"
+    calendarTab: "Ημερολόγιο",
+    boardTab: "Πίνακας ανακοινώσεων",
   },
   groupMembersAdminOptions: {
     invite: "Προσκαλέστε άτομα",
@@ -6069,7 +6073,8 @@ const hu = {
     activitiesTab: "Tevékenységek",
     membersTab: "Tagok",
     infoTab: "A csoportról",
-    calendarTab: "Eseménynaptáram"
+    calendarTab: "Eseménynaptáram",
+    boardTab: "Hirdetőtábla"
   },
   groupMembersAdminOptions: {
     invite: "Emberek meghívása",
@@ -7163,7 +7168,8 @@ const fr = {
     "activitiesTab": "Activités",
     "membersTab": "Membres",
     "infoTab": "À propos",
-    "calendarTab": "Calendrier"
+    "calendarTab": "Calendrier",
+    "boardTab": "Tableau"
   },
   "groupMembersAdminOptions": {
     "invite": "Inviter des gens",
