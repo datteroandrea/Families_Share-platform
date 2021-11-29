@@ -61,6 +61,7 @@ app.use(morgan('dev'))
 // }
 
 app.use('/api', require('./routes/community-routes'))
+app.use('/api/friends', require('./routes/friends-routes'))
 app.use('/api/groups', require('./routes/group-routes'))
 app.use('/api/users', require('./routes/user-routes'))
 app.use('/api/profiles', require('./routes/profile-routes'))
