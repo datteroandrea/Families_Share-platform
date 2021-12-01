@@ -44,7 +44,22 @@ router.get('/requests', (req, res, next) => {
 
 // Send friendship request
 router.post('/addfriend', (req, res, next) => {
-
+    const id = req.user_id;
+    if (!id) { return res.status(401).send('Not authenticated') }
+    const friends_id = req.friends_id;
+    Profile.findOne( { user_id: { $in: friends_id } }).exec().then((profile) => {
+        if (profile.length === null) {
+            return res.status(404).send('Friend not found')
+        }
+        return profile;
+    }).done((profile) => {
+        if (!profile.friends_id.inclue(id) && !profile.pending_friend_requests_id.inclue(id)) {
+            Profile.findOneAndUpdate( 
+                { user_id: { $in: profile.friends_id } }, 
+                { $set: { pending_friend_requests_id: pending_friend_requests_id.push(id) }}
+            );
+        }
+    })
 });
 
 // Remove friendship
