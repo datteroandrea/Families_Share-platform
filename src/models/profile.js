@@ -39,6 +39,15 @@ const profileSchema = new mongoose.Schema(
       type: Boolean,
       required: true
     },
+    friends_id: {
+      type: [String],
+      required: true
+    },
+    pending_friend_requests_id: {
+      type: [String],
+      required: true
+    },
+    covid_state: Boolean,
     suspended: {
       type: Boolean,
       required: true

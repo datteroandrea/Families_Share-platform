@@ -4,6 +4,7 @@ const router = new express.Router()
 const Profile = require('../models/profile')
 const Image = require('../models/image')
 
+
 router.get('/', (req, res, next) => {
   if (!req.user_id) { return res.status(401).send('Not authenticated') }
   const searchBy = req.query.searchBy
@@ -74,6 +75,22 @@ router.get('/', (req, res, next) => {
     default:
       res.status(400).send('Bad Request')
   }
-})
+});
+
+router.post('/covidstate', (req, res, next) => {
+  if (!req.user_id) { return res.status(401).send('Not authenticated') }
+  const { id } = req.query;
+  if (!id) {
+    return res.status(400).send('Bad Request')
+  }
+  let covidstate = req.covidstate;
+  Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
+    if (profile.length === null) {
+      return res.status(404).send('Profiles not found')
+    }
+    profile.covid_state = covidstate;
+    Profile.updateOne({ user_id: { $in: id } }, profile);
+  });
+});
 
 module.exports = router
