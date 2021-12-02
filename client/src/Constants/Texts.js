@@ -992,7 +992,8 @@ const en = {
     email: "Personal",
     mobile: "Mobile",
     home: "Home",
-    unspecified: "Unspecified"
+    unspecified: "Unspecified",
+    covid_state: "Pandemic State"
   },
   profileScreen: {
     privateProfile: "Profile is private"
@@ -2296,7 +2297,8 @@ const nl = {
     email: "Persoonlijk",
     mobile: "Mobiel",
     home: "Thuis",
-    unspecified: "Ongedefinieerd"
+    unspecified: "Ongedefinieerd",
+    covid_state: "Pandemische Noodsituatie"
   },
   profileScreen: {
     privateProfile: "Profiel is privé"
@@ -3578,7 +3580,8 @@ const it = {
     email: "Contatto personale ",
     mobile: "Cellulare",
     home: "Telefono",
-    unspecified: "Non specificato"
+    unspecified: "Non specificato",
+    covid_state: "Emergenza pandemica"
   },
   profileScreen: {
     privateProfile: "Il profilo è privato"
@@ -4885,7 +4888,8 @@ const el = {
     email: "Προσωπικό",
     mobile: "Κινητό (τηλέφωνο)",
     home: "Σταθερό (τηλέφωνο)",
-    unspecified: "Απροσδιόριστο"
+    unspecified: "Απροσδιόριστο",
+    covid_state: "Έκτακτη κατάσταση πανδημίας"
   },
   profileScreen: { privateProfile: "Το προφίλ είναι ιδιωτικό" },
   editProfileScreen: {
@@ -6221,7 +6225,8 @@ const hu = {
     email: "Személyes",
     mobile: "Mobil telefonszám",
     home: "Vezetékes telefonszám",
-    unspecified: "További információ nem elérhető"
+    unspecified: "További információ nem elérhető",
+    covid_state: "Pandémiás Vészhelyzet"
   },
   profileScreen: {
     privateProfile: "Magán profil"
@@ -7312,7 +7317,8 @@ const fr = {
     "email": "Privé",
     "mobile": "Mobile",
     "home": "Maison",
-    "unspecified": "Non spécifié"
+    "unspecified": "Non spécifié",
+    "covid_state": "Urgence Pandémique"
   },
   "profileScreen": {
     "privateProfile": "Profil privé"
