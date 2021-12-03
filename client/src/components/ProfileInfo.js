@@ -6,7 +6,7 @@ import Texts from "../Constants/Texts";
 
 const ProfileInfo = ({ language, profile }) => {
   const texts = Texts[language].profileInfo;
-  const covidState = profile.covid_state ? "🔴" : "🟢";
+  console.log(profile.covid_state)
   return (
     <div>
       <div className="row no-gutters profileInfoContainer">
@@ -65,8 +65,20 @@ const ProfileInfo = ({ language, profile }) => {
         </div>
         <div className="col-8-10">
           <div className="verticalCenter">
-              <h1>{covidState}</h1>
+              <h1>{profile.covid_state ? "🔴" : "🟢"}</h1>
             <h2>{texts.covid_state}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div className="row no-gutters  profileInfoContainer">
+        <div className="col-2-10">
+          <i className="fas fa-users center" />
+        </div>
+        <div className="col-8-10">
+          <div className="verticalCenter">
+              <h1>{profile.friends_id.length}</h1>
+            <h2>{texts.friends_count}</h2>
           </div>
         </div>
       </div>
