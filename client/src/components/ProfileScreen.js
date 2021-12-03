@@ -46,7 +46,8 @@ const getMyProfile = userId => {
         phone: "",
         phone_type: "",
         visible: false,
-        user_id: ""
+        user_id: "",
+        covid_state: false,
       };
     });
 };
