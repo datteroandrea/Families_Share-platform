@@ -993,7 +993,8 @@ const en = {
     mobile: "Mobile",
     home: "Home",
     unspecified: "Unspecified",
-    covid_state: "Pandemic State"
+    covid_state: "Pandemic State",
+    friends_count: "Friend count"
   },
   profileScreen: {
     privateProfile: "Profile is private"
@@ -2298,7 +2299,8 @@ const nl = {
     mobile: "Mobiel",
     home: "Thuis",
     unspecified: "Ongedefinieerd",
-    covid_state: "Pandemische Noodsituatie"
+    covid_state: "Pandemische Noodsituatie",
+    friends_count: "Friends count"
   },
   profileScreen: {
     privateProfile: "Profiel is privé"
@@ -3581,7 +3583,8 @@ const it = {
     mobile: "Cellulare",
     home: "Telefono",
     unspecified: "Non specificato",
-    covid_state: "Emergenza pandemica"
+    covid_state: "Emergenza pandemica",
+    friends_count: "Numero amicizie"
   },
   profileScreen: {
     privateProfile: "Il profilo è privato"
@@ -4889,7 +4892,8 @@ const el = {
     mobile: "Κινητό (τηλέφωνο)",
     home: "Σταθερό (τηλέφωνο)",
     unspecified: "Απροσδιόριστο",
-    covid_state: "Έκτακτη κατάσταση πανδημίας"
+    covid_state: "Έκτακτη κατάσταση πανδημίας",
+    friends_count: "Friends count"
   },
   profileScreen: { privateProfile: "Το προφίλ είναι ιδιωτικό" },
   editProfileScreen: {
@@ -6226,7 +6230,8 @@ const hu = {
     mobile: "Mobil telefonszám",
     home: "Vezetékes telefonszám",
     unspecified: "További információ nem elérhető",
-    covid_state: "Pandémiás Vészhelyzet"
+    covid_state: "Pandémiás Vészhelyzet",
+    friends_count: "Friends count"
   },
   profileScreen: {
     privateProfile: "Magán profil"
@@ -7318,7 +7323,8 @@ const fr = {
     "mobile": "Mobile",
     "home": "Maison",
     "unspecified": "Non spécifié",
-    "covid_state": "Urgence Pandémique"
+    "covid_state": "Urgence Pandémique",
+    "friends_count": "Friends count"
   },
   "profileScreen": {
     "privateProfile": "Profil privé"
