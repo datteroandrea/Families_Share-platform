@@ -21,6 +21,12 @@ const dataURLtoFile = (dataurl, filename) => {
   return new File([u8arr], filename, { type: mime });
 };
 
+const setCovidState = userId => {
+  return axios.post('/api/profiles/covidstate', {covidstate: true, user_id: userId}).then(response => {
+    return response.data;
+  });
+};
+
 class EditProfileScreen extends React.Component {
   state = { fetchedProfile: false };
 
