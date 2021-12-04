@@ -182,6 +182,11 @@ class EditProfileScreen extends React.Component {
     this.setState({ visible });
   };
 
+  handleCovidState = event => { //TODO, non credo sia giusta
+    const covid_state = event.target.value === "covid_state";
+    this.setState({ covid_state });
+  };
+
   handleContact = event => {
     const {
       target: { value }
@@ -203,7 +208,8 @@ class EditProfileScreen extends React.Component {
       phone_type,
       email,
       address,
-      description
+      description,
+      covid_state
     } = this.state;
     const bottomBorder = { borderBottom: "1px solid rgba(0,0,0,0.5)" };
     const texts = Texts[language].editProfileScreen;
@@ -419,7 +425,7 @@ class EditProfileScreen extends React.Component {
               />
             </div>
           </div>
-          <div className="row no-gutters">
+          <div className="row no-gutters" style={bottomBorder}>
             <div className="col-2-10">
               <i className="fas fa-eye center" />
             </div>
@@ -432,6 +438,22 @@ class EditProfileScreen extends React.Component {
               >
                 <option value="visible">{texts.visible}</option>
                 <option value="invisible">{texts.invisible}</option>
+              </select>
+            </div>
+          </div>
+          <div className="row no-gutters">
+            <div className="col-2-10">
+              <i className="fas fa-exclamation-triangle center" />
+            </div>
+            <div className="col-8-10">
+              <select
+                value={covid_state ? "alarm" : "normal"}
+                onChange={this.handleCovidState} // da fare
+                className="editProfileInputField"
+                name="covid_state"
+              >
+                <option value="alarm">{texts.alarm}</option>
+                <option value="normal">{texts.normal}</option>
               </select>
             </div>
           </div>

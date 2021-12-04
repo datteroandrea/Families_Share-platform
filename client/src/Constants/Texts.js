@@ -3610,6 +3610,8 @@ const it = {
     unspecified: "Non specificato",
     visible: "Profilo visibile",
     invisible: "Profilo non visibile",
+    alarm: "Stato di emergenza pandemica",
+    normal: "Situazione regolare",
     cityError: "Città non presente",
     requiredErr: "Perfavore compila questo campo."
   },
