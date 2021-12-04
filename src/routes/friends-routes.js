@@ -3,6 +3,7 @@ const router = new express.Router()
 
 const Profile = require('../models/profile')
 
+// da testare
 // Search users
 router.get('/search', (req, res, next) => {
     const { name } = req.query;
@@ -12,6 +13,7 @@ router.get('/search', (req, res, next) => {
     });
 });
 
+// da testare
 // View friendships
 router.get('/friendships', (req, res, next) => {
     if (!req.user_id) { return res.status(401).send('Not authenticated') }
@@ -27,6 +29,7 @@ router.get('/friendships', (req, res, next) => {
     });
 });
 
+// da testare
 // View friendship requests
 router.get('/requests', (req, res, next) => {
     if (!req.user_id) { return res.status(401).send('Not authenticated') }
@@ -42,6 +45,7 @@ router.get('/requests', (req, res, next) => {
     });
 });
 
+// da testare
 // Send friendship request
 router.post('/addfriend', (req, res, next) => {
     const id = req.user_id;
@@ -62,6 +66,7 @@ router.post('/addfriend', (req, res, next) => {
     })
 });
 
+// da testare
 // Remove friendship
 router.post('/removefriend', (req, res, next) => {
     const id = req.user_id;
@@ -78,6 +83,7 @@ router.post('/removefriend', (req, res, next) => {
     )
 });
 
+// da testare
 // Add friendship
 router.post('/acceptrequest', (req, res, next) => {
     const id = req.user_id;
@@ -97,6 +103,7 @@ router.post('/acceptrequest', (req, res, next) => {
     })
 });
 
+// da testare
 // Remove friendship
 router.post('/declinerequest', (req, res, next) => {
     const id = req.user_id;
