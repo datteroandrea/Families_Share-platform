@@ -20,7 +20,7 @@ router.get('/friendships', (req, res, next) => {
         return res.status(400).send('Bad Request')
     }
     Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
-        if (profile.length === null) {
+        if (profile === null) {
             return res.status(404).send('Profiles not found')
         }
         res.json(profile.friends_id);
@@ -35,7 +35,7 @@ router.get('/requests', (req, res, next) => {
         return res.status(400).send('Bad Request')
     }
     Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
-        if (profile.length === null) {
+        if (profile === null) {
             return res.status(404).send('Profiles not found')
         }
         res.json(profile.pending_friend_requests_id);
@@ -46,17 +46,17 @@ router.get('/requests', (req, res, next) => {
 router.post('/addfriend', (req, res, next) => {
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
-    const friends_id = req.friends_id;
-    Profile.findOne( { user_id: friends_id }).exec().then((profile) => {
-        if (profile.length === null) {
+    const friend_id = req.friend_id;
+    Profile.findOne( { user_id: friend_id }).exec().then((profile) => {
+        if (profile === null) {
             return res.status(404).send('Friend not found')
         }
         return profile;
     }).done((profile) => {
         if (!profile.friends_id.inclue(id) && !profile.pending_friend_requests_id.inclue(id)) {
-            Profile.findOneAndUpdate( 
-                { user_id: profile.friends_id }, 
-                { $set: { pending_friend_requests_id: pending_friend_requests_id.push(id) }}
+            Profile.updateOne( 
+                { user_id: profile.friends_id },
+                { $push: { pending_friend_requests_id: id } }
             );
         }
     })
