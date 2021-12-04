@@ -85,7 +85,7 @@ router.post('/covidstate', (req, res, next) => {
   }
   let covidstate = req.covidstate;
   Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
-    if (profile.length === null) {
+    if (profile === null) {
       return res.status(404).send('Profiles not found')
     }
     profile.covid_state = covidstate;
