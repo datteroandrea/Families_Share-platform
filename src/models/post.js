@@ -24,4 +24,4 @@ mongoose.pluralize(null)
 
 const model = mongoose.model('Post', postSchema)
 
-model.exports = model
+module.exports = model
