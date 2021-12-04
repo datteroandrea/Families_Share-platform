@@ -47,7 +47,7 @@ const profileSchema = new mongoose.Schema(
       type: [String],
       required: true
     },
-    covid_state: Boolean,
+    covid_state: { type:Boolean, required: true },
     suspended: {
       type: Boolean,
       required: true
