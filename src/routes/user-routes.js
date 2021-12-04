@@ -115,7 +115,10 @@ router.post('/', async (req, res, next) => {
       image_id,
       address_id,
       suspended: false,
-      description: ''
+      description: '',
+      friends_id:[],
+      pending_friend_requests_id:[],
+      covid_state:false
     }
     const image = {
       image_id,
@@ -315,7 +318,10 @@ router.post('/authenticate/google', async (req, res, next) => {
         image_id,
         address_id,
         suspended: false,
-        description: ''
+        description: '',
+        friends_id:[],
+        pending_friend_requests_id:[],
+        covid_state:false
       }
       const image = {
         image_id,
