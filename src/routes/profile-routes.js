@@ -85,13 +85,12 @@ router.post('/covidstate', (req, res, next) => {
   }
   let covidstate = req.body.covidstate;
   Profile.findOne({ user_id: id }).exec().then((profile) => {
-    console.log("covid_state " + JSON.stringify(covidstate));
-    console.log("req " + JSON.stringify(req.body));
     if (profile === null) {
       return res.status(404).send('Profiles not found')
     }
     profile.covid_state = covidstate;
     Profile.updateOne({ user_id: id }, profile);
+    res.json(profile);
   });
 });
 
