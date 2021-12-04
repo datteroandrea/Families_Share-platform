@@ -64,7 +64,14 @@ router.post('/addfriend', (req, res, next) => {
 
 // Remove friendship
 router.post('/removefriend', (req, res, next) => {
-
+    const id = req.user_id;
+    if (!id) { return res.status(401).send('Not authenticated') }
+    const friend_id = req.friend_id;
+    Profile.findOneAndUpdate(
+        { user_id: user_id ,
+        friends_id: { $elemMatch: friend_id } },
+        { $pull: { friends_id: friend_id } }
+    )
 });
 
 // Add friendship
