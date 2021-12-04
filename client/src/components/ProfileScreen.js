@@ -46,9 +46,14 @@ const getMyProfile = userId => {
         phone: "",
         phone_type: "",
         visible: false,
-        user_id: ""
+        user_id: "",
+        covid_state: false,
       };
     });
+};
+
+const setCovidState = userId => {
+  axios.post('/api/profiles/covidstate', {covidstate: true, user_id: userId});
 };
 
 class ProfileScreen extends React.Component {
@@ -62,6 +67,8 @@ class ProfileScreen extends React.Component {
     const { match } = this.props;
     const { profileId } = match.params;
     const profile = await getMyProfile(profileId);
+
+    setCovidState(profileId);
 
     const children = await getMyChildren(profileId);
     this.setState({

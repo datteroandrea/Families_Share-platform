@@ -27,6 +27,10 @@ const GroupChat = Loadable({
   loader: () => import("./GroupChat"),
   loading: () => <div />
 });
+const GroupBoard = Loadable({
+  loader: () => import("./GroupBoard"),
+  loading: () => <div />
+});
 
 const getGroupMembers = groupId => {
   return axios
@@ -149,6 +153,17 @@ export default class GroupMainScreen extends React.Component {
             path={`${currentPath}/calendar`}
             render={props => (
               <GroupCalendar
+                {...props}
+                group={group}
+                userIsAdmin={userIsAdmin}
+              />
+            )}
+          />
+           <Route
+            exact
+            path={`${currentPath}/board`}
+            render={props => (
+              <GroupBoard /* TODO*/
                 {...props}
                 group={group}
                 userIsAdmin={userIsAdmin}

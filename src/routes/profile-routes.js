@@ -79,17 +79,24 @@ router.get('/', (req, res, next) => {
 
 router.post('/covidstate', (req, res, next) => {
   if (!req.user_id) { return res.status(401).send('Not authenticated') }
-  const { id } = req.query;
+  const id = req.user_id;
   if (!id) {
     return res.status(400).send('Bad Request')
   }
+<<<<<<< HEAD
   let covidstate = req.covidstate;
   Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
+=======
+  let covidstate = req.body.covidstate;
+  Profile.findOne({ user_id: id }).exec().then((profile) => {
+    console.log("covid_state " + JSON.stringify(covidstate));
+    console.log("req " + JSON.stringify(req.body));
+>>>>>>> 1626bf73a3820601834fbc7a6eb7c087fe31069c
     if (profile === null) {
       return res.status(404).send('Profiles not found')
     }
     profile.covid_state = covidstate;
-    Profile.updateOne({ user_id: { $in: id } }, profile);
+    Profile.updateOne({ user_id: id }, profile);
   });
 });
 

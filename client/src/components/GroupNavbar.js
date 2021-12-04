@@ -71,6 +71,7 @@ const GroupNavbar = ({ history, language, match, allowNavigation }) => {
     activeTab === "calendar",
     activeTab === "activities",
     activeTab === "members",
+    activeTab === "board",
     activeTab === "chat"
   ];
   return (
@@ -132,11 +133,23 @@ const GroupNavbar = ({ history, language, match, allowNavigation }) => {
           }
         />
         <BottomNavigationAction
+          value="board"
+          disabled={disabled}
+          label={texts.boardTab}
+          icon={
+            flags[4] ? (
+              <i className="fas fa-clipboard groupNavbarIcon" />
+            ) : (
+              <i className="far fa-clipboard groupNavbarIcon" />
+            )
+          }
+        />
+        <BottomNavigationAction
           value="chat"
           disabled={disabled}
           label={texts.chatTab}
           icon={
-            flags[4] ? (
+            flags[5] ? (
               <i className="fas fa-envelope groupNavbarIcon" />
             ) : (
               <i className="far fa-envelope groupNavbarIcon" />

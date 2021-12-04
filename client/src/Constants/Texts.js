@@ -183,6 +183,9 @@ const en = {
     addChildPrompt:
       "You haven't added any children yet. Click the child icon to add a new child"
   },
+  myFriendshipsScreen: {
+    backNavTitle: "My Friendships"
+  },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
   },
@@ -862,7 +865,8 @@ const en = {
     activitiesTab: "Activities",
     membersTab: "Members",
     infoTab: "About",
-    calendarTab: "Calendar"
+    calendarTab: "Calendar",
+    boardTab: "Board"
   },
   groupMembersAdminOptions: {
     invite: "Invite people",
@@ -918,6 +922,7 @@ const en = {
     homeButton: "Home page",
     myProfile: "My profile",
     myCalendar: "My calendar",
+    myFriendships: "My friendships",
     createGroup: "Create a group",
     searchGroup: "Search a group",
     inviteFriends: "Invite friends",
@@ -987,7 +992,9 @@ const en = {
     email: "Personal",
     mobile: "Mobile",
     home: "Home",
-    unspecified: "Unspecified"
+    unspecified: "Unspecified",
+    covid_state: "Pandemic State",
+    friends_count: "Friend count"
   },
   profileScreen: {
     privateProfile: "Profile is private"
@@ -1503,6 +1510,9 @@ const nl = {
   profileChildren: {
     addChildPrompt:
       "Je hebt nog geen kinderen toegevoegd. Klik op het kindpictogram om een ​​nieuw kind toe te voegen"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "Mijn Vriendschappen"
   },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
@@ -2172,7 +2182,8 @@ const nl = {
     activitiesTab: "Activiteiten",
     membersTab: "Leden",
     infoTab: "Over",
-    calendarTab: "Kalender"
+    calendarTab: "Kalender",
+    boardTab: "Schwarzes Brett"
   },
   groupMembersAdminOptions: {
     invite: "Nodig mensen uit",
@@ -2223,6 +2234,7 @@ const nl = {
     homeButton: "Home",
     myProfile: "Mijn profiel",
     myCalendar: "Mijn kalender",
+    myFriendships: "Mijn vriendschappen",
     createGroup: "Start een groep",
     searchGroup: "Zoek een groep",
     inviteFriends: "Nodig vrienden uit",
@@ -2286,7 +2298,9 @@ const nl = {
     email: "Persoonlijk",
     mobile: "Mobiel",
     home: "Thuis",
-    unspecified: "Ongedefinieerd"
+    unspecified: "Ongedefinieerd",
+    covid_state: "Pandemische Noodsituatie",
+    friends_count: "Friends count"
   },
   profileScreen: {
     privateProfile: "Profiel is privé"
@@ -2782,6 +2796,9 @@ const it = {
   profileChildren: {
     addChildPrompt:
       "Non hai ancora aggiunto figli. Fare clic sull'icona figlio per aggiungere un nuovo figlio"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "Le mie amicizie"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -3445,7 +3462,8 @@ const it = {
     activitiesTab: "Attività  ",
     membersTab: "Membri",
     infoTab: "Info",
-    calendarTab: "Calendario"
+    calendarTab: "Calendario",
+    boardTab: "Bacheca"
   },
   groupMembersAdminOptions: {
     invite: "Invita altre persone",
@@ -3496,6 +3514,7 @@ const it = {
     homeButton: "Home page",
     myProfile: "Il mio profilo",
     myCalendar: "Il mio calendario",
+    myFriendships: "Le mie amicizie",
     createGroup: "Crea un gruppo",
     searchGroup: "Cerca un gruppo",
     inviteFriends: "Invita amici",
@@ -3563,7 +3582,9 @@ const it = {
     email: "Contatto personale ",
     mobile: "Cellulare",
     home: "Telefono",
-    unspecified: "Non specificato"
+    unspecified: "Non specificato",
+    covid_state: "Emergenza pandemica",
+    friends_count: "Numero amicizie"
   },
   profileScreen: {
     privateProfile: "Il profilo è privato"
@@ -4082,6 +4103,9 @@ const el = {
   profileChildren: {
     addChildPrompt:
       "Δεν έχετε προσθέσει ακόμη παιδιά. Κάντε κλικ στο εικονίδιο για να προσθέσετε ένα νέο παιδί"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "τις φιλίες μου"
   },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
@@ -4748,7 +4772,8 @@ const el = {
     activitiesTab: "Δραστηριότητες",
     membersTab: "Μέλη",
     infoTab: "Σχετικά με",
-    calendarTab: "Ημερολόγιο"
+    calendarTab: "Ημερολόγιο",
+    boardTab: "Πίνακας ανακοινώσεων",
   },
   groupMembersAdminOptions: {
     invite: "Προσκαλέστε άτομα",
@@ -4802,6 +4827,7 @@ const el = {
     homeButton: "Αρχική σελίδα",
     myProfile: "Το προφίλ μου",
     myCalendar: "Το ημερολόγιο μου",
+    myFriendships: "Οι φιλίες μου",
     createGroup: "Δημιουργήστε μια ομάδα",
     searchGroup: "Αναζήτηστε  μια ομάδα",
     inviteFriends: "Προσκαλέστε φίλους",
@@ -4865,7 +4891,9 @@ const el = {
     email: "Προσωπικό",
     mobile: "Κινητό (τηλέφωνο)",
     home: "Σταθερό (τηλέφωνο)",
-    unspecified: "Απροσδιόριστο"
+    unspecified: "Απροσδιόριστο",
+    covid_state: "Έκτακτη κατάσταση πανδημίας",
+    friends_count: "Friends count"
   },
   profileScreen: { privateProfile: "Το προφίλ είναι ιδιωτικό" },
   editProfileScreen: {
@@ -5377,6 +5405,9 @@ const hu = {
   profileChildren: {
     addChildPrompt:
       "Még nem adott meg gyermeket. Kattintson a gyermek ikonra új gyermek hozzáadásáért"
+  },
+  myFriendshipsScreen: {
+    backNavTitle: "a barátságaim"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6050,7 +6081,8 @@ const hu = {
     activitiesTab: "Tevékenységek",
     membersTab: "Tagok",
     infoTab: "A csoportról",
-    calendarTab: "Eseménynaptáram"
+    calendarTab: "Eseménynaptáram",
+    boardTab: "Hirdetőtábla"
   },
   groupMembersAdminOptions: {
     invite: "Emberek meghívása",
@@ -6126,6 +6158,7 @@ const hu = {
     homeButton: "Főoldal",
     myProfile: "Profilom",
     myCalendar: "Eseménynaptáram",
+    myFriendships: "A barátságaim",
     createGroup: "Csoport létrehozása",
     searchGroup: "Csoport keresése",
     inviteFriends: "Barátok meghívása",
@@ -6196,7 +6229,9 @@ const hu = {
     email: "Személyes",
     mobile: "Mobil telefonszám",
     home: "Vezetékes telefonszám",
-    unspecified: "További információ nem elérhető"
+    unspecified: "További információ nem elérhető",
+    covid_state: "Pandémiás Vészhelyzet",
+    friends_count: "Friends count"
   },
   profileScreen: {
     privateProfile: "Magán profil"
@@ -6696,6 +6731,9 @@ const fr = {
   "profileChildren": {
     "addChildPrompt": "Vous n'avez pas encore ajouté d'enfants. Cliquez sur l'icône enfant pour ajouter un nouvel enfant"
   },
+  "myFriendshipsScreen": {
+    "backNavTitle": "mes amitiés"
+  },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
   },
@@ -7140,7 +7178,8 @@ const fr = {
     "activitiesTab": "Activités",
     "membersTab": "Membres",
     "infoTab": "À propos",
-    "calendarTab": "Calendrier"
+    "calendarTab": "Calendrier",
+    "boardTab": "Tableau"
   },
   "groupMembersAdminOptions": {
     "invite": "Inviter des gens",
@@ -7215,6 +7254,7 @@ const fr = {
     "homeButton": "Page d'accueil",
     "myProfile": "Mon profil",
     "myCalendar": "Mon calendrier",
+    "myFriendships": "Mon amitiés",
     "createGroup": "Créer un groupe",
     "searchGroup": "Rechercher un groupe",
     "inviteFriends": "Inviter des amis",
@@ -7282,7 +7322,9 @@ const fr = {
     "email": "Privé",
     "mobile": "Mobile",
     "home": "Maison",
-    "unspecified": "Non spécifié"
+    "unspecified": "Non spécifié",
+    "covid_state": "Urgence Pandémique",
+    "friends_count": "Friends count"
   },
   "profileScreen": {
     "privateProfile": "Profil privé"

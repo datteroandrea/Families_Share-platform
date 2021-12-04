@@ -97,7 +97,8 @@ class EditProfileScreen extends React.Component {
       contact_option,
       phone_type,
       address,
-      description
+      description,
+      covid_state
     } = this.state;
     const { city, street, number, address_id } = address;
     const bodyFormData = new FormData();
@@ -116,6 +117,7 @@ class EditProfileScreen extends React.Component {
     bodyFormData.append("number", number);
     bodyFormData.append("address_id", address_id);
     bodyFormData.append("description", description);
+    bodyFormData.append("covid_state", covid_state);
     axios
       .patch(`/api/users/${userId}/profile`, bodyFormData, {
         headers: {
