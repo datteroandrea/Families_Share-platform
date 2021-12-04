@@ -84,10 +84,10 @@ router.post('/covidstate', (req, res, next) => {
     return res.status(400).send('Bad Request')
   }
   let covidstate = req.body.covidstate;
-  Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
+  Profile.findOne({ user_id: id }).exec().then((profile) => {
     console.log("covid_state " + JSON.stringify(covidstate));
     console.log("req " + JSON.stringify(req.body));
-    if (profile.length === null) {
+    if (profile === null) {
       return res.status(404).send('Profiles not found')
     }
     profile.covid_state = covidstate;
