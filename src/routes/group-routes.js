@@ -49,10 +49,10 @@ const transporter = nodemailer.createTransport({
 })
 
 const groupStorage = multer.diskStorage({
-  destination (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, path.join(__dirname, '../../images/groups'))
   },
-  filename (req, file, cb) {
+  filename(req, file, cb) {
     const fileName = `${req.params.id}-${Date.now()}.${file.mimetype.slice(
       file.mimetype.indexOf('/') + 1,
       file.mimetype.length
@@ -67,10 +67,10 @@ const groupUpload = multer({
 })
 
 const announcementStorage = multer.diskStorage({
-  destination (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, path.join(__dirname, '../../images/announcements'))
   },
-  filename (req, file, cb) {
+  filename(req, file, cb) {
     if (req.params.announcement_id === undefined) {
       req.params.announcement_id = objectid()
     }
@@ -1893,5 +1893,89 @@ router.delete(
     }
   }
 )
+
+const NoticeBoard = require('../models/noticeBoard');
+const Post = require('../models/post');
+
+// da testare
+router.get('/:groupId/noticeboard', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  const user_id = req.user_id;
+  NoticeBoard.findOne({ group_id: group_id }).then((noticeBoard) => {
+    Post.find({ post_id: { $in: noticeBoard.posts }}).then((posts) => {
+      noticeBoard.posts = posts;
+      return res.json(noticeBoard);
+    });
+  });
+});
+
+// da testare
+router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  const post_id = req.params.postid;
+  Post.findOne({ post_id: post_id}).then((post)=>{
+    Profile.findOne({ user_id: post.owner }, (owner)=>{
+      post.owner = owner;
+      return res.json(post);
+    });
+  });
+});
+
+// da testare
+router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  const user_id = req.user_id;
+  const { title, text } = req.body;
+
+  const post = {
+    post_id: objectid(),
+    group_id: group_id,
+    owner: user_id,
+    title: title,
+    text: text,
+    date: new Date()
+  }
+
+  Post.create(post);
+  return res.json(post);
+});
+
+// da testare
+router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  const post_id = req.params.postid;
+  const { title, text } = req.body;
+  Post.findOne({ post_id: post_id}).then((post)=>{
+    post.title = title;
+    post.text = text;
+    Profile.updateOne(post);
+    return res.json(post);
+  });
+});
+
+// da testare
+router.delete('/:groupId/noticeboard/posts/:postid/delete', (req,res,next)=>{
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  const post_id = req.params.postid;
+  const { title, text } = req.body;
+  Post.deleteOne({ post_id: post_id});
+  return res.status(200).send('Post was deleted');
+});
+
 
 module.exports = router
