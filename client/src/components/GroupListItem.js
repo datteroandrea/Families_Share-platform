@@ -73,6 +73,9 @@ class GroupListItem extends React.Component {
     const { language } = this.props;
     const texts = Texts[language].groupListItem;
     const { group, fetchedGroupData } = this.state;
+    //console.log(getGroupMembers(group.group_id));
+    console.log(group.members);
+    const covid_alert = false;  // va fatta la query
     return fetchedGroupData ? (
       <div
         role="button"
@@ -90,7 +93,7 @@ class GroupListItem extends React.Component {
         </div>
         <div className="col-8-10">
           <div id="suggestionInfoContainer">
-            <h1>{group.name}</h1>
+            <h1>{group.name} {covid_alert ? "🔴" : "  "}</h1>
             <h2>{`${texts.members}: ${group.members.length}`}</h2>
             <h3>{group.settings.open ? texts.open : texts.closed}</h3>
           </div>
