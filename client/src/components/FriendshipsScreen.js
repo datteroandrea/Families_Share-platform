@@ -2,6 +2,7 @@ import React from "react";
 import withLanguage from "./LanguageContext";
 import BackNavigation from "./BackNavigation";
 import Texts from "../Constants/Texts";
+import FriendshipsNavbar from "./FriendshipsNavbar"
 
 const FriendshipsScreen = ({ history, language }) => {
   const handleBackNav = () => {
@@ -13,7 +14,7 @@ const FriendshipsScreen = ({ history, language }) => {
     <React.Fragment>
       <BackNavigation title={texts.backNavTitle} onClick={handleBackNav} />
       {/* componente lista amicizie */}
-      {/* componente navbar amicizie: lista amicizie - lista richieste - cerca persona */}
+      <FriendshipsNavbar allowNavigation={true}/>
     </React.Fragment>
   );
 };

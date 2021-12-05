@@ -261,6 +261,14 @@ class App extends React.Component {
                 component={FriendshipsScreen}
               />
               <PrivateRoute
+                path="/requests"
+                component={FriendshipsScreen}
+              />
+              <PrivateRoute
+                path="/search"
+                component={FriendshipsScreen}
+              />
+              <PrivateRoute
                 exact
                 path="/profiles/:profileId/children/:childId/edit/additional"
                 component={AdditionalInfoScreen}
