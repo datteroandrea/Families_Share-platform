@@ -185,14 +185,12 @@ class EditProfileScreen extends React.Component {
 
   handleVisibility = event => {
     const visible = event.target.value === "visible";
-    console.log(visible);
     this.setState({ visible });
   };
 
-  handleCovidState = event => { //TODO, non credo sia giusta
-    const covid_state = event.target.value === "covid_state";
-    console.log(covid_state);
-    this.setState({ covid_state: covid_state });
+  handleCovidState = event => {
+    const covid_state = event.target.value === "alarm";
+    this.setState({ covid_state });
   };
 
   handleContact = event => {
@@ -456,7 +454,7 @@ class EditProfileScreen extends React.Component {
             <div className="col-8-10">
               <select
                 value={covid_state ? "alarm" : "normal"}
-                onChange={this.handleCovidState} // TODO
+                onChange={this.handleCovidState}
                 className="editProfileInputField"
                 name="covid_state"
               >
