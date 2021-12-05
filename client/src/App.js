@@ -25,6 +25,10 @@ const styles = () => ({
 
 const Loading = <LoadingSpinner />;
 
+const FriendshipsScreen = Loadable({
+  loader: () => import("./components/FriendshipsScreen"),
+  loading: () => Loading
+});
 const LogInScreen = Loadable({
   loader: () => import("./components/LogInScreen"),
   loading: () => Loading
@@ -251,6 +255,10 @@ class App extends React.Component {
               <PrivateRoute
                 path="/myfamiliesshare/calendar"
                 component={MyCalendarScreen}
+              />
+              <PrivateRoute
+                path="/friendships"
+                component={FriendshipsScreen}
               />
               <PrivateRoute
                 exact
