@@ -1020,6 +1020,8 @@ const en = {
     unspecified: "Unspecified",
     visible: "Visible profile",
     invisible: "Invisible Profile",
+    alarm: "Pandemic emergency state",
+    normal: "Common situation",
     cityErr: "City doesn't exist",
     requiredErr: "Please fill out this field."
   },
@@ -2326,6 +2328,8 @@ const nl = {
     unspecified: "Ongedefinieerd",
     visible: "Zichtbaar profiel",
     invisible: "Onzichtbaar profiel",
+    alarm: "Pandemische noodtoestand",
+    normal: "Normale situatie",
     cityErr: "Stad bestaat niet",
     requiredErr: "Vul alstublieft dit veld in."
   },
@@ -3612,7 +3616,7 @@ const it = {
     invisible: "Profilo non visibile",
     alarm: "Stato di emergenza pandemica",
     normal: "Situazione regolare",
-    cityError: "Città non presente",
+    cityErr: "Città non presente",
     requiredErr: "Perfavore compila questo campo."
   },
   editGroupScreen: {
@@ -4919,6 +4923,8 @@ const el = {
     unspecified: "Απροσδιόριστο",
     visible: "Ορατό προφίλ",
     invisible: "Κρυφό προφίλ",
+    alarm: "Πανδημική κατάσταση έκτακτης ανάγκης",
+    normal: "τακτική κατάσταση",
     cityErr: "Η πόλη δεν υπάρχει",
     requiredErr: "Παρακαλούμε συμπληρώσετε αυτό το πεδίο."
   },
@@ -6259,6 +6265,8 @@ const hu = {
     unspecified: "További információ nem elérhető",
     visible: "Nyilvános profil",
     invisible: "Láthatatlan profil",
+    alarm: "Rendszeres helyzet",
+    normal: "Pandémiás szükségállapot",
     cityErr: "Nem létező város",
     requiredErr: "Kérjük, töltse ki ezt a mezőt"
   },
@@ -7352,6 +7360,8 @@ const fr = {
     "unspecified": "Non spécifié",
     "visible": "Profil visible",
     "invisible": "Profil invisible",
+    "alarm": "Etat d'urgence pandémique",
+    "normal": "Situation régulière",
     "cityErr": "La ville n'existe pas",
     "requiredErr": "Veuillez remplir ce champ."
   },
