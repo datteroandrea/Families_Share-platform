@@ -188,8 +188,8 @@ class EditProfileScreen extends React.Component {
     this.setState({ visible });
   };
 
-  handleCovidState = event => { //TODO, non credo sia giusta
-    const covid_state = event.target.value === "covid_state";
+  handleCovidState = event => {
+    const covid_state = event.target.value === "alarm";
     this.setState({ covid_state });
   };
 
@@ -454,7 +454,7 @@ class EditProfileScreen extends React.Component {
             <div className="col-8-10">
               <select
                 value={covid_state ? "alarm" : "normal"}
-                onChange={this.handleCovidState} // da fare
+                onChange={this.handleCovidState}
                 className="editProfileInputField"
                 name="covid_state"
               >
