@@ -4,11 +4,11 @@ import BackNavigation from "./BackNavigation";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 
-const FriendshipsScreen = ({ history, language }) => {
+const SearchUserScreen = ({ history, language }) => {
   const handleBackNav = () => {
     history.goBack();
   };
-  const texts = Texts[language].myFriendshipsScreen;
+  const texts = Texts[language].searchUserScreen;
 
   return (
     <React.Fragment>
@@ -19,4 +19,4 @@ const FriendshipsScreen = ({ history, language }) => {
   );
 };
 
-export default withLanguage(FriendshipsScreen);
+export default withLanguage(SearchUserScreen);

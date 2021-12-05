@@ -4,19 +4,19 @@ import BackNavigation from "./BackNavigation";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 
-const FriendshipsScreen = ({ history, language }) => {
+const FriendshipRequestsScreen = ({ history, language }) => {
   const handleBackNav = () => {
     history.goBack();
   };
-  const texts = Texts[language].myFriendshipsScreen;
+  const texts = Texts[language].myFriendshipsRequestsScreen;
 
   return (
     <React.Fragment>
       <BackNavigation title={texts.backNavTitle} onClick={handleBackNav} />
-      {/* lista amicizie */}
+      {/* lista richieste */}
       <FriendshipsNavbar allowNavigation={true}/>
     </React.Fragment>
   );
 };
 
-export default withLanguage(FriendshipsScreen);
+export default withLanguage(FriendshipRequestsScreen);

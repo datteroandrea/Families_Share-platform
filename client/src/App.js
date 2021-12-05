@@ -29,6 +29,14 @@ const FriendshipsScreen = Loadable({
   loader: () => import("./components/FriendshipsScreen"),
   loading: () => Loading
 });
+const FriendshipRequestsScreen = Loadable({
+  loader: () => import("./components/FriendshipRequestsScreen"),
+  loading: () => Loading
+});
+const SearchUserScreen = Loadable({
+  loader: () => import("./components/SearchUserScreen"),
+  loading: () => Loading
+});
 const LogInScreen = Loadable({
   loader: () => import("./components/LogInScreen"),
   loading: () => Loading
@@ -262,11 +270,11 @@ class App extends React.Component {
               />
               <PrivateRoute
                 path="/requests"
-                component={FriendshipsScreen}
+                component={FriendshipRequestsScreen}
               />
               <PrivateRoute
                 path="/search"
-                component={FriendshipsScreen}
+                component={SearchUserScreen}
               />
               <PrivateRoute
                 exact

@@ -191,6 +191,12 @@ const en = {
     requestsTab: "Requests",
     searchTab: "Search User"
   },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "My Friendship Requests"
+  },
+  searchUserScreen: {
+    backNavTitle: "User search"
+  },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
   },
@@ -1526,6 +1532,12 @@ const nl = {
     requestsTab: "Verzoeken",
     searchTab: "Zoek Gebruiker"
   },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "Mijn vriendschapsverzoeken"
+  },
+  searchUserScreen: {
+    backNavTitle: "Gebruikers zoeken"
+  },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
   },
@@ -2818,6 +2830,12 @@ const it = {
     friendshipsTab: "Amicizie",
     requestsTab: "Richieste",
     searchTab: "Cerca Utente"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "Le mie richieste di amicizia"
+  },
+  searchUserScreen: {
+    backNavTitle: "Ricerca Utente"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -4133,6 +4151,12 @@ const el = {
     requestsTab: "Αιτήσεων",
     searchTab: "Αναζήτηση χρήστη"
   },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "ζητάει ο φίλος μου"
+  },
+  searchUserScreen: {
+    backNavTitle: "Αναζήτηση χρήστη"
+  },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
   },
@@ -5441,6 +5465,12 @@ const hu = {
     friendshipsTab: "Barátságok",
     requestsTab: "Kérések",
     searchTab: "Felhasználó keresése"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "A barátom kéri"
+  },
+  searchUserScreen: {
+    backNavTitle: "Felhasználói keresés"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6773,6 +6803,12 @@ const fr = {
     "friendshipsTab": "Amitiés",
     "requestsTab": "Demandes",
     "searchTab": "Rechercher un utilisateur"
+  },
+  "myFriendshipsRequestsScreen": {
+    "backNavTitle": "Mon ami demande"
+  },
+  "searchUserScreen": {
+    "backNavTitle": "Recherche d'utilisateurs"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
