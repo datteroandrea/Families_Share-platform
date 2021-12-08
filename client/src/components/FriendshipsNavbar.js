@@ -91,9 +91,9 @@ const FriendshipsNavbar = ({ history, language, allowNavigation }) => {
           label={texts.requestsTab}
           icon={
             flags[1] ? (
-              <i className="fas fa-calendar groupNavbarIcon" />
+              <i className="fas fa-clipboard groupNavbarIcon" />
             ) : (
-              <i className="far fa-calendar groupNavbarIcon" />
+              <i className="far fa-clipboard groupNavbarIcon" />
             )
           }
         />
