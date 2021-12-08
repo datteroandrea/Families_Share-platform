@@ -5,23 +5,65 @@ import PropTypes from "prop-types";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 import Log from "./Log";
+import ProfilesAutoComplete from "./ProfilesAutoComplete";
+import UserList from "./UserList";
 
 class SearchUserScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       searchInput: "",
-      searchBarIsVisible: false
+      searchedForInput: false,
+      searchBarIsVisible: false,
+      matchingUsers: [],
+      users: [],
     };
   }
   componentDidMount() {
-    
+    axios
+      .get("/api/profiles?searchBy=visibility&visible=true")
+      .then(res => {
+        const users = res.data;
+        this.setState({ users });
+        this.handleSearch("");
+      })
+      .catch(error => {
+        Log.error(error);
+      });
   }
+
+  onInputChange = event => {
+    this.setState({ searchInput: event.target.value, searchedForInput: false });
+  };
+
+  handleKeyPress = e => {
+    const { searchInput } = this.state;
+    if (e.key === "Enter") {
+      this.handleSearch(searchInput);
+    }
+  };
+
+  handleSearch = val => {
+    const value = val.toLowerCase().trim();
+    const { users } = this.state;
+    const matchingUsers = [];
+    users.forEach(user => {
+      let userName = user.given_name.toLowerCase() + " " + user.family_name.toLowerCase();
+      if (userName.includes(value)) {
+        matchingUsers.push(user.user_id);
+      }
+    });
+    this.setState({
+      searchedForInput: true,
+      searchInput: value,
+      matchingUsers
+    });
+  };
 
   handleSearchVisibility = async () => {
     const { searchBarIsVisible } = this.state;
     await this.setState({ searchBarIsVisible: !searchBarIsVisible });
-    document.getElementById("searchGroupInput").focus();
+    document.getElementById("searchUserInput").focus();
   };
 
   render() {
@@ -29,6 +71,9 @@ class SearchUserScreen extends React.Component {
     const {
       searchBarIsVisible,
       searchInput,
+      searchedForInput,
+      users,
+      matchingUsers
     } = this.state;
     const texts = Texts[language].searchUserScreen;
     return (
@@ -50,8 +95,10 @@ class SearchUserScreen extends React.Component {
           >
             <input
               type="search"
-              id="searchGroupInput"
+              id="searchUserInput"
               value={searchInput}
+              onChange={this.onInputChange}
+              onKeyPress={this.handleKeyPress}
               style={searchBarIsVisible ? {} : { display: "none" }}
             />
             <h1 style={searchBarIsVisible ? { display: "none" } : {}}>
@@ -68,6 +115,22 @@ class SearchUserScreen extends React.Component {
             </button>
           </div>
         </div>
+        {!searchedForInput ? (
+            <div id="searchUserSuggestionsContainer">
+              <ProfilesAutoComplete
+                searchInput={searchInput}
+                entities={users}
+                handleSearch={this.handleSearch}
+              />
+            </div>
+          ) : (
+            <div>
+              <div className="row no-gutters" id="searchUserResultsContainer">
+                <h1>Questo va cambiato</h1>
+              </div>
+              <UserList userIds={matchingUsers} />
+            </div>
+          )}
         <FriendshipsNavbar allowNavigation={true} />
       </React.Fragment >
     );
