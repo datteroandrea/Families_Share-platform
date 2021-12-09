@@ -15,29 +15,31 @@ router.get('/search', (req, res, next) => {
 
 // da testare
 // View friendships
-router.get('/friendships', (req, res, next) => {
+router.get('/:id/friendships', (req, res, next) => {
     if (!req.user_id) { return res.status(401).send('Not authenticated') }
-    const { id } = req.query;
+    const id = req.params.id;
     if (!id) {
         return res.status(400).send('Bad Request')
     }
-    Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
+    Profile.findOne({ user_id: id }).exec().then((profile) => {
         if (profile === null) {
             return res.status(404).send('Profiles not found')
         }
-        res.json(profile.friends_id);
+        Profile.find({ user_id: { $in: profile.friends_id }}).exec().then((friends)=>{
+            res.json(friends);
+        });
     });
 });
 
 // da testare
 // View friendship requests
-router.get('/requests', (req, res, next) => {
+router.get('/:id/requests', (req, res, next) => {
     if (!req.user_id) { return res.status(401).send('Not authenticated') }
-    const { id } = req.query;
+    const id = req.params.id;
     if (!id) {
         return res.status(400).send('Bad Request')
     }
-    Profile.findOne({ user_id: { $in: id } }).exec().then((profile) => {
+    Profile.findOne({ user_id: id }).exec().then((profile) => {
         if (profile === null) {
             return res.status(404).send('Profiles not found')
         }
@@ -47,7 +49,7 @@ router.get('/requests', (req, res, next) => {
 
 // da testare
 // Send friendship request
-router.post('/addfriend', (req, res, next) => {
+router.post('/:id/addfriend', (req, res, next) => {
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.friend_id;
@@ -68,7 +70,7 @@ router.post('/addfriend', (req, res, next) => {
 
 // da testare
 // Remove friendship
-router.post('/removefriend', (req, res, next) => {
+router.post('/:id/removefriend', (req, res, next) => {
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.friend_id;
@@ -85,7 +87,7 @@ router.post('/removefriend', (req, res, next) => {
 
 // da testare
 // Add friendship
-router.post('/acceptrequest', (req, res, next) => {
+router.post('/:id/acceptrequest', (req, res, next) => {
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.friend_id;
@@ -105,7 +107,7 @@ router.post('/acceptrequest', (req, res, next) => {
 
 // da testare
 // Remove friendship
-router.post('/declinerequest', (req, res, next) => {
+router.post('/:id/declinerequest', (req, res, next) => {
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.friend_id;
@@ -118,7 +120,5 @@ router.post('/declinerequest', (req, res, next) => {
         }
     })
 });
-
-
 
 module.exports = router;
