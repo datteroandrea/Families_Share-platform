@@ -133,8 +133,23 @@ class ProfileHeader extends React.Component {
     this.setState({ confirmDialogIsOpen: false });
   };
 
+  handleAddFriend = () => {
+    const { match } = this.props;
+    const { profileId } = match.params;
+    axios
+    .post("/api/friends/"+profileId+"/addfriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
+    
+  };
+
+  handleRemoveFriend = () => {
+    const { match } = this.props;
+    const { profileId } = match.params;
+    axios
+    .post("/api/friends/"+profileId+"/removefriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
+  };
+
   render() {
-    const { language, match, history, photo, name } = this.props;
+    const { language, match, history, photo, name, profile } = this.props;
     const { profileId } = match.params;
     const texts = Texts[language].profileHeader;
     const {
@@ -214,7 +229,27 @@ class ProfileHeader extends React.Component {
               </div>
             </React.Fragment>
           ) : (
-            <div />
+            <React.Fragment>
+              <div className="col-1-10">
+                {profile.friends_id.includes(JSON.parse(localStorage.getItem("user")).id) ? (
+                  <button
+                    type="button"
+                    className="transparentButton center"
+                    onClick={this.handleRemoveFriend}
+                  >
+                    <i className="fas fa-user-slash" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="transparentButton center"
+                    onClick={this.handleAddFriend}
+                  >
+                    <i className="fas fa-user-plus" />
+                  </button>
+              )};
+              </div>
+            </React.Fragment>
           )}
         </div>
         <img

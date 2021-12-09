@@ -50,39 +50,44 @@ router.get('/:id/requests', (req, res, next) => {
 // da testare
 // Send friendship request
 router.post('/:id/addfriend', (req, res, next) => {
-    const id = req.user_id;
+    const id = req.user_id;  //id dell'utente loggato
     if (!id) { return res.status(401).send('Not authenticated') }
-    const friend_id = req.friend_id;
+    const friend_id = req.params.id;  //id utente a cui voglio inviare richiesta
     Profile.findOne( { user_id: friend_id }).exec().then((profile) => {
         if (profile === null) {
             return res.status(404).send('Friend not found')
         }
         return profile;
-    }).done((profile) => {
-        if (!profile.friends_id.inclue(id) && !profile.pending_friend_requests_id.inclue(id)) {
+    }).then((profile) => {
+        if (!profile.friends_id.includes(id) && !profile.pending_friend_requests_id.includes(id) && id !== friend_id) {
             Profile.updateOne( 
-                { user_id: profile.friends_id },
+                { user_id: friend_id },
                 { $push: { pending_friend_requests_id: id } }
-            );
+            ).exec();
         }
+        res.json(profile);
     })
 });
 
 // da testare
 // Remove friendship
 router.post('/:id/removefriend', (req, res, next) => {
-    const id = req.user_id;
+    const id = req.user_id;    //id dell'utente loggato
+    console.log(id);
     if (!id) { return res.status(401).send('Not authenticated') }
-    const friend_id = req.friend_id;
+    const friend_id = req.params.id;  //id utente a cui voglio togliere amicizia
+    console.log(friend_id)
     Profile.updateOne(
-        { user_id: id, friends_id: { $elemMatch: friend_id } },
+        { user_id: id, friends_id: friend_id },
         { $pull: { friends_id: friend_id } }
-    )
+    ).exec()
 
     Profile.updateOne(
-        { user_id: friend_id, friends_id: { $elemMatch: id } },
+        { user_id: friend_id, friends_id: id },
         { $pull: { friends_id: id } }
-    )
+    ).exec()
+
+    res.status(200).send();
 });
 
 // da testare
