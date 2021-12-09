@@ -3093,6 +3093,77 @@ a:active {
 }
 /*SEARCH GROUP SCREEN END*/
 
+/*SEARCH USER SCREEN*/
+#searchUserBarContainer {
+  height: 6rem;
+  position: fixed;
+  background-color: #00838f;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+}
+#searchUserBarContainer button {
+  width: 100%;
+  height: 100%;
+  padding: 0 0;
+  max-height: 5rem;
+  max-width: 5rem;
+}
+#searchUserBarContainer i {
+  font-size: 2rem;
+  color: #ffffff;
+}
+#searchUserBarContainer input {
+  height: 4rem;
+  font-size: 1.6rem;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 2rem;
+  width: 65vw;
+  position: relative;
+  padding-left: 2rem;
+}
+#searchUserBarContainer h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 0;
+  cursor: pointer;
+}
+#searchUserSuggestionsContainer h1 {
+  opacity: 0.87;
+  font-family: "Roboto";
+  font-size: 1.4rem;
+  text-align: left;
+  color: #000000;
+  line-height: 4.4rem;
+  display: inline-block;
+}
+#searchUserSuggestionsContainer {
+  padding: 3rem;
+}
+#searchUserSuggestionsContainer {
+  margin-top: 6rem;
+}
+#searchUserSuggestionsContainer i {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+#searchUserSuggestionsContainer li {
+  width: 100%;
+  margin: 1rem 0;
+}
+#searchUserResultsContainer h1 {
+  font-size: 1.6rem;
+  margin-left: 5%;
+  margin-top: 1rem;
+}
+#searchUserResultsContainer {
+  margin-top: 6rem;
+}
+/*SEARCH USER SCREEN END*/
+
 /*SIGN UP SCREEN*/
 #signUpContainer {
   max-width: 45rem;

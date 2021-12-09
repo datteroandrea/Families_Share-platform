@@ -186,6 +186,19 @@ const en = {
   myFriendshipsScreen: {
     backNavTitle: "My Friendships"
   },
+  friendshipsNavbar: {
+    friendshipsTab: "Friendships",
+    requestsTab: "Requests",
+    searchTab: "Search User"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "My Friendship Requests"
+  },
+  searchUserScreen: {
+    backNavTitle: "User search",
+    example: "e.g. Mario Rossi",
+    results: "Results"
+  },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
   },
@@ -1516,6 +1529,19 @@ const nl = {
   myFriendshipsScreen: {
     backNavTitle: "Mijn Vriendschappen"
   },
+  friendshipsNavbar: {
+    friendshipsTab: "Vriendschappen",
+    requestsTab: "Verzoeken",
+    searchTab: "Zoek Gebruiker"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "Mijn vriendschapsverzoeken"
+  },
+  searchUserScreen: {
+    backNavTitle: "Gebruikers zoeken",
+    results: "Resultaten",
+    example: "bijv. Mario Rossi"
+  },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
   },
@@ -2803,6 +2829,19 @@ const it = {
   },
   myFriendshipsScreen: {
     backNavTitle: "Le mie amicizie"
+  },
+  friendshipsNavbar: {
+    friendshipsTab: "Amicizie",
+    requestsTab: "Richieste",
+    searchTab: "Cerca Utente"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "Le mie richieste di amicizia"
+  },
+  searchUserScreen: {
+    backNavTitle: "Ricerca Utente",
+    results: "Risultati",
+    example: "per esempio. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -4113,6 +4152,19 @@ const el = {
   myFriendshipsScreen: {
     backNavTitle: "τις φιλίες μου"
   },
+  friendshipsNavbar: {
+    friendshipsTab: "Φιλίες",
+    requestsTab: "Αιτήσεων",
+    searchTab: "Αναζήτηση χρήστη"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "ζητάει ο φίλος μου"
+  },
+  searchUserScreen: {
+    backNavTitle: "Αναζήτηση χρήστη",
+    results: "Αποτελέσματα",
+    example: "π.χ. Mario Rossi"
+  },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
   },
@@ -5416,6 +5468,19 @@ const hu = {
   },
   myFriendshipsScreen: {
     backNavTitle: "a barátságaim"
+  },
+  friendshipsNavbar: {
+    friendshipsTab: "Barátságok",
+    requestsTab: "Kérések",
+    searchTab: "Felhasználó keresése"
+  },
+  myFriendshipsRequestsScreen: {
+    backNavTitle: "A barátom kéri"
+  },
+  searchUserScreen: {
+    backNavTitle: "Felhasználói keresés",
+    results: "Eredmények",
+    example: "Pl. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6743,6 +6808,19 @@ const fr = {
   },
   "myFriendshipsScreen": {
     "backNavTitle": "mes amitiés"
+  },
+  "friendshipsNavbar": {
+    "friendshipsTab": "Amitiés",
+    "requestsTab": "Demandes",
+    "searchTab": "Rechercher un utilisateur"
+  },
+  "myFriendshipsRequestsScreen": {
+    "backNavTitle": "Mon ami demande"
+  },
+  "searchUserScreen": {
+    "backNavTitle": "Recherche d'utilisateurs",
+    "results": "Résultats",
+    "example": "p. ex., Mario Rossi"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
