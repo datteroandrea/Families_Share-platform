@@ -130,7 +130,7 @@ class SearchUserScreen extends React.Component {
           ) : (
             <div>
               <div className="row no-gutters" id="searchUserResultsContainer">
-                <h1>Questo va cambiato</h1>
+                <h1>{texts.results}</h1>
               </div>
               <UserList userIds={matchingUsers} />
             </div>

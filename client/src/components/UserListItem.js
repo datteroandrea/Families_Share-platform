@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { Skeleton } from "antd";
 import axios from "axios";
 import withLanguage from "./LanguageContext";
-import Texts from "../Constants/Texts";
 import Avatar from "./Avatar";
 import Log from "./Log";
 
@@ -43,7 +42,6 @@ class UserListItem extends React.Component {
 
   render() {
     const { language } = this.props;
-    const texts = Texts[language].UserListItem;
     const { user, fetchedUser } = this.state;
     console.log(user.user_id);
     const covid_alert = user.covid_state;

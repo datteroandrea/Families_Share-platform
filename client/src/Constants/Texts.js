@@ -195,7 +195,9 @@ const en = {
     backNavTitle: "My Friendship Requests"
   },
   searchUserScreen: {
-    backNavTitle: "User search"
+    backNavTitle: "User search",
+    example: "e.g. Mario Rossi",
+    results: "Results"
   },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
@@ -1536,7 +1538,9 @@ const nl = {
     backNavTitle: "Mijn vriendschapsverzoeken"
   },
   searchUserScreen: {
-    backNavTitle: "Gebruikers zoeken"
+    backNavTitle: "Gebruikers zoeken",
+    results: "Resultaten",
+    example: "bijv. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
@@ -2835,7 +2839,9 @@ const it = {
     backNavTitle: "Le mie richieste di amicizia"
   },
   searchUserScreen: {
-    backNavTitle: "Ricerca Utente"
+    backNavTitle: "Ricerca Utente",
+    results: "Risultati",
+    example: "per esempio. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -4155,7 +4161,9 @@ const el = {
     backNavTitle: "ζητάει ο φίλος μου"
   },
   searchUserScreen: {
-    backNavTitle: "Αναζήτηση χρήστη"
+    backNavTitle: "Αναζήτηση χρήστη",
+    results: "Αποτελέσματα",
+    example: "π.χ. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
@@ -5470,7 +5478,9 @@ const hu = {
     backNavTitle: "A barátom kéri"
   },
   searchUserScreen: {
-    backNavTitle: "Felhasználói keresés"
+    backNavTitle: "Felhasználói keresés",
+    results: "Eredmények",
+    example: "Pl. Mario Rossi"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6808,7 +6818,9 @@ const fr = {
     "backNavTitle": "Mon ami demande"
   },
   "searchUserScreen": {
-    "backNavTitle": "Recherche d'utilisateurs"
+    "backNavTitle": "Recherche d'utilisateurs",
+    "results": "Résultats",
+    "example": "p. ex., Mario Rossi"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
