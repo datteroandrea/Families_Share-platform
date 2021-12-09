@@ -13,6 +13,7 @@ class SearchUserScreen extends React.Component {
     super(props);
     this.state = {
       fetchedUsers: false,
+      profileId: "",
       searchInput: "",
       searchedForInput: false,
       searchBarIsVisible: false,
@@ -21,11 +22,14 @@ class SearchUserScreen extends React.Component {
     };
   }
   componentDidMount() {
+    const { match } = this.props;
+    const { profileId } = match.params;
+
     axios
       .get("/api/profiles?searchBy=visibility&visible=true")
       .then(res => {
         const users = res.data;
-        this.setState({ fetchedUsers: true, users });
+        this.setState({ fetchedUsers: true, users, profileId:profileId });
         this.handleSearch("");
       })
       .catch(error => {
@@ -72,6 +76,7 @@ class SearchUserScreen extends React.Component {
     const { language, history } = this.props;
     const {
       fetchedUsers,
+      profileId,
       searchBarIsVisible,
       searchInput,
       searchedForInput,
@@ -130,12 +135,12 @@ class SearchUserScreen extends React.Component {
           ) : (
             <div>
               <div className="row no-gutters" id="searchUserResultsContainer">
-                <h1>{texts.results}</h1>
+                <h1></h1>
               </div>
               <UserList userIds={matchingUsers} />
             </div>
           )}
-          <FriendshipsNavbar allowNavigation={true} />
+          <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
         </React.Fragment >
       )
     );
