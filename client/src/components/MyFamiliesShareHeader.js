@@ -119,7 +119,7 @@ class MyFamiliesShareHeader extends React.Component {
   };
 
   handleDrawerClick = ({ key }) => {
-    const { history, dispatch } = this.props;
+    const { history, dispatch,profileId } = this.props;
     const target = document.getElementById("drawerContainer");
     target.style.position = "";
     this.setState({ drawerIsOpen: false });
@@ -135,7 +135,7 @@ class MyFamiliesShareHeader extends React.Component {
         history.push(`/myfamiliesshare/calendar`);
         break;
       case "myfriendships":
-        history.push("/friendships");
+        history.push("/"+profileId+"/friendships");
         break;
       case "faqs":
         history.push("/faqs");
