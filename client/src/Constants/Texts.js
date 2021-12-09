@@ -199,6 +199,10 @@ const en = {
     example: "e.g. Mario Rossi",
     results: "Results"
   },
+  friendshipRequestScreen: {
+    backNavTitle: "Pending Requests",
+    noResults: "Currently there are no new friend requests"
+  },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
   },
@@ -1542,6 +1546,10 @@ const nl = {
     results: "Resultaten",
     example: "bijv. Mario Rossi"
   },
+  friendshipRequestScreen: {
+    backNavTitle: "Openstaande verzoeken",
+    noResults: "Er zijn momenteel geen nieuwe vriendschapsverzoeken"
+  },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
   },
@@ -2842,6 +2850,10 @@ const it = {
     backNavTitle: "Ricerca Utente",
     results: "Risultati",
     example: "per esempio. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Richieste in sospeso",
+    noResults: "Al momento non ci sono nuove richieste di amiciza"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -4165,6 +4177,10 @@ const el = {
     results: "Αποτελέσματα",
     example: "π.χ. Mario Rossi"
   },
+  friendshipRequestScreen: {
+    backNavTitle: "Εκκρεμείς αιτήσεις",
+    noResults: "Αυτήν τη στιγμή δεν υπάρχουν νέα αιτήματα φιλίας"
+  },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
   },
@@ -5481,6 +5497,10 @@ const hu = {
     backNavTitle: "Felhasználói keresés",
     results: "Eredmények",
     example: "Pl. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Függőben lévő Kérés",
+    noResults: "Jelenleg nincsenek új baráti kérések"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6821,6 +6841,10 @@ const fr = {
     "backNavTitle": "Recherche d'utilisateurs",
     "results": "Résultats",
     "example": "p. ex., Mario Rossi"
+  },
+  "friendshipRequestScreen": {
+    "backNavTitle": "Requêtes en cours",
+    "noResults": "Il n'y a actuellement aucune nouvelle demande d'ami"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"

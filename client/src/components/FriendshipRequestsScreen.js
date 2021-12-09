@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 import Log from "./Log";
-import ProfilesAutoComplete from "./ProfilesAutoComplete";
 import UserList from "./UserList";
+import { text } from "body-parser";
 
 class FriendshipRequestsScreen extends React.Component {
   constructor(props) {
@@ -14,8 +14,6 @@ class FriendshipRequestsScreen extends React.Component {
     this.state = {
       fetchedUsers: false,
       profileId: "",
-      searchInput: "",
-      searchedForInput: false,
       searchBarIsVisible: false,
       requests: []
     };
@@ -27,7 +25,6 @@ class FriendshipRequestsScreen extends React.Component {
     axios
       .get(`/api/friends/${profileId}/requests`)
       .then(res => {
-        console.log(res.data);
         res.data.forEach(request => {
           requests.push(request);
         });
@@ -45,11 +42,9 @@ class FriendshipRequestsScreen extends React.Component {
       fetchedUsers,
       profileId,
       searchBarIsVisible,
-      searchInput,
-      searchedForInput,
       requests
     } = this.state;
-    const texts = Texts[language].searchUserScreen;
+    const texts = Texts[language].friendshipRequestScreen;
     return (
       fetchedUsers && (
         <React.Fragment>
@@ -67,6 +62,9 @@ class FriendshipRequestsScreen extends React.Component {
               className="col-7-10 "
               style={{ display: "flex", alignItems: "center" }}
             >
+              <h1 style={searchBarIsVisible ? { display: "none" } : {}}>
+                {texts.backNavTitle}
+              </h1>
             </div>
           </div>
           <div>
@@ -74,6 +72,7 @@ class FriendshipRequestsScreen extends React.Component {
               <h1></h1>
             </div>
             <UserList userIds={requests} />
+            {requests.length == 0 ? <h3>{texts.noResults}</h3>: ""}
           </div>
           <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
         </React.Fragment >
