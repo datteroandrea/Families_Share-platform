@@ -12,6 +12,7 @@ class SearchUserScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      fetchedUsers: false,
       searchInput: "",
       searchedForInput: false,
       searchBarIsVisible: false,
@@ -24,11 +25,12 @@ class SearchUserScreen extends React.Component {
       .get("/api/profiles?searchBy=visibility&visible=true")
       .then(res => {
         const users = res.data;
-        this.setState({ users });
+        this.setState({ fetchedUsers: true, users });
         this.handleSearch("");
       })
       .catch(error => {
         Log.error(error);
+        this.setState({ fetchedUsers: true });
       });
   }
 
@@ -69,6 +71,7 @@ class SearchUserScreen extends React.Component {
   render() {
     const { language, history } = this.props;
     const {
+      fetchedUsers,
       searchBarIsVisible,
       searchInput,
       searchedForInput,
@@ -77,45 +80,46 @@ class SearchUserScreen extends React.Component {
     } = this.state;
     const texts = Texts[language].searchUserScreen;
     return (
-      <React.Fragment>
-        {/* lista amicizie */}
-        <div className="row no-gutters" id="searchGroupBarContainer">
-          <div className="col-2-10">
-            <button
-              type="button"
-              className="transparentButton center"
-              onClick={() => history.replace("/myfamiliesshare")}
+      fetchedUsers && (
+        <React.Fragment>
+          <div className="row no-gutters" id="searchUserBarContainer">
+            <div className="col-2-10">
+              <button
+                type="button"
+                className="transparentButton center"
+                onClick={() => history.replace("/myfamiliesshare")}
+              >
+                <i className="fas fa-arrow-left" />
+              </button>
+            </div>
+            <div
+              className="col-7-10 "
+              style={{ display: "flex", alignItems: "center" }}
             >
-              <i className="fas fa-arrow-left" />
-            </button>
+              <input
+                type="search"
+                id="searchUserInput"
+                value={searchInput}
+                placeholder={texts.example}
+                onChange={this.onInputChange}
+                onKeyPress={this.handleKeyPress}
+                style={searchBarIsVisible ? {} : { display: "none" }}
+              />
+              <h1 style={searchBarIsVisible ? { display: "none" } : {}}>
+                {texts.backNavTitle}
+              </h1>
+            </div>
+            <div className="col-1-10">
+              <button
+                type="button"
+                className="transparentButton center"
+                onClick={this.handleSearchVisibility}
+              >
+                <i className="fas fa-search" />
+              </button>
+            </div>
           </div>
-          <div
-            className="col-7-10 "
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <input
-              type="search"
-              id="searchUserInput"
-              value={searchInput}
-              onChange={this.onInputChange}
-              onKeyPress={this.handleKeyPress}
-              style={searchBarIsVisible ? {} : { display: "none" }}
-            />
-            <h1 style={searchBarIsVisible ? { display: "none" } : {}}>
-              {texts.backNavTitle}
-            </h1>
-          </div>
-          <div className="col-1-10">
-            <button
-              type="button"
-              className="transparentButton center"
-              onClick={this.handleSearchVisibility}
-            >
-              <i className="fas fa-search" />
-            </button>
-          </div>
-        </div>
-        {!searchedForInput ? (
+          {!searchedForInput ? (
             <div id="searchUserSuggestionsContainer">
               <ProfilesAutoComplete
                 searchInput={searchInput}
@@ -131,8 +135,9 @@ class SearchUserScreen extends React.Component {
               <UserList userIds={matchingUsers} />
             </div>
           )}
-        <FriendshipsNavbar allowNavigation={true} />
-      </React.Fragment >
+          <FriendshipsNavbar allowNavigation={true} />
+        </React.Fragment >
+      )
     );
   };
 }
