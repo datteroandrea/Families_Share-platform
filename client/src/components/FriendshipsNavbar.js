@@ -44,15 +44,15 @@ const muiTheme = createMuiTheme({
   }
 });
 
-const FriendshipsNavbar = ({ history, language, allowNavigation }) => {
+const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) => {
   const handleChange = (event, value) => {
     if (allowNavigation) {
       if (value === "friendships") {
-        history.replace("/friendships");
+        history.replace("/"+profileId+"/friendships");
       } else if (value === "requests") {
-        history.replace("/requests");
+        history.replace("/"+profileId+"/requests");
       } else {
-        history.replace("/search");
+        history.replace("/"+profileId+"/search");
       }
     }
   };
