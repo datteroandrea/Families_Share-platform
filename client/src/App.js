@@ -265,15 +265,15 @@ class App extends React.Component {
                 component={MyCalendarScreen}
               />
               <PrivateRoute
-                path="/friendships"
+                path="/:profileId/friendships"
                 component={FriendshipsScreen}
               />
               <PrivateRoute
-                path="/requests"
+                path="/:profileId/requests"
                 component={FriendshipRequestsScreen}
               />
               <PrivateRoute
-                path="/search"
+                path="/:profileId/search"
                 component={SearchUserScreen}
               />
               <PrivateRoute
