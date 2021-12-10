@@ -119,6 +119,25 @@
   height: 3.5rem;
   cursor: pointer;
 }
+.acceptButton {
+  padding: 0 2rem;
+  border-radius: 2px;
+  background-color: #00838f;
+  color: #ffffff;
+  border: 2px solid #006972;
+  height: 3.5rem;
+  cursor: pointer;
+}
+.refuseButton {
+  padding: 0 2rem;
+  width: 100px;
+  border-radius: 2px;
+  background-color: #b13a3a;
+  color: #ffffff;
+  border: 2px solid #8a2828;
+  height: 3.5rem;
+  cursor: pointer;
+}
 .findMoreRow {
   cursor: pointer;
   display: flex;
