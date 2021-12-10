@@ -69,9 +69,9 @@ class FriendshipRequestsScreen extends React.Component {
               <h1></h1>
             </div>
             <RequestList userIds={requests}/>
-            {requests.length == 0 ? <h3>{texts.noResults}</h3>: ""}
+            {requests.length === 0 ? <h3>{texts.noResults}</h3>: ""}
           </div>
-          <FriendshipsNavbar allowNavigation={true}/>
+          <FriendshipsNavbar allowNavigation={true} profileId={profileId}/>
         </React.Fragment >
       )
     );
@@ -80,7 +80,8 @@ class FriendshipRequestsScreen extends React.Component {
 
 FriendshipRequestsScreen.propTypes = {
   language: PropTypes.string,
-  history: PropTypes.object
+  history: PropTypes.object,
+  profileId: PropTypes.string
 };
 
 export default withLanguage(FriendshipRequestsScreen);

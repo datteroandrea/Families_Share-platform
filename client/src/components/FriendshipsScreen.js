@@ -67,7 +67,7 @@ class FriendshipsScreen extends React.Component {
             <div className="row no-gutters" id="searchUserResultsContainer">
             </div>
             <UserList userIds={friends} />
-            {friends.length == 0 ? <h3>{texts.noResult}</h3>: ""}
+            {friends.length === 0 ? <h3>{texts.noResult}</h3>: ""}
           </div>
           <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
         </React.Fragment >

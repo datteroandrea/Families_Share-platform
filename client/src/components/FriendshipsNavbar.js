@@ -116,7 +116,8 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
 FriendshipsNavbar.propTypes = {
   allowNavigation: PropTypes.bool,
   history: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
+  profileId: PropTypes.string
 };
 
 export default withRouter(withLanguage(FriendshipsNavbar));
