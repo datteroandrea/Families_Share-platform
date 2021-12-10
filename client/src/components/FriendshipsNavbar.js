@@ -65,7 +65,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
   const flags = [
     activeTab === "friendships",
     activeTab === "requests",
-    activeTab === "search"
+    activeTab === "searchUser"
   ];
   return (
     // Aggiungere rotte per ogni tab
@@ -98,7 +98,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
           }
         />
         <BottomNavigationAction
-          value="search"
+          value="searchUser"
           label={texts.searchTab}
           icon={
             flags[2] ? (
