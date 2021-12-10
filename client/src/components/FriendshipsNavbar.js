@@ -52,7 +52,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
       } else if (value === "requests") {
         history.replace("/"+profileId+"/requests");
       } else {
-        history.replace("/"+profileId+"/search");
+        history.replace("/"+profileId+"/searchUser");
       }
     }
   };

@@ -5,7 +5,7 @@ const Profile = require('../models/profile')
 
 // da testare
 // Search users
-router.get('/:id/search', (req, res, next) => {
+router.get('/:id/searchUser', (req, res, next) => {
     const { name } = req.query;
     Profile.find({ text: { $search: name } }, { given_name: 1 }).exec().then((profiles) => {
         console.log("Debug found profiles: " + JSON.stringify(profiles));

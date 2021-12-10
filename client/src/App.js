@@ -273,7 +273,7 @@ class App extends React.Component {
                 component={FriendshipRequestsScreen}
               />
               <PrivateRoute
-                path="/:profileId/search"
+                path="/:profileId/searchUser"
                 component={SearchUserScreen}
               />
               <PrivateRoute
