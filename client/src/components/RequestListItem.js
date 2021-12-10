@@ -27,13 +27,14 @@ const getUser = userId => {
 };
 
 class RequestListItem extends React.Component {
-  state = { fetchedUser: false, user: {}, profileId: ''};
+
+  state = { fetchedUser: false, user: {}, profileId: '', showButtons: false};
 
   async componentDidMount() {
     const { userId } = this.props;
     const user = await getUser(userId);
     const profileId = JSON.parse(localStorage.getItem("user")).id
-    this.setState({ fetchedUser: true, user: user, profileId: profileId});
+    this.setState({ fetchedUser: true, user: user, profileId: profileId, showButtons: true});
   }
 
   handleAcceptRequest = (user_id) => {
@@ -41,7 +42,7 @@ class RequestListItem extends React.Component {
     console.log(profileId + " accetta la richiesta di " + user_id);
     axios
       .post("/api/friends/"+user_id+"/acceptrequest?user_id="+profileId)
-
+    this.setState({showButtons: false});
   };
 
   handleRejectRequest = (user_id) => {
@@ -49,6 +50,7 @@ class RequestListItem extends React.Component {
     console.log(profileId+ " rifiuta la richiesta di " + user_id);
     axios
       .post("/api/friends/"+user_id+"/refuserequest?user_id="+profileId)
+    this.setState({showButtons: false});
   };
 
   render() {
@@ -56,6 +58,7 @@ class RequestListItem extends React.Component {
     const texts = Texts[language].requestListItem;
     const { user, fetchedUser } = this.state;
     const covid_alert = user.covid_state;
+    const showButtons = this.state.showButtons;
     return fetchedUser ? (
       <div
         role="button"
@@ -73,21 +76,25 @@ class RequestListItem extends React.Component {
         <div className="col-8-10">
           <div id="">
             <h1>{user.given_name+" "+user.family_name} {covid_alert ? "🔴" : "  "}</h1>
-            <button
+            { showButtons ?
+              <button
                 onClick={() => this.handleAcceptRequest(user.user_id)}
                 type="button"
                 className="acceptButton"
-            >
+              >
                 {texts.accept}
-            </button>  
-                    
-            <button
+              </button>
+            : <div/> }
+                
+            { showButtons ?
+              <button
                 onClick={() => this.handleRejectRequest(user.user_id)}
                 type="button"
                 className="refuseButton"
-            >
+              >
                 {texts.refuse}
-            </button>
+              </button>
+            : <div/> }
           </div>
         </div>
       </div>
