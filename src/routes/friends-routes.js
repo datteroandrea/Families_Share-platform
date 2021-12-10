@@ -36,9 +36,6 @@ router.get('/:id/friendships', (req, res, next) => {
 router.get('/:id/requests', (req, res, next) => {
     if (!req.user_id) { return res.status(401).send('Not authenticated') }
     const id = req.params.id;
-    if (!id) {
-        return res.status(400).send('Bad Request')
-    }
     Profile.findOne({ user_id: id }).exec().then((profile) => {
         if (profile === null) {
             return res.status(404).send('Profiles not found')
@@ -87,7 +84,7 @@ router.post('/:id/removefriend', (req, res, next) => {
         { $pull: { friends_id: id } }
     ).exec()
 
-    res.status(200).send();
+    return res.status(200).send();
 });
 
 // da testare
@@ -96,21 +93,22 @@ router.post('/:id/acceptrequest', (req, res, next) => {
     console.log("Entrato");
     const id = req.user_id;  //id dell'utente loggato
     if (!id) { return res.status(401).send('Not authenticated') }
-    const friend_id = req.params.id;  //id utente a cui voglio inviare richiesta
+    const friend_id = req.params.id;  //id utente a cui voglio accettare richiesta
     console.log('user_id '+ id);
     console.log('friend_id '+ friend_id);
     Profile.findOneAndUpdate(
         { user_id: id, pending_friend_requests_id: friend_id},
         { $pull: { pending_friend_requests_id: friend_id }, $push: { friends_id: friend_id } }
     ).exec().then((profile) => {
-        if (profile === null) {
-            return res.status(404).send('Friend request not found');
+        if (profile !== null) {
+            Profile.updateOne(
+                { user_id: friend_id},
+                { $push: {friends_id: id} }
+            ).exec();
         }
-        Profile.updateOne(
-            { user_id: friend_id},
-            { $push: {friends_id: id} }
-        )
     })
+
+    return res.status(200).send();
 });
 
 // da testare
@@ -119,15 +117,13 @@ router.post('/:id/declinerequest', (req, res, next) => {
     console.log("Entrato-refuse");
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
-    const friend_id = req.friend_id;
+    const friend_id = req.params.id;
     Profile.findOneAndUpdate(
         { user_id: id, pending_friend_requests_id: friend_id },
         { $pull: { pending_friend_requests_id: friend_id } }
-    ).exec().done((profile) => {
-        if (profile === null) {
-            return res.status(404).send('Friend request not found');
-        }
-    })
+    ).exec();
+
+    return res.status(200).send();
 });
 
 module.exports = router;
