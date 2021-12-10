@@ -137,7 +137,7 @@ class ProfileHeader extends React.Component {
     const { match } = this.props;
     const { profileId } = match.params;
     axios
-    .post("/api/friends/"+profileId+"/addfriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
+      .post("/api/friends/"+profileId+"/addfriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
     
   };
 

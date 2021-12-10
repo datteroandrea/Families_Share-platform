@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 import Log from "./Log";
-import UserList from "./UserList";
-import { text } from "body-parser";
+import RequestList from "./RequestList";
 
 class FriendshipRequestsScreen extends React.Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class FriendshipRequestsScreen extends React.Component {
     this.state = {
       fetchedUsers: false,
       profileId: "",
-      searchBarIsVisible: false,
       requests: []
     };
   }
@@ -41,7 +39,6 @@ class FriendshipRequestsScreen extends React.Component {
     const {
       fetchedUsers,
       profileId,
-      searchBarIsVisible,
       requests
     } = this.state;
     const texts = Texts[language].friendshipRequestScreen;
@@ -62,7 +59,7 @@ class FriendshipRequestsScreen extends React.Component {
               className="col-7-10 "
               style={{ display: "flex", alignItems: "center" }}
             >
-              <h1 style={searchBarIsVisible ? { display: "none" } : {}}>
+              <h1>
                 {texts.backNavTitle}
               </h1>
             </div>
@@ -71,10 +68,10 @@ class FriendshipRequestsScreen extends React.Component {
             <div className="row no-gutters" id="searchUserResultsContainer">
               <h1></h1>
             </div>
-            <UserList userIds={requests} />
+            <RequestList userIds={requests}/>
             {requests.length == 0 ? <h3>{texts.noResults}</h3>: ""}
           </div>
-          <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
+          <FriendshipsNavbar allowNavigation={true}/>
         </React.Fragment >
       )
     );
