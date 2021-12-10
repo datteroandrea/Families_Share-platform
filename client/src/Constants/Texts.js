@@ -184,7 +184,8 @@ const en = {
       "You haven't added any children yet. Click the child icon to add a new child"
   },
   myFriendshipsScreen: {
-    backNavTitle: "My Friendships"
+    backNavTitle: "My Friendships",
+    noResult: "You have no friend yet"
   },
   friendshipsNavbar: {
     friendshipsTab: "Friendships",
@@ -201,7 +202,11 @@ const en = {
   },
   friendshipRequestScreen: {
     backNavTitle: "Pending Requests",
-    noResults: "Currently there are no new friend requests"
+    noResults: "Currently there are no new friend requests",
+  },
+  requestListItem: {
+    accept: "Accept",
+    refuse: "Refuse"
   },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
@@ -1531,7 +1536,8 @@ const nl = {
       "Je hebt nog geen kinderen toegevoegd. Klik op het kindpictogram om een ​​nieuw kind toe te voegen"
   },
   myFriendshipsScreen: {
-    backNavTitle: "Mijn Vriendschappen"
+    backNavTitle: "Mijn Vriendschappen",
+    noResult: "Je hebt nog geen vrienden"
   },
   friendshipsNavbar: {
     friendshipsTab: "Vriendschappen",
@@ -1548,7 +1554,11 @@ const nl = {
   },
   friendshipRequestScreen: {
     backNavTitle: "Openstaande verzoeken",
-    noResults: "Er zijn momenteel geen nieuwe vriendschapsverzoeken"
+    noResults: "Er zijn momenteel geen nieuwe vriendschapsverzoeken",
+  },
+  requestListItem: {
+    accept: "Aanvaarden",
+    refuse: "Weigert"
   },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
@@ -2836,7 +2846,9 @@ const it = {
       "Non hai ancora aggiunto figli. Fare clic sull'icona figlio per aggiungere un nuovo figlio"
   },
   myFriendshipsScreen: {
-    backNavTitle: "Le mie amicizie"
+    backNavTitle: "Le mie amicizie",
+    noResult: "Non hai ancora nessuna amicizia"
+
   },
   friendshipsNavbar: {
     friendshipsTab: "Amicizie",
@@ -2853,7 +2865,11 @@ const it = {
   },
   friendshipRequestScreen: {
     backNavTitle: "Richieste in sospeso",
-    noResults: "Al momento non ci sono nuove richieste di amiciza"
+    noResults: "Al momento non ci sono nuove richieste di amiciza",
+  },
+  requestListItem: {
+    accept: "Accetta",
+    refuse: "Rifiuta"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -4162,7 +4178,8 @@ const el = {
       "Δεν έχετε προσθέσει ακόμη παιδιά. Κάντε κλικ στο εικονίδιο για να προσθέσετε ένα νέο παιδί"
   },
   myFriendshipsScreen: {
-    backNavTitle: "τις φιλίες μου"
+    backNavTitle: "τις φιλίες μου",
+    noResult: "Δεν έχεις φίλους ακόμα"
   },
   friendshipsNavbar: {
     friendshipsTab: "Φιλίες",
@@ -4179,7 +4196,11 @@ const el = {
   },
   friendshipRequestScreen: {
     backNavTitle: "Εκκρεμείς αιτήσεις",
-    noResults: "Αυτήν τη στιγμή δεν υπάρχουν νέα αιτήματα φιλίας"
+    noResults: "Αυτήν τη στιγμή δεν υπάρχουν νέα αιτήματα φιλίας",
+  },
+  requestListItem: {
+    accept: "αποδέχομαι",
+    refuse: "αρνείται"
   },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
@@ -5483,7 +5504,8 @@ const hu = {
       "Még nem adott meg gyermeket. Kattintson a gyermek ikonra új gyermek hozzáadásáért"
   },
   myFriendshipsScreen: {
-    backNavTitle: "a barátságaim"
+    backNavTitle: "a barátságaim",
+    noResult: "Még nincsenek barátaid"
   },
   friendshipsNavbar: {
     friendshipsTab: "Barátságok",
@@ -5500,7 +5522,11 @@ const hu = {
   },
   friendshipRequestScreen: {
     backNavTitle: "Függőben lévő Kérés",
-    noResults: "Jelenleg nincsenek új baráti kérések"
+    noResults: "Jelenleg nincsenek új baráti kérések",
+  },
+  requestListItem: {
+    accept: "Elfogad",
+    refuse: "Megtagadja"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6827,7 +6853,8 @@ const fr = {
     "addChildPrompt": "Vous n'avez pas encore ajouté d'enfants. Cliquez sur l'icône enfant pour ajouter un nouvel enfant"
   },
   "myFriendshipsScreen": {
-    "backNavTitle": "mes amitiés"
+    "backNavTitle": "mes amitiés",
+    "noResult": "Vous n'avez pas encore d'amis"
   },
   "friendshipsNavbar": {
     "friendshipsTab": "Amitiés",
@@ -6844,7 +6871,11 @@ const fr = {
   },
   "friendshipRequestScreen": {
     "backNavTitle": "Requêtes en cours",
-    "noResults": "Il n'y a actuellement aucune nouvelle demande d'ami"
+    "noResults": "Il n'y a actuellement aucune nouvelle demande d'ami",
+  },
+  "requestListItem": {
+    "accept": "Accepte",
+    "refuse": "Refuse"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
