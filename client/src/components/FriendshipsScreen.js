@@ -6,7 +6,6 @@ import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 import Log from "./Log";
 import UserList from "./UserList";
-import { text } from "body-parser";
 
 class FriendshipsScreen extends React.Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class FriendshipsScreen extends React.Component {
             <div className="row no-gutters" id="searchUserResultsContainer">
             </div>
             <UserList userIds={friends} />
-            {friends.length === 0 ? <h3>{texts.noResult}</h3>: ""}
+            {friends.length === 0 ? <h2 className="text-center align-center mt-5">{texts.noResult}</h2>: ""}
           </div>
           <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
         </React.Fragment >

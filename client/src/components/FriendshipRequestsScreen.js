@@ -69,7 +69,7 @@ class FriendshipRequestsScreen extends React.Component {
               <h1></h1>
             </div>
             <RequestList userIds={requests}/>
-            {requests.length === 0 ? <h3>{texts.noResults}</h3>: ""}
+            {requests.length === 0 ? <h2 className="text-center align-center mt-5">{texts.noResults}</h2> : ""}
           </div>
           <FriendshipsNavbar allowNavigation={true} profileId={profileId}/>
         </React.Fragment >
