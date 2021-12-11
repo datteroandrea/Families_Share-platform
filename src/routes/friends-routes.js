@@ -23,7 +23,7 @@ router.get('/:id/friendships', (req, res, next) => {
     }
     Profile.findOne({ user_id: id }).exec().then((profile) => {
         if (profile === null) {
-            return res.status(404).send('Profiles not found')
+            return res.status(404).send('Profiles not found');
         }
         Profile.find({ user_id: { $in: profile.friends_id }}).exec().then((friends)=>{
             res.json(friends);
@@ -52,7 +52,7 @@ router.post('/:id/addfriend', (req, res, next) => {
     const friend_id = req.params.id;  //id utente a cui voglio inviare richiesta
     Profile.findOne( { user_id: friend_id }).exec().then((profile) => {
         if (profile === null) {
-            return res.status(404).send('Friend not found')
+            return res.status(404).send('Friend not found');
         }
         return profile;
     }).then((profile) => {
@@ -77,12 +77,12 @@ router.post('/:id/removefriend', (req, res, next) => {
     Profile.updateOne(
         { user_id: id, friends_id: friend_id },
         { $pull: { friends_id: friend_id } }
-    ).exec()
+    ).exec();
 
     Profile.updateOne(
     { user_id: friend_id, friends_id: id },
         { $pull: { friends_id: id } }
-    ).exec()
+    ).exec();
 
     return res.status(200).send();
 });

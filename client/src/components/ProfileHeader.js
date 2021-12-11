@@ -16,8 +16,29 @@ class ProfileHeader extends React.Component {
     optionsModalIsOpen: false,
     confirmDialogIsOpen: false,
     action: "",
-    imageModalIsOpen: false
+    imageModalIsOpen: false,
+    friendstate: "me"
   };
+
+  componentDidMount() {
+    console.log("Mount iniziata")
+    let friendstate;
+    const { match, profile } = this.props;
+    const { profileId } = match.params;
+    if (profile.friends_id.includes(JSON.parse(localStorage.getItem("user")).id)) {
+      friendstate = "friend";
+    } else if (profile.pending_friend_requests_id.includes(JSON.parse(localStorage.getItem("user")).id)) {
+      friendstate = "request_sent";
+    } else if (profileId === JSON.parse(localStorage.getItem("user")).id) {
+      friendstate = "me";
+    } else {
+      friendstate = "";
+    }
+    this.setState({
+      friendstate
+    });
+    console.log("Mount finita")
+  }
 
   handleImageModalOpen = () => {
     const target = document.querySelector(".ReactModalPortal");
@@ -137,18 +158,21 @@ class ProfileHeader extends React.Component {
     const { match } = this.props;
     const { profileId } = match.params;
     axios
-      .post("/api/friends/"+profileId+"/addfriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
-    
+      .post("/api/friends/" + profileId + "/addfriend?user_id=" + JSON.parse(localStorage.getItem("user")).id)
+      .then(() => { this.setState({ friendstate: "request_sent" }) });
+
   };
 
   handleRemoveFriend = () => {
     const { match } = this.props;
     const { profileId } = match.params;
     axios
-    .post("/api/friends/"+profileId+"/removefriend?user_id="+JSON.parse(localStorage.getItem("user")).id)
+      .post("/api/friends/" + profileId + "/removefriend?user_id=" + JSON.parse(localStorage.getItem("user")).id)
+      .then(() => { this.setState({ friendstate: "" }) });
   };
 
   render() {
+    console.log("Render iniziata")
     const { language, match, history, photo, name, profile } = this.props;
     const { profileId } = match.params;
     const texts = Texts[language].profileHeader;
@@ -156,7 +180,8 @@ class ProfileHeader extends React.Component {
       optionsModalIsOpen,
       confirmDialogIsOpen,
       action,
-      imageModalIsOpen
+      imageModalIsOpen,
+      friendstate
     } = this.state;
     let confirmDialogTitle;
     switch (action) {
@@ -207,7 +232,7 @@ class ProfileHeader extends React.Component {
             </button>
           </div>
           <div className="col-6-10" />
-          {profileId === JSON.parse(localStorage.getItem("user")).id ? (
+          {friendstate === "me" ? (
             <React.Fragment>
               <div className="col-1-10">
                 <button
@@ -231,7 +256,7 @@ class ProfileHeader extends React.Component {
           ) : (
             <React.Fragment>
               <div className="col-1-10">
-                {profile.friends_id.includes(JSON.parse(localStorage.getItem("user")).id) ? (
+                {friendstate === "friend" ? (
                   <button
                     type="button"
                     className="transparentButton center"
@@ -239,7 +264,9 @@ class ProfileHeader extends React.Component {
                   >
                     <i className="fas fa-user-slash" />
                   </button>
-                ) : (
+                ) : ""}
+                {friendstate === "" ? (
+
                   <button
                     type="button"
                     className="transparentButton center"
@@ -247,7 +274,7 @@ class ProfileHeader extends React.Component {
                   >
                     <i className="fas fa-user-plus" />
                   </button>
-              )};
+                ) : <div />}
               </div>
             </React.Fragment>
           )}
