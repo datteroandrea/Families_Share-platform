@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import withLanguage from "./LanguageContext";
 import Fab from "@material-ui/core/Fab";
 import BackNavigation from "./BackNavigation";
+import GroupBoardPosts from "./GroupBoardPosts";
 
 
 const styles = {
@@ -39,10 +40,11 @@ class GroupBoard extends React.Component {
 
   render() {
     const { group } = this.props;
-
+    
     return (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
+        <GroupBoardPosts groupId={group.groupId}/>
        <div
         className="row no-gutters"
         style={{

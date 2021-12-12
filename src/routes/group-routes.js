@@ -93,6 +93,8 @@ const Reply = require('../models/reply')
 const Group_Settings = require('../models/group-settings')
 const Member = require('../models/member')
 const Group = require('../models/group')
+const NoticeBoard = require('../models/noticeBoard')
+const Post = require('../models/post');
 const Plan = require('../models/plan')
 const Notification = require('../models/notification')
 const Announcement = require('../models/announcement')
@@ -191,6 +193,7 @@ router.post('/', async (req, res, next) => {
   const group_id = objectid()
   const image_id = objectid()
   const settings_id = objectid()
+  const board_id = objectid()
   const newCal = {
     summary: name,
     description,
@@ -232,6 +235,11 @@ router.post('/', async (req, res, next) => {
       user_accepted: true
     }
   ]
+  const noticeBoard = {
+    board_id,
+    group_id,
+    posts: []
+  }
   invite_ids.forEach(invite_id => {
     members.push({
       group_id,
@@ -247,6 +255,7 @@ router.post('/', async (req, res, next) => {
     await Member.create(members)
     await Group.create(group)
     await Image.create(image)
+    await NoticeBoard.create(noticeBoard)
     await Group_Settings.create(settings)
     res.status(200).send('Group Created')
   } catch (err) {
@@ -1894,8 +1903,6 @@ router.delete(
   }
 )
 
-const NoticeBoard = require('../models/noticeBoard');
-const Post = require('../models/post');
 
 // da testare
 router.get('/:groupId/noticeboard', (req, res, next) => {
@@ -1909,6 +1916,25 @@ router.get('/:groupId/noticeboard', (req, res, next) => {
       noticeBoard.posts = posts;
       return res.json(noticeBoard);
     });
+  });
+});
+
+router.get('/:groupId/noticeboard/posts', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  NoticeBoard.findOne({ group_id: group_id}).then((board)=>{
+    if (board !== null) {
+      return Post.find({ post_id: { $in: board.posts  } }).exec()
+        .then(posts => {
+          if (posts.length === 0) {
+            return res.status(404).send('NoticeBoard has no posts')
+          }
+          res.json(posts)
+      });
+
+    }
   });
 });
 
