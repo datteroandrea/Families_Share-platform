@@ -1,27 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BackNavigation from "./BackNavigation";
+import withLanguage from "./LanguageContext";
 
-const GroupBoard = props => {
-  const { history, userIsAdmin, group } = props;
-  const handleGoBack = () => {
-    if (history.length === 1) {
-      history.replace("/myfamiliesshare");
-    } else {
-      history.goBack();
-    }
-  };
-  return (
-    <React.Fragment>
-      <BackNavigation title={group.name} fixed onClick={() => handleGoBack()} />
-    </React.Fragment>
-  );
-};
 
-export default GroupBoard;
+class GroupBoard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+
+  render() {
+    const { group } = this.props;
+
+    return (
+      <React.Fragment>
+
+      </React.Fragment>
+    );
+  }
+}
+
 
 GroupBoard.propTypes = {
   group: PropTypes.object,
   userIsAdmin: PropTypes.bool,
   history: PropTypes.object
 };
+
+export default withLanguage(GroupBoard);
