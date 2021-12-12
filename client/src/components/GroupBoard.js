@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withLanguage from "./LanguageContext";
 import Fab from "@material-ui/core/Fab";
+import BackNavigation from "./BackNavigation";
 
 
 const styles = {
@@ -27,12 +28,22 @@ class GroupBoard extends React.Component {
     };
   }
 
+  handleGoBack() {
+    const { history } = this.props;
+    if (history.length === 1) {
+      history.replace("/myfamiliesshare");
+    } else {
+      history.goBack();
+    }
+  };
 
   render() {
     const { group } = this.props;
 
     return (
-      <div
+      <React.Fragment>
+        <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
+       <div
         className="row no-gutters"
         style={{
           bottom: "8rem",
@@ -48,6 +59,7 @@ class GroupBoard extends React.Component {
           <i className="fas fa-plus" />
         </Fab>
       </div>
+      </React.Fragment>   
     );
   }
 }
