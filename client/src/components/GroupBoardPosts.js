@@ -16,7 +16,8 @@ class GroupBoardPosts extends React.Component {
     axios
       .get(`/api/groups/${groupId}/noticeboard/posts`)
       .then(response => {
-        const posts = response.data; 
+        const posts = response.data;
+        console.log("Posts: "+JSON.stringify(posts));
         this.setState({
           fetchedPosts: true,
           posts

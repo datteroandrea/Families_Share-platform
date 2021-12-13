@@ -38,30 +38,37 @@ class GroupBoard extends React.Component {
     }
   };
 
+  addPost = () => {
+    const { history } = this.props;
+    const { pathname } = history.location;
+    history.push(`${pathname}/posts/create`);
+  };
+
   render() {
     const { group } = this.props;
-    
+
     return (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
-        <GroupBoardPosts groupId={group.group_id}/>
-       <div
-        className="row no-gutters"
-        style={{
-          bottom: "8rem",
-          right: "7%",
-          zIndex: 100,
-          position: "fixed"
-        }}
-      >
-        <Fab
-          color="primary"
-          style={styles.add}            
+        <GroupBoardPosts groupId={group.group_id} />
+        <div
+          className="row no-gutters"
+          style={{
+            bottom: "8rem",
+            right: "7%",
+            zIndex: 100,
+            position: "fixed"
+          }}
         >
-          <i className="fas fa-plus" />
-        </Fab>
-      </div>
-      </React.Fragment>   
+          <Fab
+            color="primary"
+            style={styles.add}
+            onClick={this.addPost}
+          >
+            <i className="fas fa-plus" />
+          </Fab>
+        </div>
+      </React.Fragment>
     );
   }
 }

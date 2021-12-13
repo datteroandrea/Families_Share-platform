@@ -125,6 +125,14 @@ const CreatePlanScreen = Loadable({
   loader: () => import("./components/CreatePlanScreen"),
   loading: () => Loading
 });
+const CreatePost = Loadable({
+  loader: () => import("./components/CreatePost"),
+  loading: () => Loading
+});
+const EditPost = Loadable({
+  loader: () => import("./components/EditPost"),
+  loading: () => Loading
+});
 const ManagePlanScreen = Loadable({
   loader: () => import("./components/ManagePlanScreen"),
   loading: () => Loading
@@ -351,6 +359,16 @@ class App extends React.Component {
                 exact
                 path="/groups/:groupId/plans/:planId"
                 component={ManagePlanScreen}
+              />
+              <PrivateRoute
+                exact
+                path="/groups/:groupId/board/posts/create"
+                component={CreatePost}
+              />
+              <PrivateRoute
+                exact
+                path="/groups/:groupId/board/posts/:postId/edit"
+                component={EditPost}
               />
               <PrivateRoute
                 exact
