@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import LazyLoad from "react-lazyload";
-import AnnouncementBar from "./AnnouncementBar";
-import AnnouncementHeader from "./AnnouncementHeader";
-import AnnouncementMain from "./AnnouncementMain";
-import AnnouncementReplies from "./AnnouncementReplies";
+import PostHeader from "./PostHeader";
+import PostMain from "./PostMain";
+import PostReplies from "./PostReplies";
 import LoadingSpinner from "./LoadingSpinner";
 import Log from "./Log";
 
@@ -32,7 +31,7 @@ class GroupBoardPosts extends React.Component {
   refresh = () => {
     const { groupId } = this.props;
     axios
-      .get(`/api/groups/${groupId}/posts`)
+      .get(`/api/groups/${groupId}/noticeboard/posts`)
       .then(async response => {
         const posts = response.data;
         await this.setState({
@@ -75,20 +74,20 @@ class GroupBoardPosts extends React.Component {
                     }
                   }}
                 >
-                  <div id="announcementContainer" className="horizontalCenter">
-                    <AnnouncementHeader
-                      userId={posts[index].user_id}
+                  <div id="announcementdContainer" className="horizontalCenter">
+                    <PostHeader
+                      ownerId={posts[index].owner}
                       createdAt={posts[index].createdAt}
                       userIsAdmin={userIsAdmin}
                       handleRefresh={this.refresh}
-                      announcementId={posts[index].announcement_id}
+                      postId={posts[index].post_id}
                       groupId={posts[index].group_id}
+                      title={posts[index].title}
                     />
-                    <AnnouncementMain
-                      message={posts[index].body}
-                      images={posts[index].images}
+                    <PostMain
+                      body={posts[index].text}
                     />
-                    <AnnouncementReplies
+                    <PostReplies
                       announcementId={posts[index].announcement_id}
                       groupId={posts[index].group_id}
                       userIsAdmin={userIsAdmin}
@@ -104,12 +103,11 @@ class GroupBoardPosts extends React.Component {
   };
 
   render() {
-    const { fetchedposts } = this.state;
+    const { fetchedPosts } = this.state;
     const { groupId } = this.props;
     return (
       <div id="postsContainer">
-        {fetchedposts ? this.renderPosts() : <LoadingSpinner />}
-        <AnnouncementBar groupId={groupId} handleRefresh={this.refresh} />
+        {fetchedPosts ? this.renderPosts() : <LoadingSpinner />}
       </div>
     );
   }

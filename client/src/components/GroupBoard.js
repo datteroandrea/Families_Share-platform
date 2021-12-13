@@ -44,7 +44,7 @@ class GroupBoard extends React.Component {
     return (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
-        <GroupBoardPosts groupId={group.groupId}/>
+        <GroupBoardPosts groupId={group.group_id}/>
        <div
         className="row no-gutters"
         style={{
