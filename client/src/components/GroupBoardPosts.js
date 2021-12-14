@@ -85,7 +85,7 @@ class GroupBoardPosts extends React.Component {
                       userIsAdmin={userIsAdmin}
                       handleRefresh={this.refresh}
                       postId={posts[index].post_id}
-                      groupId={posts[index].group_id}
+                      groupId={groupId}
                     />
                     <PostMain
                       body={posts[index].text}

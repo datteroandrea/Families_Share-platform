@@ -1993,14 +1993,14 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
 });
 
 // da testare
-router.delete('/:groupId/noticeboard/posts/:postid/delete', (req,res,next)=>{
+router.delete('/:groupId/noticeboard/posts/:postid/delete', async (req,res,next)=>{
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text } = req.body;
-  Post.deleteOne({ post_id: post_id});
+  await Post.deleteOne({ post_id: post_id}).exec();
   return res.status(200).send('Post was deleted');
 });
 
