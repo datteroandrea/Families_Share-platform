@@ -8,13 +8,11 @@ import GroupBoardPosts from "./GroupBoardPosts";
 
 const styles = {
   add: {
-    position: "absolute",
-    right: 0,
-    bottom: 0,
-    height: "5rem",
-    width: "5rem",
+    color: "#ffffff",
+    height: "4rem",
+    width: "4rem",
     borderRadius: "50%",
-    border: "solid 0.5px #999",
+    border: "none",
     backgroundColor: "#ff6f00",
     zIndex: 100,
     fontSize: "2rem"
