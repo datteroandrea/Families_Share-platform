@@ -67,26 +67,29 @@ class GroupBoardPosts extends React.Component {
             <LazyLoad height={450} once offset={100}>
               {indexes.map(index => (
                 <li
-                  style={{ padding: "2rem 0" }}
+                  style={{ paddingTop: "10px", paddingBottom: "10px" }}
                   key={index}
                   ref={ref => {
                     if (index === 0) {
                       this.postsStart = ref;
                     }
                   }}
-                >
-                  <div id="announcementdContainer" className="horizontalCenter">
+                > 
+                  <div id="announcementContainer" 
+                       className={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? "horizontalCenter border border-1" : "horizontalCenter bg-light border border-1"}
+                       style={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? {backgroundColor: "#afdddd"} : {}}
+                  >
                     <PostHeader
                       ownerId={posts[index].owner}
                       createdAt={posts[index].createdAt}
                       userIsAdmin={userIsAdmin}
                       handleRefresh={this.refresh}
                       postId={posts[index].post_id}
-                      groupId={groupId}
-                      title={posts[index].title}
+                      groupId={posts[index].group_id}
                     />
                     <PostMain
                       body={posts[index].text}
+                      title={posts[index].title}
                     />
                     <PostReplies
                       postId={posts[index].post_id}
