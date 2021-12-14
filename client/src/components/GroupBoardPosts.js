@@ -76,7 +76,7 @@ class GroupBoardPosts extends React.Component {
                   }}
                 > 
                   <div id="announcementContainer" 
-                       className={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? "horizontalCenter border border-1" : "horizontalCenter bg-light border border-1"}
+                       className={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? "horizontalCenter shadow-sm " : "horizontalCenter bg-light shadow-sm"}
                        style={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? {backgroundColor: "#afdddd"} : {}}
                   >
                     <PostHeader
