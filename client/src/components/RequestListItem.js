@@ -39,7 +39,6 @@ class RequestListItem extends React.Component {
 
   handleAcceptRequest = (user_id) => {
     const profileId = this.state.profileId;
-    console.log(profileId + " accetta la richiesta di " + user_id);
     axios
       .post("/api/friends/"+user_id+"/acceptrequest?user_id="+profileId)
     this.setState({showButtons: false});
@@ -47,7 +46,6 @@ class RequestListItem extends React.Component {
 
   handleRejectRequest = (user_id) => {
     const profileId = this.state.profileId;
-    console.log(profileId+ " rifiuta la richiesta di " + user_id);
     axios
       .post("/api/friends/"+user_id+"/refuserequest?user_id="+profileId)
     this.setState({showButtons: false});

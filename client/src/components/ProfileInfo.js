@@ -7,7 +7,6 @@ import Texts from "../Constants/Texts";
 const ProfileInfo = ({ language, profile }) => {
   const texts = Texts[language].profileInfo;
   const profileId = profile.user_id;
-  console.log(profile.covid_state)
   return (
     <div>
       <div className="row no-gutters profileInfoContainer">

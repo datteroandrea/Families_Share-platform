@@ -21,7 +21,6 @@ class ProfileHeader extends React.Component {
   };
 
   componentDidMount() {
-    console.log("Mount iniziata")
     let friendstate;
     const { match, profile } = this.props;
     const { profileId } = match.params;
@@ -37,7 +36,6 @@ class ProfileHeader extends React.Component {
     this.setState({
       friendstate
     });
-    console.log("Mount finita")
   }
 
   handleImageModalOpen = () => {
@@ -172,7 +170,7 @@ class ProfileHeader extends React.Component {
   };
 
   render() {
-    console.log("Render iniziata")
+
     const { language, match, history, photo, name, profile } = this.props;
     const { profileId } = match.params;
     const texts = Texts[language].profileHeader;

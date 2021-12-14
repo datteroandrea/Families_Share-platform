@@ -73,8 +73,6 @@ class GroupListItem extends React.Component {
     const { language } = this.props;
     const texts = Texts[language].groupListItem;
     const { group, fetchedGroupData } = this.state;
-    //console.log(getGroupMembers(group.group_id));
-    console.log(group.members);
     const covid_alert = false;  // va fatta la query
     return fetchedGroupData ? (
       <div
