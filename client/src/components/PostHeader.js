@@ -94,7 +94,7 @@ class PostHeader extends React.Component {
           <TimeAgo date={createdAt} />
         </div>
         {fetchedOwner ? (
-          <div className="row no-gutters">
+          <div className="row no-gutters pb-2">
             <div className="col-2-10">
               <Avatar
                 thumbnail={path(owner, ["image", "path"])}
@@ -106,7 +106,6 @@ class PostHeader extends React.Component {
             <div className="col-6-10">
               <h1 className="verticalCenter">
                 {`${owner.given_name} ${owner.family_name}`}
-                {`${title}`}
               </h1>
             </div>
             <div className="col-2-10">

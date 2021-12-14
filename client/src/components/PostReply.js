@@ -117,7 +117,7 @@ class PostReply extends React.Component {
           )}
         </div>
         <div id="announcementReplyMainContainer" className="horizontalCenter">
-          <h1>{reply.body}</h1>
+          <p>{reply.body}</p>
         </div>
       </React.Fragment>
     );

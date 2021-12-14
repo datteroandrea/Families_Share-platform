@@ -98,7 +98,7 @@ class PostReplies extends React.Component {
   render() {
     const { language } = this.props;
     const { showReplies, fetchedReplies, newReply } = this.state;
-    const texts = Texts[language].announcementReplies;
+    const texts = Texts[language].postReplies;
     const showRepliesIcon = showReplies
       ? "fas fa-chevron-up"
       : "fas fa-chevron-down";
@@ -126,6 +126,7 @@ class PostReplies extends React.Component {
                 value={newReply}
                 onChange={this.handleChange}
                 className="verticalCenter"
+                style={{background: "transparent"}}
                 onKeyUp={this.handleEnter}
               />
             </div>
