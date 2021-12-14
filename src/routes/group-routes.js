@@ -1956,13 +1956,15 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
 
 // da testare
 router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
+
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
-  console.log("TEST entrato ");
+  
   const group_id = req.params.groupId;
   const { title, text } = req.body;
   const user_id = req.user_id;
+
   console.log("TEST group_id " + group_id);
   console.log("TEST title " + title);
   console.log("TEST content " + text);
@@ -1977,7 +1979,15 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
     date: new Date()
   }
 
-  Post.create(post);
+  post = Post.create(post);
+
+  post_id = // TODO id del post appena creato
+
+  NoticeBoard.findOneAndUpdate(
+    { group_id: group_id },
+    { $push: { posts: post_id } }
+  ).exec();
+
   return res.json(post);
 });
 
