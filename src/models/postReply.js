@@ -7,7 +7,7 @@ const postReplySchema = new mongoose.Schema({
     unique: true,
     default: objectid
   },
-  noticeBoard_id: {
+  post_id: {
     type: String,
     required: true
   },
@@ -21,9 +21,9 @@ const postReplySchema = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-replySchema.index({ noticeBoard_id: 1 })
+postReplySchema.index({ noticeBoard_id: 1 })
 
 mongoose.pluralize(null)
-const model = mongoose.model('PostReply', replySchema)
+const model = mongoose.model('PostReply', postReplySchema)
 
 module.exports = model

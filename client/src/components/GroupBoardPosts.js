@@ -47,7 +47,7 @@ class GroupBoardPosts extends React.Component {
 
   renderPosts = () => {
     const { posts } = this.state;
-    const { userIsAdmin } = this.props;
+    const { userIsAdmin, groupId } = this.props;
     const { length } = posts;
     const blocks = [...Array(Math.ceil(length / 2)).keys()];
     return (
@@ -82,15 +82,15 @@ class GroupBoardPosts extends React.Component {
                       userIsAdmin={userIsAdmin}
                       handleRefresh={this.refresh}
                       postId={posts[index].post_id}
-                      groupId={posts[index].group_id}
+                      groupId={groupId}
                       title={posts[index].title}
                     />
                     <PostMain
                       body={posts[index].text}
                     />
                     <PostReplies
-                      announcementId={posts[index].announcement_id}
-                      groupId={posts[index].group_id}
+                      postId={posts[index].post_id}
+                      groupId={groupId}
                       userIsAdmin={userIsAdmin}
                     />
                   </div>

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import withLanguage from "./LanguageContext";
-import Reply from "./Reply";
+import PostReply from "./PostReply";
 import Texts from "../Constants/Texts";
 import Log from "./Log";
 
@@ -79,7 +79,7 @@ class PostReplies extends React.Component {
       <ul>
         {replies.map((reply, index) => (
           <li key={index}>
-            <Reply
+            <PostReply
               reply={reply}
               handleRefresh={this.refresh}
               groupId={groupId}

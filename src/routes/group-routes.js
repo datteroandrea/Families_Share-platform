@@ -94,7 +94,8 @@ const Group_Settings = require('../models/group-settings')
 const Member = require('../models/member')
 const Group = require('../models/group')
 const NoticeBoard = require('../models/noticeBoard')
-const Post = require('../models/post');
+const Post = require('../models/post')
+const PostReply = require('../models/postReply')
 const Plan = require('../models/plan')
 const Notification = require('../models/notification')
 const Announcement = require('../models/announcement')
@@ -2003,5 +2004,102 @@ router.delete('/:groupId/noticeboard/posts/:postid/delete', (req,res,next)=>{
   return res.status(200).send('Post was deleted');
 });
 
+router.post(
+  '/:groupId/noticeboard/posts/:postId/replies',
+  async (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const post_id = req.params.postId
+    const group_id = req.params.groupId
+    const user_id = req.user_id
+    try {
+      const member = await Member.findOne({
+        group_id,
+        user_id,
+        group_accepted: true,
+        user_accepted: true
+      })
+      if (!member) {
+        return res.status(401).send('Unauthorized')
+      }
+      if (!req.body.message) {
+        return res.status(400).send('Bad Request')
+      }
+      const reply = {
+        post_id,
+        body: req.body.message,
+        user_id
+      }
+      await PostReply.create(reply)
+      //await nh.newReplyNotification(group_id, req.user_id)
+      res.status(200).send('PostReply was posted')
+    } catch (error) {
+      next(error)
+    }
+  })
+
+
+  router.get(
+    '/:groupId/noticeboard/posts/:postId/replies',
+    (req, res, next) => {
+      if (!req.user_id) {
+        return res.status(401).send('Not authenticated')
+      }
+      const post_id = req.params.postId
+      const user_id = req.user_id
+      const group_id = req.params.groupId
+      Member.findOne({
+        group_id,
+        user_id,
+        group_accepted: true,
+        user_accepted: true
+      })
+        .then(member => {
+          if (!member) {
+            return res.status(401).send('Unauthorized')
+          }
+          return PostReply.find({ post_id }).then(replies => {
+            if (replies.length === 0) {
+              return res.status(404).send('Announcement has no replies')
+            }
+            res.json(replies)
+          })
+        })
+        .catch(next)
+    }
+  )
+
+
+  router.delete(
+    '/:groupId/noticeboard/posts/:postId/replies/:replyId',
+    async (req, res, next) => {
+      if (!req.user_id) {
+        return res.status(401).send('Not authenticated')
+      }
+      const postReply_id = req.params.replyId
+      const group_id = req.params.groupId
+      const user_id = req.user_id
+      try {
+        const member = await Member.findOne({
+          group_id,
+          user_id,
+          group_accepted: true,
+          user_accepted: true
+        })
+        if (!member) {
+          return res.status(401).send('Unauthorized')
+        }
+        const reply = await PostReply.findOne({ postReply_id })
+        if (!(member.admin || user_id === reply.user_id)) {
+          return res.status(401).send('Unauthorized')
+        }
+        await PostReply.deleteOne({ postReply_id })
+        res.status(200).send('reply was deleted')
+      } catch (error) {
+        next(error)
+      }
+    }
+  )
 
 module.exports = router

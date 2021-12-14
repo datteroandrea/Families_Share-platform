@@ -41,7 +41,7 @@ class PostReply extends React.Component {
 
   handleDelete = () => {
     const { reply, deleteId } = this.state;
-    const postId = reply.announcement_id;
+    const postId = reply.post_id;
     const { groupId, handleRefresh } = this.props;
     const replyId = deleteId;
     axios
@@ -105,7 +105,7 @@ class PostReply extends React.Component {
                   <button
                     type="button"
                     className="transparentButton center"
-                    onClick={() => this.handleConfirmDialogOpen(reply.reply_id)}
+                    onClick={() => this.handleConfirmDialogOpen(reply.postReply_id)}
                   >
                     <i className="fas fa-times" />
                   </button>
