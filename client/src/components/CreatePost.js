@@ -57,11 +57,9 @@ class CreatePost extends React.Component {
 
     handleGoBack() {
         const { history } = this.props;
-        if (history.length === 1) {
-            history.replace("/myfamiliesshare");
-        } else {
-            history.goBack();
-        }
+        const { group_id } = this.state.group
+        history.replace("/groups/"+group_id+"/board");
+
     };
 
 

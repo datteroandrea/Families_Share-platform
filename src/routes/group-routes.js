@@ -1955,7 +1955,7 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
 });
 
 // da testare
-router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
+router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
 
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
@@ -1975,7 +1975,7 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
     date: new Date()
   }
 
-  Post.create(post);
+  await Post.create(post);
 
   NoticeBoard.findOneAndUpdate(
     { group_id: group_id },
@@ -1986,7 +1986,7 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
 });
 
 // da testare
-router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
+router.post('/:groupId/noticeboard/posts/:postid/edit', async (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
@@ -1996,7 +1996,7 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   Post.findOne({ post_id: post_id}).then((post)=>{
     post.title = title;
     post.text = text;
-    Profile.updateOne(post);
+    await Profile.updateOne(post);
     return res.json(post);
   });
 });
