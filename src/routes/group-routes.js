@@ -1986,7 +1986,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
 });
 
 // da testare
-router.post('/:groupId/noticeboard/posts/:postid/edit', async (req, res, next) => {
+router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
@@ -1996,7 +1996,7 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', async (req, res, next) =
   Post.findOne({ post_id: post_id}).then((post)=>{
     post.title = title;
     post.text = text;
-    await Profile.updateOne(post);
+    Profile.updateOne(post);
     return res.json(post);
   });
 });
