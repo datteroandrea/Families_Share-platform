@@ -1959,9 +1959,14 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
+  console.log("TEST entrato ");
   const group_id = req.params.groupId;
-  const user_id = req.user_id;
   const { title, text } = req.body;
+  const user_id = req.user_id;
+  console.log("TEST group_id " + group_id);
+  console.log("TEST title " + title);
+  console.log("TEST content " + text);
+  console.log("TEST user_id " + user_id);
 
   const post = {
     post_id: objectid(),

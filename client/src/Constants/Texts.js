@@ -1089,6 +1089,11 @@ const en = {
   postReplies: {
     new: "Reply"
   },
+  createPost: {
+    title: "Title",
+    content: "Content",
+    create: "Create"
+  },
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2421,6 +2426,11 @@ const nl = {
   postReplies: {
     new: "Antwoord"
   },
+  createPost: {
+    title: "Titel",
+    content: "Inhoud",
+    create: "Creëert"
+  },
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3735,6 +3745,11 @@ const it = {
   },
   postReplies: {
     new: "Rispondi al post"
+  },
+  createPost: {
+    title: "Titolo",
+    content: "Contenuto",
+    create: "Crea"
   },
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
@@ -5071,6 +5086,11 @@ const el = {
   },
   postReplies: {
     new: "απάντηση"
+  },
+  createPost: {
+    title: "Τίτλος",
+    content: "Περιεχόμενο",
+    create: "Δημιουργώ"
   },
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
@@ -6433,6 +6453,11 @@ const hu = {
   postReplies: {
     new: "Válasz"
   },
+  createPost: {
+    title: "Cím",
+    content: "Tartalom",
+    create: "Teremt"
+  },
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7551,6 +7576,11 @@ const fr = {
   },
   "postReplies": {
     "new": "Réplique"
+  },
+  "createPost": {
+    "title": "Titre",
+    "content": "Contenu",
+    "create": "Créer"
   },
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"

@@ -5,6 +5,7 @@ import BackNavigation from "./BackNavigation";
 import axios from "axios";
 import Log from "./Log";
 import LoadingSpinner from "./LoadingSpinner";
+import Texts from "../Constants/Texts";
 
 const styles = {
     add: {
@@ -44,8 +45,14 @@ class CreatePost extends React.Component {
 
         this.state = {
             group: {},
-            fetchedGroup: false
+            fetchedGroup: false,
+            title: '',
+            content: ''
         };
+
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleContentChange = this.handleContentChange.bind(this);
+        this.handleCreatePost = this.handleCreatePost.bind(this);
     }
 
     handleGoBack() {
@@ -57,8 +64,37 @@ class CreatePost extends React.Component {
         }
     };
 
-    handleCreatePost() {
 
+    handleTitleChange(event) {
+        this.setState({title: event.target.value});
+    }
+
+    handleContentChange(event) {
+        this.setState({content: event.target.value});
+    }
+
+    handleCreatePost(event) {
+        const title = this.state.title;
+        const content = this.state.content;
+        const group_id = this.state.group.group_id;
+        alert('è stato compilato il form  titolo: ' + 
+            title + " content: " + content + " group: " + group_id)
+        axios
+            .post(
+                "/api/groups/"+group_id+"/noticeboard/posts/create", {
+                    title: title,
+                    text: content
+                }
+            ).then(
+                response => {
+                    Log.info(response);
+                    this.handleGoBack() //non funziona: non prendiamo in input la history
+              }
+            ).catch(
+                error => {
+                    Log.error(error);
+              }
+            );;
     }
 
     async componentDidMount() {
@@ -66,37 +102,43 @@ class CreatePost extends React.Component {
         const { groupId } = match.params;
         const group = await getGroup(groupId);
 
-        this.setState({ group: group, fetchedGroup: true })
+        this.setState({ group: group, fetchedGroup: true})
     }
 
     render() {
         const { fetchedGroup } = this.state;
         const { group } = this.state;
+        const { language } = this.props;
+        const texts = Texts[language].createPost;
         return fetchedGroup ? (
             <React.Fragment>
                 <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
                 <div class="row no-gutters" style={styles.post}>
-                    <input
-                        style={styles.title}
-                        type="text"
-                        name="name"
-                        className="createPostTitleInput form-control"
-                        required
-                    />
-                    <textarea
-                        style={styles.textarea}
-                        rows="1"
-                        name="description"
-                        className="createPostDescriptionInput form-control"
-                        required
-                    />
-                    <button
-                        onClick={this.handleCreatePost}
-                        type="button"
-                        className="findOutMore createButton"
-                    >
-                        Create Post
-                    </button>
+                    <form onSubmit={this.handleCreatePost}>                 
+                        <input
+                            style={styles.title}
+                            type="text"
+                            name="title"
+                            className="createPostTitleInput form-control"
+                            placeholder={texts.title}
+                            onChange={this.handleTitleChange}
+                            required
+                        />
+                        <textarea
+                            style={styles.textarea}
+                            type="text"
+                            name="content"
+                            className="createPostDescriptionInput form-control"
+                            placeholder={texts.content}
+                            onChange={this.handleContentChange}
+                            required
+                        />
+                        <input
+                            type="submit"
+                            value={texts.create}
+                            className="findOutMore createButton"
+                        />
+                    </form>
                 </div>
 
             </React.Fragment>
@@ -108,6 +150,7 @@ class CreatePost extends React.Component {
 
 
 CreatePost.propTypes = {
+    language: PropTypes.string,
     group: PropTypes.object,
     userIsAdmin: PropTypes.bool,
     history: PropTypes.object
