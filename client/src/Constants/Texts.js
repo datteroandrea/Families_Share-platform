@@ -1086,6 +1086,9 @@ const en = {
   announcementReplies: {
     new: "Your comment..."
   },
+  postReplies: {
+    new: "Reply"
+  },
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2412,7 +2415,12 @@ const nl = {
     new: "Nieuw bericht",
     maxFilesError: "U kunt maximaal 3 bestanden uploaden."
   },
-  announcementReplies: { new: "Je bericht…" },
+  announcementReplies: {
+    new: "Je bericht…"
+  },
+  postReplies: {
+    new: "Antwoord"
+  },
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3724,6 +3732,9 @@ const it = {
   },
   announcementReplies: {
     new: "Il tuo commento..."
+  },
+  postReplies: {
+    new: "Rispondi al post"
   },
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
@@ -5057,6 +5068,9 @@ const el = {
   reply: {
     confirmDialogTitle:
       "Είστε σίγουροι ότι θέλετε να διαγράψετε την απάντησή σας;"
+  },
+  postReplies: {
+    new: "απάντηση"
   },
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
@@ -6416,6 +6430,9 @@ const hu = {
   announcementReplies: {
     new: "Véleménye"
   },
+  postReplies: {
+    new: "Válasz"
+  },
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7531,6 +7548,9 @@ const fr = {
   },
   "announcementReplies": {
     "new": "Votre réponse..."
+  },
+  "postReplies": {
+    "new": "Réplique"
   },
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"
