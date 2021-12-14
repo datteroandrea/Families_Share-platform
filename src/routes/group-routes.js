@@ -1964,14 +1964,10 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
   const group_id = req.params.groupId;
   const { title, text } = req.body;
   const user_id = req.user_id;
-
-  console.log("TEST group_id " + group_id);
-  console.log("TEST title " + title);
-  console.log("TEST content " + text);
-  console.log("TEST user_id " + user_id);
+  const post_id = objectid();
 
   const post = {
-    post_id: objectid(),
+    post_id: post_id,
     group_id: group_id,
     owner: user_id,
     title: title,
@@ -1979,9 +1975,7 @@ router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
     date: new Date()
   }
 
-  post = Post.create(post);
-
-  post_id = // TODO id del post appena creato
+  Post.create(post);
 
   NoticeBoard.findOneAndUpdate(
     { group_id: group_id },

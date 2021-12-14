@@ -77,8 +77,6 @@ class CreatePost extends React.Component {
         const title = this.state.title;
         const content = this.state.content;
         const group_id = this.state.group.group_id;
-        alert('è stato compilato il form  titolo: ' + 
-            title + " content: " + content + " group: " + group_id)
         axios
             .post(
                 "/api/groups/"+group_id+"/noticeboard/posts/create", {
@@ -88,7 +86,7 @@ class CreatePost extends React.Component {
             ).then(
                 response => {
                     Log.info(response);
-                    this.handleGoBack() //non funziona: non prendiamo in input la history
+                    this.handleGoBack();
               }
             ).catch(
                 error => {
@@ -112,7 +110,7 @@ class CreatePost extends React.Component {
         const texts = Texts[language].createPost;
         return fetchedGroup ? (
             <React.Fragment>
-                <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
+                <BackNavigation title={texts.main} fixed onClick={() => this.handleGoBack()} />
                 <div class="row no-gutters" style={styles.post}>
                     <form onSubmit={this.handleCreatePost}>                 
                         <input

@@ -1090,6 +1090,7 @@ const en = {
     new: "Reply"
   },
   createPost: {
+    main: "Create Post",
     title: "Title",
     content: "Content",
     create: "Create"
@@ -2427,6 +2428,7 @@ const nl = {
     new: "Antwoord"
   },
   createPost: {
+    main: "Bericht maken",
     title: "Titel",
     content: "Inhoud",
     create: "Creëert"
@@ -3747,6 +3749,7 @@ const it = {
     new: "Rispondi al post"
   },
   createPost: {
+    main: "Crea Post",
     title: "Titolo",
     content: "Contenuto",
     create: "Crea"
@@ -5088,6 +5091,7 @@ const el = {
     new: "απάντηση"
   },
   createPost: {
+    main: "Δημιουργία ανάρτησης",
     title: "Τίτλος",
     content: "Περιεχόμενο",
     create: "Δημιουργώ"
@@ -6454,6 +6458,7 @@ const hu = {
     new: "Válasz"
   },
   createPost: {
+    main: "Bejegyzés létrehozása",
     title: "Cím",
     content: "Tartalom",
     create: "Teremt"
@@ -7578,6 +7583,7 @@ const fr = {
     "new": "Réplique"
   },
   "createPost": {
+    "main": "Créer un article",
     "title": "Titre",
     "content": "Contenu",
     "create": "Créer"
