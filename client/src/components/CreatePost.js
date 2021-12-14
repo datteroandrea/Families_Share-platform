@@ -30,7 +30,6 @@ const getGroup = groupId => {
     return axios
         .get(`/api/groups/${groupId}`)
         .then(response => {
-            console.log(response.data);
             return response.data;
         })
         .catch(error => {
@@ -59,9 +58,7 @@ class CreatePost extends React.Component {
         const { history } = this.props;
         const { group_id } = this.state.group
         history.replace("/groups/"+group_id+"/board");
-
     };
-
 
     handleTitleChange(event) {
         this.setState({title: event.target.value});
@@ -80,17 +77,26 @@ class CreatePost extends React.Component {
                 "/api/groups/"+group_id+"/noticeboard/posts/create", {
                     title: title,
                     text: content
+                })
+            this.handleGoBack();
+            
+            /*.post(
+                "/api/groups/"+group_id+"/noticeboard/posts/create", {
+                    title: title,
+                    text: content
                 }
             ).then(
                 response => {
+                    alert("Sono nel then");
                     Log.info(response);
                     this.handleGoBack();
               }
             ).catch(
                 error => {
+                    alert("Sono nell'errore");
                     Log.error(error);
               }
-            );;
+            );*/
     }
 
     async componentDidMount() {
