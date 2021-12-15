@@ -957,6 +957,10 @@
   padding-left: 1.7rem !important;
   font-family: "Roboto", sans-serif !important;
 }
+.post {
+  width: 70% !important;
+  margin: auto;
+}
 .createPostTitleInput {
   width: 100% !important;
   background-color: #dcdcdc !important;

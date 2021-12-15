@@ -7,25 +7,6 @@ import Log from "./Log";
 import LoadingSpinner from "./LoadingSpinner";
 import Texts from "../Constants/Texts";
 
-const styles = {
-    add: {
-        position: "absolute",
-        right: 0,
-        bottom: 0,
-        height: "5rem",
-        width: "5rem",
-        borderRadius: "50%",
-        border: "solid 0.5px #999",
-        backgroundColor: "#ff6f00",
-        zIndex: 100,
-        fontSize: "2rem"
-    },
-    post: {
-        width: "70%",
-        margin: "auto",
-    },
-};
-
 const getGroup = groupId => {
     return axios
         .get(`/api/groups/${groupId}`)
@@ -57,15 +38,15 @@ class CreatePost extends React.Component {
     handleGoBack() {
         const { history } = this.props;
         const { group_id } = this.state.group
-        history.replace("/groups/"+group_id+"/board");
+        history.replace("/groups/" + group_id + "/board");
     };
 
     handleTitleChange(event) {
-        this.setState({title: event.target.value});
+        this.setState({ title: event.target.value });
     }
 
     handleContentChange(event) {
-        this.setState({content: event.target.value});
+        this.setState({ content: event.target.value });
     }
 
     handleCreatePost(event) {
@@ -74,29 +55,29 @@ class CreatePost extends React.Component {
         const group_id = this.state.group.group_id;
         axios
             .post(
-                "/api/groups/"+group_id+"/noticeboard/posts/create", {
-                    title: title,
-                    text: content
-                })
-            this.handleGoBack();
-            
-            /*.post(
-                "/api/groups/"+group_id+"/noticeboard/posts/create", {
-                    title: title,
-                    text: content
-                }
-            ).then(
-                response => {
-                    alert("Sono nel then");
-                    Log.info(response);
-                    this.handleGoBack();
-              }
-            ).catch(
-                error => {
-                    alert("Sono nell'errore");
-                    Log.error(error);
-              }
-            );*/
+                "/api/groups/" + group_id + "/noticeboard/posts/create", {
+                title: title,
+                text: content
+            })
+        this.handleGoBack();
+
+        /*.post(
+            "/api/groups/"+group_id+"/noticeboard/posts/create", {
+                title: title,
+                text: content
+            }
+        ).then(
+            response => {
+                alert("Sono nel then");
+                Log.info(response);
+                this.handleGoBack();
+          }
+        ).catch(
+            error => {
+                alert("Sono nell'errore");
+                Log.error(error);
+          }
+        );*/
     }
 
     async componentDidMount() {
@@ -104,7 +85,7 @@ class CreatePost extends React.Component {
         const { groupId } = match.params;
         const group = await getGroup(groupId);
 
-        this.setState({ group: group, fetchedGroup: true})
+        this.setState({ group: group, fetchedGroup: true })
     }
 
     render() {
@@ -115,33 +96,29 @@ class CreatePost extends React.Component {
         return fetchedGroup ? (
             <React.Fragment>
                 <BackNavigation title={texts.main} fixed onClick={() => this.handleGoBack()} />
-                <div class="row no-gutters" style={styles.post}>
-                    <form onSubmit={this.handleCreatePost}>                 
-                        <input
-                            style={styles.title}
-                            type="text"
-                            name="title"
-                            className="createPostTitleInput form-control"
-                            placeholder={texts.title}
-                            onChange={this.handleTitleChange}
-                            required
-                        />
-                        <textarea
-                            style={styles.textarea}
-                            type="text"
-                            name="content"
-                            className="createPostDescriptionInput form-control"
-                            placeholder={texts.content}
-                            onChange={this.handleContentChange}
-                            required
-                        />
-                        <input
-                            type="submit"
-                            value={texts.create}
-                            className="findOutMore createButton"
-                        />
-                    </form>
-                </div>
+                <form className="row no-gutters post" onSubmit={this.handleCreatePost}>
+                    <input
+                        type="text"
+                        name="title"
+                        className="createPostTitleInput form-control"
+                        placeholder={texts.title}
+                        onChange={this.handleTitleChange}
+                        required
+                    />
+                    <textarea
+                        type="text"
+                        name="content"
+                        className="createPostDescriptionInput form-control"
+                        placeholder={texts.content}
+                        onChange={this.handleContentChange}
+                        required
+                    />
+                    <input
+                        type="submit"
+                        value={texts.create}
+                        className="findOutMore createButton"
+                    />
+                </form>
 
             </React.Fragment>
         ) : (
