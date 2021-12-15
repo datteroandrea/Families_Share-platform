@@ -41,7 +41,6 @@ class UserListItem extends React.Component {
   };
 
   render() {
-    const { language } = this.props;
     const { user, fetchedUser } = this.state;
     const covid_alert = user.covid_state;
     return fetchedUser ? (

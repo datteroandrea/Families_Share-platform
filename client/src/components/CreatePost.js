@@ -109,7 +109,6 @@ class CreatePost extends React.Component {
 
     render() {
         const { fetchedGroup } = this.state;
-        const { group } = this.state;
         const { language } = this.props;
         const texts = Texts[language].createPost;
         return fetchedGroup ? (

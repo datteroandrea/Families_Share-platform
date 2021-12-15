@@ -171,8 +171,7 @@ class ProfileHeader extends React.Component {
 
   render() {
 
-    const { language, match, history, photo, name, profile } = this.props;
-    const { profileId } = match.params;
+    const { language, history, photo, name } = this.props;
     const texts = Texts[language].profileHeader;
     const {
       optionsModalIsOpen,

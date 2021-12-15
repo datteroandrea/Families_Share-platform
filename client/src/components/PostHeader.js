@@ -79,7 +79,7 @@ class PostHeader extends React.Component {
   };
 
   render() {
-    const { language, createdAt, postId, userIsAdmin,title } = this.props;
+    const { language, createdAt, postId, userIsAdmin } = this.props;
     const texts = Texts[language].announcementHeader;
     const { owner, confirmDialogIsOpen, fetchedOwner } = this.state;
     const userId = JSON.parse(localStorage.getItem("user")).id;
