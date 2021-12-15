@@ -66,7 +66,7 @@ class FriendshipRequestsScreen extends React.Component {
           </div>
           <div>
             <div className="row no-gutters" id="searchUserResultsContainer">
-              <h1></h1>
+              
             </div>
             <RequestList userIds={requests}/>
             {requests.length === 0 ? <h2 className="text-center align-center mt-5">{texts.noResults}</h2> : ""}

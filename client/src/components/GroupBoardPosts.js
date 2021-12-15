@@ -109,7 +109,6 @@ class GroupBoardPosts extends React.Component {
 
   render() {
     const { fetchedPosts } = this.state;
-    const { groupId } = this.props;
     return (
       <div id="postsContainer">
         {fetchedPosts ? this.renderPosts() : <LoadingSpinner />}
