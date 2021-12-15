@@ -11,12 +11,15 @@ import withLanguage from "./LanguageContext";
 import Log from "./Log";
 
 class PostHeader extends React.Component {
-  state = {
-    confirmDialogIsOpen: false,
-    deleteId: "",
-    fetchedOwner: false,
-    owner: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      confirmDialogIsOpen: false,
+      deleteId: "",
+      fetchedOwner: false,
+      owner: {}
+    };
+  }
 
   componentDidMount() {
     const { ownerId } = this.props;
@@ -67,6 +70,17 @@ class PostHeader extends React.Component {
       });
   };
 
+  handleEdit = (postId) => {
+    const { groupId, history, handleRefresh } = this.props;
+    
+    console.log("Post: " + JSON.stringify(postId));
+    console.log("History: " + JSON.stringify(history));
+    // Da fare: bruttissimo dovremmo sistemarlo con history
+    // ma per qualche ragione mi viene fuori che history = null
+    // quindi per il momento lo faccio così
+    document.location.href += `/posts/${postId}/edit`
+  };
+
   handleConfirmDialogClose = choice => {
     if (choice === "agree") {
       this.handleDelete();
@@ -79,7 +93,7 @@ class PostHeader extends React.Component {
   };
 
   render() {
-    const { language, createdAt, postId, userIsAdmin,title } = this.props;
+    const { language, createdAt, postId, userIsAdmin, title } = this.props;
     const texts = Texts[language].announcementHeader;
     const { owner, confirmDialogIsOpen, fetchedOwner } = this.state;
     const userId = JSON.parse(localStorage.getItem("user")).id;
@@ -116,6 +130,15 @@ class PostHeader extends React.Component {
                   onClick={() => this.handleConfirmDialogOpen(postId)}
                 >
                   <i className="fas fa-times" />
+                </button>
+              )}
+              {(userId === owner.user_id || userIsAdmin) && (
+                <button
+                  type="button"
+                  className="transparentButton center"
+                  onClick={() => this.handleEdit(postId)}
+                >
+                  <i className="fas fa-edit" />
                 </button>
               )}
             </div>
