@@ -205,6 +205,7 @@ class MemberContact extends React.Component {
             >
               <h1>{`${profile.given_name} ${profile.family_name}`}</h1>
               <h2>{profile.admin ? texts.administrator : ""}</h2>
+              <h1>Stato Pandemico: {profile.covid_state ? "🔴" : "🟢"}</h1>
             </div>
           </div>
           <div id="contactIconsContainer" className="col-1-10">
