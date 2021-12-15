@@ -40,14 +40,14 @@ class RequestListItem extends React.Component {
   handleAcceptRequest = (user_id) => {
     const profileId = this.state.profileId;
     axios
-      .post("/api/friends/"+user_id+"/acceptrequest?user_id="+profileId)
+      .post("/api/friends/"+user_id+"/acceptrequest")
     this.setState({showButtons: false});
   };
 
   handleRejectRequest = (user_id) => {
     const profileId = this.state.profileId;
     axios
-      .post("/api/friends/"+user_id+"/refuserequest?user_id="+profileId)
+      .post("/api/friends/"+user_id+"/declinerequest")
     this.setState({showButtons: false});
   };
 
