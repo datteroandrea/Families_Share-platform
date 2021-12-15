@@ -415,20 +415,18 @@ class EditProfileScreen extends React.Component {
           </div>
           <div className="row no-gutters" style={bottomBorder}>
             <div className="col-2-10">
-              <i className="fas fa-info-circle center" />
+              <i className="fas fa-exclamation-triangle center" />
             </div>
             <div className="col-8-10">
-              <textarea
-                rows="3"
-                name="description"
-                className="editProfileInputField form-control "
-                placeholder={texts.description}
-                onChange={event => {
-                  this.handleChange(event);
-                  autosize(document.querySelectorAll("textarea"));
-                }}
-                value={description}
-              />
+              <select
+                value={covid_state ? "alarm" : "normal"}
+                onChange={this.handleCovidState}
+                className="editProfileInputField"
+                name="covid_state"
+              >
+                <option value="alarm">{texts.alarm}</option>
+                <option value="normal">{texts.normal}</option>
+              </select>
             </div>
           </div>
           <div className="row no-gutters" style={bottomBorder}>
@@ -447,20 +445,22 @@ class EditProfileScreen extends React.Component {
               </select>
             </div>
           </div>
-          <div className="row no-gutters">
+          <div className="row no-gutters" style={bottomBorder}>
             <div className="col-2-10">
-              <i className="fas fa-exclamation-triangle center" />
+              <i className="fas fa-info-circle center" />
             </div>
             <div className="col-8-10">
-              <select
-                value={covid_state ? "alarm" : "normal"}
-                onChange={this.handleCovidState}
-                className="editProfileInputField"
-                name="covid_state"
-              >
-                <option value="alarm">{texts.alarm}</option>
-                <option value="normal">{texts.normal}</option>
-              </select>
+              <textarea
+                rows="3"
+                name="description"
+                className="editProfileInputField form-control "
+                placeholder={texts.description}
+                onChange={event => {
+                  this.handleChange(event);
+                  autosize(document.querySelectorAll("textarea"));
+                }}
+                value={description}
+              />
             </div>
           </div>
         </div>
