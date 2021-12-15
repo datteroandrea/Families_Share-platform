@@ -1913,7 +1913,7 @@ router.get('/:groupId/noticeboard', (req, res, next) => {
   const group_id = req.params.groupId;
   const user_id = req.user_id;
   NoticeBoard.findOne({ group_id: group_id }).then((noticeBoard) => {
-    Post.find({ post_id: { $in: noticeBoard.posts }}).then((posts) => {
+    Post.find({ post_id: { $in: noticeBoard.posts } }).then((posts) => {
       noticeBoard.posts = posts;
       return res.json(noticeBoard);
     });
@@ -1925,16 +1925,17 @@ router.get('/:groupId/noticeboard/posts', (req, res, next) => {
     return res.status(401).send('Not authenticated');
   }
   const group_id = req.params.groupId;
-  NoticeBoard.findOne({ group_id: group_id}).then((board)=>{
+  NoticeBoard.findOne({ group_id: group_id }).then((board) => {
     if (board !== null) {
-      return Post.find({ post_id: { $in: board.posts  } }).exec()
+      return Post.find({ post_id: { $in: board.posts } }).exec()
         .then(posts => {
           if (posts.length === 0) {
             return res.status(404).send('NoticeBoard has no posts')
           }
           res.json(posts)
-      });
-
+        });
+    } else {
+      return res.status(404).send('NoticeBoard does not exist')
     }
   });
 });
@@ -1946,8 +1947,8 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
   }
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  Post.findOne({ post_id: post_id}).then((post)=>{
-    Profile.findOne({ user_id: post.owner }, (owner)=>{
+  Post.findOne({ post_id: post_id }).then((post) => {
+    Profile.findOne({ user_id: post.owner }, (owner) => {
       post.owner = owner;
       return res.json(post);
     });
@@ -1960,7 +1961,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
-  
+
   const group_id = req.params.groupId;
   const { title, text } = req.body;
   const user_id = req.user_id;
@@ -1993,7 +1994,7 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text } = req.body;
-  Post.findOne({ post_id: post_id}).then((post)=>{
+  Post.findOne({ post_id: post_id }).then((post) => {
     post.title = title;
     post.text = text;
     Profile.updateOne(post);
@@ -2002,14 +2003,14 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
 });
 
 // da testare
-router.delete('/:groupId/noticeboard/posts/:postid/delete', async (req,res,next)=>{
+router.delete('/:groupId/noticeboard/posts/:postid/delete', async (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text } = req.body;
-  await Post.deleteOne({ post_id: post_id}).exec();
+  await Post.deleteOne({ post_id: post_id }).exec();
   return res.status(200).send('Post was deleted');
 });
 
@@ -2049,66 +2050,66 @@ router.post(
   })
 
 
-  router.get(
-    '/:groupId/noticeboard/posts/:postId/replies',
-    (req, res, next) => {
-      if (!req.user_id) {
-        return res.status(401).send('Not authenticated')
-      }
-      const post_id = req.params.postId
-      const user_id = req.user_id
-      const group_id = req.params.groupId
-      Member.findOne({
+router.get(
+  '/:groupId/noticeboard/posts/:postId/replies',
+  (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const post_id = req.params.postId
+    const user_id = req.user_id
+    const group_id = req.params.groupId
+    Member.findOne({
+      group_id,
+      user_id,
+      group_accepted: true,
+      user_accepted: true
+    })
+      .then(member => {
+        if (!member) {
+          return res.status(401).send('Unauthorized')
+        }
+        return PostReply.find({ post_id }).then(replies => {
+          if (replies.length === 0) {
+            return res.status(404).send('Announcement has no replies')
+          }
+          res.json(replies)
+        })
+      })
+      .catch(next)
+  }
+)
+
+
+router.delete(
+  '/:groupId/noticeboard/posts/:postId/replies/:replyId',
+  async (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const postReply_id = req.params.replyId
+    const group_id = req.params.groupId
+    const user_id = req.user_id
+    try {
+      const member = await Member.findOne({
         group_id,
         user_id,
         group_accepted: true,
         user_accepted: true
       })
-        .then(member => {
-          if (!member) {
-            return res.status(401).send('Unauthorized')
-          }
-          return PostReply.find({ post_id }).then(replies => {
-            if (replies.length === 0) {
-              return res.status(404).send('Announcement has no replies')
-            }
-            res.json(replies)
-          })
-        })
-        .catch(next)
-    }
-  )
-
-
-  router.delete(
-    '/:groupId/noticeboard/posts/:postId/replies/:replyId',
-    async (req, res, next) => {
-      if (!req.user_id) {
-        return res.status(401).send('Not authenticated')
+      if (!member) {
+        return res.status(401).send('Unauthorized')
       }
-      const postReply_id = req.params.replyId
-      const group_id = req.params.groupId
-      const user_id = req.user_id
-      try {
-        const member = await Member.findOne({
-          group_id,
-          user_id,
-          group_accepted: true,
-          user_accepted: true
-        })
-        if (!member) {
-          return res.status(401).send('Unauthorized')
-        }
-        const reply = await PostReply.findOne({ postReply_id })
-        if (!(member.admin || user_id === reply.user_id)) {
-          return res.status(401).send('Unauthorized')
-        }
-        await PostReply.deleteOne({ postReply_id })
-        res.status(200).send('reply was deleted')
-      } catch (error) {
-        next(error)
+      const reply = await PostReply.findOne({ postReply_id })
+      if (!(member.admin || user_id === reply.user_id)) {
+        return res.status(401).send('Unauthorized')
       }
+      await PostReply.deleteOne({ postReply_id })
+      res.status(200).send('reply was deleted')
+    } catch (error) {
+      next(error)
     }
-  )
+  }
+)
 
 module.exports = router
