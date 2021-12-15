@@ -44,12 +44,12 @@ class GroupBoard extends React.Component {
 
   render() {
     const { group } = this.props;
-
+    const { userIsAdmin } = this.props;
     return (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
         <div style={{ position: "relative", top: "5.6rem", paddingBottom: "5.6rem"}}>
-          <GroupBoardPosts groupId={group.group_id}/>
+          <GroupBoardPosts groupId={group.group_id} userIsAdmin={userIsAdmin}/>
         </div>
         <div
           className="row no-gutters"
