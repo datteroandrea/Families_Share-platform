@@ -1948,10 +1948,8 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   Post.findOne({ post_id: post_id }).then((post) => {
-    Profile.findOne({ user_id: post.owner }, (owner) => {
-      post.owner = owner;
-      return res.json(post);
-    });
+    console.log(post);
+    return res.json(post);
   });
 });
 
@@ -1991,14 +1989,14 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
+  console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  const { title, text } = req.body;
+  const { title, text } = req.body.post;
   Post.findOne({ post_id: post_id }).then((post) => {
-    post.title = title;
-    post.text = text;
-    Profile.updateOne(post);
-    return res.json(post);
+    Post.updateOne({ post_id: post_id }, { title: title, text: text }).then(()=>{
+      return res.status(200).send('Post udpated');
+    });
   });
 });
 
