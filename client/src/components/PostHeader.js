@@ -117,16 +117,16 @@ class PostHeader extends React.Component {
                 disabled={owner.suspended}
               />
             </div>
-            <div className="col-6-10">
+            <div className="col-5-10">
               <h1 className="verticalCenter">
                 {`${owner.given_name} ${owner.family_name}`}
               </h1>
             </div>
-            <div className="col-2-10">
+            <div className="col-3-10 text-center">
               {(userId === owner.user_id || userIsAdmin) && (
                 <button
                   type="button"
-                  className="transparentButton center"
+                  className="transparentButton "
                   onClick={() => this.handleConfirmDialogOpen(postId)}
                 >
                   <i className="fas fa-times" />
@@ -135,7 +135,7 @@ class PostHeader extends React.Component {
               {(userId === owner.user_id || userIsAdmin) && (
                 <button
                   type="button"
-                  className="transparentButton center"
+                  className="transparentButton "
                   onClick={() => this.handleEdit(postId)}
                 >
                   <i className="fas fa-edit" />
