@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import withLanguage from "./LanguageContext";
 import BackNavigation from "./BackNavigation";
+import MySelect from "./MySelect";
 import axios from "axios";
 import Log from "./Log";
 import LoadingSpinner from "./LoadingSpinner";
 import Texts from "../Constants/Texts";
+import Select from 'react-select'
 
 const getGroup = groupId => {
     return axios
@@ -92,6 +94,16 @@ class CreatePost extends React.Component {
         const { fetchedGroup } = this.state;
         const { language } = this.props;
         const texts = Texts[language].createPost;
+        const tags = Texts[language].postTag;
+
+        const MyComponent = () => (
+            <Select options={[
+                { value: 'chocolate', label: 'Chocolate' },
+                { value: 'strawberry', label: 'Strawberry' },
+                { value: 'vanilla', label: 'Vanilla' }
+              ]} />
+        )
+
         return fetchedGroup ? (
             <React.Fragment>
                 <BackNavigation title={texts.main} fixed onClick={() => this.handleGoBack()} />
@@ -112,6 +124,13 @@ class CreatePost extends React.Component {
                         onChange={this.handleContentChange}
                         required
                     />
+                    <select>
+                        {tags.map((tag) => (
+                        <option value={tag.value}>{tag.label}</option>
+                        ))}
+                    </select>
+
+
                     <input
                         type="submit"
                         value={texts.create}

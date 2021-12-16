@@ -1094,7 +1094,28 @@ const en = {
     title: "Title",
     content: "Content",
     create: "Create"
-  },
+  },postTag: [
+    {
+      label: "Gioco",
+      value: "game",
+    },
+    {
+      label: "Scuola",
+      value: "school",
+    },
+    {
+      label: "Sport",
+      value: "sport",
+    },
+    {
+      label: "Music",
+      value: "music",
+    },
+    {
+      label: "Altro",
+      value: "someother",
+    },
+  ],
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2432,7 +2453,28 @@ const nl = {
     title: "Titel",
     content: "Inhoud",
     create: "Creëert"
-  },
+  },postTag: [
+    {
+      label: "Gioco",
+      value: "game",
+    },
+    {
+      label: "Scuola",
+      value: "school",
+    },
+    {
+      label: "Sport",
+      value: "sport",
+    },
+    {
+      label: "Music",
+      value: "music",
+    },
+    {
+      label: "Altro",
+      value: "someother",
+    },
+  ],
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3754,6 +3796,28 @@ const it = {
     content: "Contenuto",
     create: "Crea"
   },
+  postTag: [
+    {
+      label: "Gioco",
+      value: "game",
+    },
+    {
+      label: "Scuola",
+      value: "school",
+    },
+    {
+      label: "Sport",
+      value: "sport",
+    },
+    {
+      label: "Music",
+      value: "music",
+    },
+    {
+      label: "Altro",
+      value: "someother",
+    },
+  ],
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
   },
@@ -5095,7 +5159,28 @@ const el = {
     title: "Τίτλος",
     content: "Περιεχόμενο",
     create: "Δημιουργώ"
-  },
+  },postTag: [
+    {
+      label: "Gioco",
+      value: "game",
+    },
+    {
+      label: "Scuola",
+      value: "school",
+    },
+    {
+      label: "Sport",
+      value: "sport",
+    },
+    {
+      label: "Music",
+      value: "music",
+    },
+    {
+      label: "Altro",
+      value: "someother",
+    },
+  ],
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
   },
@@ -6462,7 +6547,28 @@ const hu = {
     title: "Cím",
     content: "Tartalom",
     create: "Teremt"
-  },
+  },postTag: [
+    {
+      label: "Gioco",
+      value: "game",
+    },
+    {
+      label: "Scuola",
+      value: "school",
+    },
+    {
+      label: "Sport",
+      value: "sport",
+    },
+    {
+      label: "Music",
+      value: "music",
+    },
+    {
+      label: "Altro",
+      value: "someother",
+    },
+  ],
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7588,6 +7694,28 @@ const fr = {
     "content": "Contenu",
     "create": "Créer"
   },
+  "postTag": [
+    {
+      "label": "Gioco",
+      "value": "game",
+    },
+    {
+      "label": "Scuola",
+      "value": "school",
+    },
+    {
+      "label": "Sport",
+      "value": "sport",
+    },
+    {
+      "label": "Music",
+      "value": "music",
+    },
+    {
+      "label": "Altro",
+      "value": "someother",
+    },
+  ],
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"
   },
