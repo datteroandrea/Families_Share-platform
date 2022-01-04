@@ -1094,13 +1094,14 @@ const en = {
     title: "Title",
     content: "Content",
     create: "Create"
-  },postTag: [
+  },
+  postTag: [
     {
-      label: "Gioco",
+      label: "Fun",
       value: "game",
     },
     {
-      label: "Scuola",
+      label: "School",
       value: "school",
     },
     {
@@ -1112,7 +1113,7 @@ const en = {
       value: "music",
     },
     {
-      label: "Altro",
+      label: "Someother",
       value: "someother",
     },
   ],
@@ -2455,11 +2456,11 @@ const nl = {
     create: "Creëert"
   },postTag: [
     {
-      label: "Gioco",
+      label: "Spel",
       value: "game",
     },
     {
-      label: "Scuola",
+      label: "School",
       value: "school",
     },
     {
@@ -2467,11 +2468,11 @@ const nl = {
       value: "sport",
     },
     {
-      label: "Music",
+      label: "Muziek",
       value: "music",
     },
     {
-      label: "Altro",
+      label: "Ander",
       value: "someother",
     },
   ],
@@ -3798,7 +3799,7 @@ const it = {
   },
   postTag: [
     {
-      label: "Gioco",
+      label: "Svago",
       value: "game",
     },
     {
@@ -5161,23 +5162,23 @@ const el = {
     create: "Δημιουργώ"
   },postTag: [
     {
-      label: "Gioco",
+      label: "Παιχνίδι",
       value: "game",
     },
     {
-      label: "Scuola",
+      label: "Σχολείο",
       value: "school",
     },
     {
-      label: "Sport",
+      label: "Αθλημα",
       value: "sport",
     },
     {
-      label: "Music",
+      label: "ΜΟΥΣΙΚΗ",
       value: "music",
     },
     {
-      label: "Altro",
+      label: "Αλλα",
       value: "someother",
     },
   ],
@@ -6549,11 +6550,11 @@ const hu = {
     create: "Teremt"
   },postTag: [
     {
-      label: "Gioco",
+      label: "Jàtszma",
       value: "game",
     },
     {
-      label: "Scuola",
+      label: "Iskola",
       value: "school",
     },
     {
@@ -6561,11 +6562,11 @@ const hu = {
       value: "sport",
     },
     {
-      label: "Music",
+      label: "Zene",
       value: "music",
     },
     {
-      label: "Altro",
+      label: "Egyèb",
       value: "someother",
     },
   ],
@@ -7696,11 +7697,11 @@ const fr = {
   },
   "postTag": [
     {
-      "label": "Gioco",
+      "label": "Jeu",
       "value": "game",
     },
     {
-      "label": "Scuola",
+      "label": "L'école",
       "value": "school",
     },
     {
@@ -7708,11 +7709,11 @@ const fr = {
       "value": "sport",
     },
     {
-      "label": "Music",
+      "label": "Musique",
       "value": "music",
     },
     {
-      "label": "Altro",
+      "label": "Autre",
       "value": "someother",
     },
   ],
