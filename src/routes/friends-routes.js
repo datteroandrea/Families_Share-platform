@@ -2,6 +2,7 @@ const express = require('express')
 const router = new express.Router()
 
 const Profile = require('../models/profile')
+const Notification = require('../models/notifcation')
 
 // da testare
 // Search users
