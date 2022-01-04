@@ -1100,9 +1100,9 @@ const en = {
     school: "School",
     music: "Music",
     sport: "Sport",
-    other: "Someother",
     buy: "Buy",
-    sell: "Sell"
+    sell: "Sell",
+    other: "Someother"
   },
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
@@ -2447,9 +2447,9 @@ const nl = {
     school: "School",
     music: "Muziek",
     sport: "Sport",
-    other: "Ander",
     buy: "Kopen",
-    sell: "Ik verkoop"
+    sell: "Ik verkoop",
+    other: "Ander"
   },
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
@@ -3777,9 +3777,9 @@ const it = {
     school: "Scuola",
     music: "Musica",
     sport: "Sport",
-    other: "Altro",
     buy: "Compro",
-    sell: "Vendo"
+    sell: "Vendo",
+    other: "Altro",
   },
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
@@ -5128,9 +5128,9 @@ const el = {
     school: "Σχολείο",
     music: "ΜΟΥΣΙΚΗ",
     sport: "Αθλημα",
-    other: "Αλλα",
     buy: "αγοράζω",
-    sell: "Προς πώληση"
+    sell: "Προς πώληση",
+    other: "Αλλα"
   },
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
@@ -6504,9 +6504,9 @@ const hu = {
     school: "Iskola",
     music: "Zene",
     sport: "Sport",
-    other: "Egyèb",
     buy: "Veszek",
-    sell: "Eladò"
+    sell: "Eladò",
+    other: "Egyèb"
   },
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
@@ -7638,9 +7638,9 @@ const fr = {
     "school": "L'école",
     "music": "Musique",
     "sport": "Sport",
-    "other": "Autre",
     "buy": "j'achète",
     "sell": "À vendre",
+    "other": "Autre"
 
   },
   "reply": {
