@@ -6,7 +6,6 @@ import axios from "axios";
 import Log from "./Log";
 import LoadingSpinner from "./LoadingSpinner";
 import Texts from "../Constants/Texts";
-import Select from 'react-select'
 
 const getGroup = groupId => {
     return axios
@@ -127,6 +126,7 @@ class CreatePost extends React.Component {
                         required
                     />
                     <select
+                        className="createPostTypeSelect form-control"
                         onChange={this.handleTagChange}
                     >
                         {tags.map((tag) => (
