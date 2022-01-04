@@ -7,9 +7,10 @@ import PostMain from "./PostMain";
 import PostReplies from "./PostReplies";
 import LoadingSpinner from "./LoadingSpinner";
 import Log from "./Log";
+import Texts from "../Constants/Texts";
 
 class GroupBoardPosts extends React.Component {
-  state = { fetchedPosts: false };
+  state = { fetchedPosts: false, tag: "all" };
 
   componentDidMount() {
     const { groupId } = this.props;
@@ -26,6 +27,12 @@ class GroupBoardPosts extends React.Component {
         Log.error(error);
         this.setState({ fetchedPosts: true, posts: [] });
       });
+
+      this.handleTagChange = this.handleTagChange.bind(this);
+  }
+
+  handleTagChange(event) {
+    this.setState({ tag: event.target.value});
   }
 
   refresh = () => {
@@ -45,9 +52,10 @@ class GroupBoardPosts extends React.Component {
   };
 
   renderPosts = () => {
-    const { posts } = this.state;
+    const { posts, tag } = this.state;
+    const selectedPosts = (tag === "all") ? posts : posts.filter(post => post.tag === tag);
     const { userIsAdmin, groupId, history } = this.props;
-    const { length } = posts;
+    const { length } = selectedPosts;
     const blocks = [...Array(Math.ceil(length / 2)).keys()];
     
     return (
@@ -76,25 +84,25 @@ class GroupBoardPosts extends React.Component {
                   }}
                 > 
                   <div id="announcementContainer" 
-                       className={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? "horizontalCenter shadow-sm " : "horizontalCenter bg-light shadow-sm"}
-                       style={(posts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? {backgroundColor: "#afdddd"} : {}}
+                       className={(selectedPosts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? "horizontalCenter shadow-sm " : "horizontalCenter bg-light shadow-sm"}
+                       style={(selectedPosts[index].owner === JSON.parse(localStorage.getItem("user")).id) ? {backgroundColor: "#afdddd"} : {}}
                   >
                     <PostHeader
-                      ownerId={posts[index].owner}
-                      createdAt={posts[index].createdAt}
+                      ownerId={selectedPosts[index].owner}
+                      createdAt={selectedPosts[index].createdAt}
                       userIsAdmin={userIsAdmin}
                       handleRefresh={this.refresh}
-                      postId={posts[index].post_id}
+                      postId={selectedPosts[index].post_id}
                       groupId={groupId}
                       history={history}
                     />
                     <PostMain
-                      body={posts[index].text}
-                      title={posts[index].title}
-                      tag={posts[index].tag}
+                      body={selectedPosts[index].text}
+                      title={selectedPosts[index].title}
+                      tag={selectedPosts[index].tag}
                     />
                     <PostReplies
-                      postId={posts[index].post_id}
+                      postId={selectedPosts[index].post_id}
                       groupId={groupId}
                       userIsAdmin={userIsAdmin}
                     />
@@ -110,8 +118,20 @@ class GroupBoardPosts extends React.Component {
 
   render() {
     const { fetchedPosts } = this.state;
+    const { language } = this.props;
+    const tags = Texts[language].postTag;
+    
     return (
       <div id="postsContainer">
+        <select
+            className="createPostTypeSelect form-control"
+            onChange={this.handleTagChange}
+        >
+            {Object.keys(tags).map((key) => (
+              <option value={key}>{tags[key]}</option>
+            ))}
+            <option value= "all" selected="selected">All</option>
+        </select>
         {fetchedPosts ? this.renderPosts() : <LoadingSpinner />}
       </div>
     );
