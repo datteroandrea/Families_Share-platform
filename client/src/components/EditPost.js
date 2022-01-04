@@ -40,11 +40,13 @@ class EditPost extends React.Component {
       fetchedPost: false,
       title: '',
       content: '',
+      tag: '',
       post: {}
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
+    this.handleTagChange = this.handleTagChange.bind(this);
     this.handleUpdatePost = this.handleUpdatePost.bind(this);
   }
 
@@ -64,6 +66,13 @@ class EditPost extends React.Component {
     const { post } = this.state;
     post.text = event.target.value;
     this.setState({ post: post });
+  }
+
+  handleTagChange(event) {
+    alert("Cambiato in " + event.target.value)
+    const { post } = this.state;
+    post.tag = event.target.value;
+    this.setState({ post: post});
   }
 
   handleUpdatePost() {
@@ -109,11 +118,18 @@ class EditPost extends React.Component {
             onChange={this.handleContentChange}
             required
           />
-          <select className="createPostTypeSelect form-control">
-            {tags.map((tag) => (
-            <option value={tag.value}>{tag.label}</option>
-            ))}
+          
+          <select
+            className="createPostTypeSelect form-control"
+            onChange={this.handleTagChange}
+          >
+            {
+              Object.keys(tags).map((key) => (
+                <option value={key}>{tags[key]}</option>
+              ))
+            }
           </select>
+
           <button
             onClick={this.handleUpdatePost}
             type="button"

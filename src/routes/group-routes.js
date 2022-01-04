@@ -1993,9 +1993,9 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  const { title, text } = req.body.post;
+  const { title, text, tag } = req.body.post;
   Post.findOne({ post_id: post_id }).then((post) => {
-    Post.updateOne({ post_id: post_id }, { title: title, text: text }).then(()=>{
+    Post.updateOne({ post_id: post_id }, { title: title, text: text, tag: tag }).then(()=>{
       return res.status(200).send('Post udpated');
     });
   });
