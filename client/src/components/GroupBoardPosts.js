@@ -91,6 +91,7 @@ class GroupBoardPosts extends React.Component {
                     <PostMain
                       body={posts[index].text}
                       title={posts[index].title}
+                      tag={posts[index].tag}
                     />
                     <PostReplies
                       postId={posts[index].post_id}
