@@ -126,6 +126,7 @@ class CreatePost extends React.Component {
                         required
                     />
                     <select
+                        className="createPostTypeSelect form-control"
                         onChange={this.handleTagChange}
                     >
                         {Object.keys(tags).map((key) => (

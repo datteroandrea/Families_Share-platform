@@ -50,11 +50,8 @@ class EditPost extends React.Component {
 
   handleGoBack() {
     const { history } = this.props;
-    if (history.length === 1) {
-      history.replace("/myfamiliesshare");
-    } else {
-      history.goBack();
-    }
+    const { group_id } = this.state.group
+    history.replace("/groups/" + group_id + "/board");
   };
 
   handleTitleChange(event) {
@@ -89,6 +86,9 @@ class EditPost extends React.Component {
 
   render() {
     const { fetchedPost, group, post } = this.state;
+    const { language } = this.props;
+    const tags = Texts[language].postTag;
+
     return fetchedPost ? (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
@@ -109,6 +109,11 @@ class EditPost extends React.Component {
             onChange={this.handleContentChange}
             required
           />
+          <select className="createPostTypeSelect form-control">
+            {tags.map((tag) => (
+            <option value={tag.value}>{tag.label}</option>
+            ))}
+          </select>
           <button
             onClick={this.handleUpdatePost}
             type="button"
@@ -127,6 +132,7 @@ class EditPost extends React.Component {
 
 
 EditPost.propTypes = {
+  language: PropTypes.string,
   group: PropTypes.object,
   userIsAdmin: PropTypes.bool,
   history: PropTypes.object
