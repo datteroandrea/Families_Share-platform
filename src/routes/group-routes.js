@@ -1961,7 +1961,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
   }
 
   const group_id = req.params.groupId;
-  const { title, text } = req.body;
+  const { title, text, tag } = req.body;
   const user_id = req.user_id;
   const post_id = objectid();
 
@@ -1971,6 +1971,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
     owner: user_id,
     title: title,
     text: text,
+    tag: tag,
     date: new Date()
   }
 
