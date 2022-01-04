@@ -50,6 +50,7 @@ router.post('/:id/addfriend', (req, res, next) => {
     const id = req.user_id;  //id dell'utente loggato
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.params.id;  //id utente a cui voglio inviare richiesta
+    const sender = await Profile.findOne({ user_id:id });
     Profile.findOne( { user_id: friend_id }).exec().then((profile) => {
         if (profile === null) {
             return res.status(404).send('Friend not found');
@@ -63,6 +64,16 @@ router.post('/:id/addfriend', (req, res, next) => {
             ).exec();
         }
         res.json(profile);
+        const notification = {
+            owner_type: 'user',
+            owner_id: friend_id,
+            type: 'members',
+            read: false,
+            code: 0,
+            subject: `${profile.given_name} ${profile.family_name}`,
+            object: `${sender.given_name} ${sender.family_name} ti ha inviato una richiesta di amicizia`
+        }
+        await Notification.create(notification)
     })
 });
 
