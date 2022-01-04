@@ -1000,6 +1000,99 @@
   margin-top: 2rem;
   float:right;
 }
+
+/*POST TAG*/
+
+.tag1 {
+  background-color: rgb(182, 55, 55);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag2 {
+  background-color: rgb(55, 78, 206);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag3 {
+  background-color: rgb(8, 170, 81);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag4 {
+  background-color: rgb(201, 174, 23);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag5 {
+  background-color: rgb(99, 27, 158);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag6 {
+  background-color: rgb(168, 47, 142);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag7 {
+  background-color: rgb(41, 94, 11);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+.tag8 {
+  background-color: rgb(127, 103, 155);
+  margin-top: 1rem;
+  width: 25%;
+  height: 85%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0rem 0rem;
+  text-align: center;
+}
+
+
+
 .textareaInput {
   padding-top: 1.5rem !important;
   width: 100% !;
