@@ -552,11 +552,11 @@ function getNotificationDescription(notification, language) {
     case 'friends':
       switch (code) {
         case 0:
-          return `${subject} ${description} ${object}.`
+          return `${object} ${description}.`
         case 1:
-          return `${subject} ${description} ${object}.`
+          return `${object} ${description}.`
         default:
-          return `${subject} ${description} ${object}.`
+          return `${object} ${description}.`
       }
     default:
       return ''
