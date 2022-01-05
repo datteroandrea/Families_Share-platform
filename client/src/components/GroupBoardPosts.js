@@ -8,6 +8,20 @@ import PostReplies from "./PostReplies";
 import LoadingSpinner from "./LoadingSpinner";
 import Log from "./Log";
 import Texts from "../Constants/Texts";
+import Fab from "@material-ui/core/Fab";
+
+const styles = {
+  add: {
+    color: "#ffffff",
+    height: "4rem",
+    width: "4rem",
+    borderRadius: "50%",
+    border: "none",
+    backgroundColor: "#ff6f00",
+    fontSize: "2rem",
+    marginLeft: "1rem"
+  }
+};
 
 class GroupBoardPosts extends React.Component {
   state = { fetchedPosts: false, tag: "all" };
@@ -49,6 +63,12 @@ class GroupBoardPosts extends React.Component {
       .catch(error => {
         Log.error(error);
       });
+  };
+
+  addPost = () => {
+    const { history } = this.props;
+    const { pathname } = history.location;
+    history.push(`${pathname}/posts/create`);
   };
 
   renderPosts = () => {
@@ -122,17 +142,25 @@ class GroupBoardPosts extends React.Component {
     const tags = Texts[language].postTag;
     
     return (
-      <div id="postsContainer">
-        <select
-            className="createPostTypeSelect form-control"
-            onChange={this.handleTagChange}
-        >
+      <div>
+        <div className="toolbarGroupBoard">
+          <select className="postTypeToolbar form-control" onChange={this.handleTagChange}>
             {Object.keys(tags).map((key) => (
               <option value={key}>{tags[key]}</option>
             ))}
             <option value= "all" selected="selected">All</option>
-        </select>
-        {fetchedPosts ? this.renderPosts() : <LoadingSpinner />}
+          </select>
+          <Fab
+            color="primary"
+            style={styles.add}
+            onClick={this.addPost}
+          >
+            <i className="fas fa-plus" />
+          </Fab>
+        </div>
+        <div>
+          {fetchedPosts ? this.renderPosts() : <LoadingSpinner />}
+        </div>
       </div>
     );
   }
@@ -141,5 +169,6 @@ export default GroupBoardPosts;
 
 GroupBoardPosts.propTypes = {
   groupId: PropTypes.string,
-  userIsAdmin: PropTypes.bool
+  userIsAdmin: PropTypes.bool,
+  history: PropTypes.object
 };

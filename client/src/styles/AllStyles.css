@@ -996,6 +996,28 @@
   font-family: "Roboto", sans-serif !important;
 }
 
+.toolbarGroupBoard {
+  padding-bottom: 0.3rem;
+  height: 5.6rem;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postTypeToolbar {
+  width: 30% !important;
+  background-color: #dcdcdc !important;
+  border: none;
+  height: 4rem !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+  border-radius: 3px !important;
+  font-size: 1.5rem !important;
+  padding-left: 1.7rem !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
 .createButton {
   margin-top: 2rem;
   float:right;
