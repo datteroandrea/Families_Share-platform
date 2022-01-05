@@ -24,6 +24,24 @@ const getGroup = groupId => {
     });
 };
 
+const getUser = userId => {
+  return axios
+    .get(`/api/users/${userId}/profile`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      Log.error(error);
+      return {
+        image: { path: "" },
+        user_id: "",
+        give_name: "",
+        family_name: "",
+        covid_state: false
+      };
+    });
+};
+
 const getGroupMembers = groupId => {
   return axios
     .get(`/api/groups/${groupId}/members`)
@@ -35,6 +53,7 @@ const getGroupMembers = groupId => {
       return [];
     });
 };
+
 const getGroupSettings = groupId => {
   return axios
     .get(`/api/groups/${groupId}/settings`)
@@ -48,8 +67,19 @@ const getGroupSettings = groupId => {
       };
     });
 };
+
 class GroupListItem extends React.Component {
   state = { fetchedGroupData: false, group: {} };
+
+  async get_covid_alert(user_ids) {
+    let covid_alert = false;
+    user_ids.forEach(member => {
+      const user = getUser(member.user_id); // ritorna una promise, con await non compila
+      console.log(user);
+      covid_alert |= user.covid_state;
+    });
+    return covid_alert
+  }
 
   async componentDidMount() {
     const { groupId } = this.props;
@@ -60,7 +90,9 @@ class GroupListItem extends React.Component {
     group.members = members.filter(
       member => member.user_accepted && member.group_accepted
     );
-    this.setState({ fetchedGroupData: true, group });
+    const covid_alert = this.get_covid_alert(group.members);
+    
+    this.setState({ fetchedGroupData: true, covid_alert: covid_alert, group });
   }
 
   handleNavigation = () => {
@@ -69,11 +101,13 @@ class GroupListItem extends React.Component {
     history.push(`/groups/${group.group_id}/activities`);
   };
 
+
   render() {
     const { language } = this.props;
     const texts = Texts[language].groupListItem;
     const { group, fetchedGroupData } = this.state;
-    const covid_alert = false;  // va fatta la query
+    const covid_alert = this.state.covid_alert;
+
     return fetchedGroupData ? (
       <div
         role="button"
@@ -91,7 +125,7 @@ class GroupListItem extends React.Component {
         </div>
         <div className="col-8-10">
           <div id="suggestionInfoContainer">
-            <h1>{group.name} {covid_alert ? "🔴" : "  "}</h1>
+            <h1>{group.name} {covid_alert ? "🔴" : " "}</h1>
             <h2>{`${texts.members}: ${group.members.length}`}</h2>
             <h3>{group.settings.open ? texts.open : texts.closed}</h3>
           </div>
