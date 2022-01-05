@@ -83,6 +83,7 @@ class ProfileScreen extends React.Component {
         <ProfileHeader
           name={`${profile.given_name} ${profile.family_name}`}
           photo={path(profile, ["image", "path"])}
+          profile = {profile}
         />
         <React.Fragment>
           <ProfileNavbar />

@@ -163,7 +163,7 @@ export default class GroupMainScreen extends React.Component {
             exact
             path={`${currentPath}/board`}
             render={props => (
-              <GroupBoard /* TODO*/
+              <GroupBoard
                 {...props}
                 group={group}
                 userIsAdmin={userIsAdmin}

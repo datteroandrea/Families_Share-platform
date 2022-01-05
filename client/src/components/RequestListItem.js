@@ -5,6 +5,7 @@ import { Skeleton } from "antd";
 import axios from "axios";
 import withLanguage from "./LanguageContext";
 import Avatar from "./Avatar";
+import Texts from "../Constants/Texts";
 import Log from "./Log";
 
 const getUser = userId => {
@@ -25,31 +26,43 @@ const getUser = userId => {
     });
 };
 
-class UserListItem extends React.Component {
-  state = { fetchedUser: false, user: {} };
+class RequestListItem extends React.Component {
+
+  state = { fetchedUser: false, user: {}, profileId: '', showButtons: false};
 
   async componentDidMount() {
     const { userId } = this.props;
     const user = await getUser(userId);
-    this.setState({ fetchedUser: true, user });
+    const profileId = JSON.parse(localStorage.getItem("user")).id
+    this.setState({ fetchedUser: true, user: user, profileId: profileId, showButtons: true});
   }
 
-  handleNavigation = () => {
-    const { history } = this.props;
-    const { user } = this.state;
-    history.push(`/profiles/${user.user_id}/info`);
+  handleAcceptRequest = (user_id) => {
+    const profileId = this.state.profileId;
+    axios
+      .post("/api/friends/"+user_id+"/acceptrequest")
+    this.setState({showButtons: false});
+  };
+
+  handleRejectRequest = (user_id) => {
+    const profileId = this.state.profileId;
+    axios
+      .post("/api/friends/"+user_id+"/declinerequest")
+    this.setState({showButtons: false});
   };
 
   render() {
+    const { language } = this.props;
+    const texts = Texts[language].requestListItem;
     const { user, fetchedUser } = this.state;
     const covid_alert = user.covid_state;
+    const showButtons = this.state.showButtons;
     return fetchedUser ? (
       <div
         role="button"
         tabIndex={-42}
         className="row no-gutters"
         id="suggestionContainer"
-        onClick={this.handleNavigation}
       >
         <div className="col-2-10">
           <Avatar
@@ -59,8 +72,27 @@ class UserListItem extends React.Component {
           />
         </div>
         <div className="col-8-10">
-          <div id="suggestionInfoContainer">
+          <div id="">
             <h1>{user.given_name+" "+user.family_name} {/*covid_alert ? "🔴" : "  "*/}</h1>
+            { showButtons ?
+              <button
+                onClick={() => this.handleAcceptRequest(user.user_id)}
+                type="button"
+                className="acceptButton"
+              >
+                {texts.accept}
+              </button>
+            : <div/> }
+                
+            { showButtons ?
+              <button
+                onClick={() => this.handleRejectRequest(user.user_id)}
+                type="button"
+                className="refuseButton"
+              >
+                {texts.refuse}
+              </button>
+            : <div/> }
           </div>
         </div>
       </div>
@@ -72,10 +104,10 @@ class UserListItem extends React.Component {
   }
 }
 
-UserListItem.propTypes = {
+RequestListItem.propTypes = {
   groupId: PropTypes.string,
   language: PropTypes.string,
   history: PropTypes.object
 };
 
-export default withRouter(withLanguage(UserListItem));
+export default withRouter(withLanguage(RequestListItem));
