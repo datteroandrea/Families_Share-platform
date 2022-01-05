@@ -598,7 +598,7 @@ async function addNewfriend(friend_id, sender, destination) {
     read: false,
     code: 0,
     subject: `${sender.given_name} ${sender.family_name}`,
-    object: ``
+    object: `${sender.given_name} ${sender.family_name}`
   }
   Notification.create(notification);
 }
@@ -611,7 +611,7 @@ async function removeFriend(friend_id, sender, destination) {
     read: false,
     code: 2,
     subject: `${sender.given_name} ${sender.family_name}`,
-    object: ``
+    object: `${sender.given_name} ${sender.family_name}`
   }
   Notification.create(notification);
 }
@@ -624,7 +624,7 @@ async function rejectFriendRequest(friend_id, sender, destination) {
     read: false,
     code: 1,
     subject: `${sender.given_name} ${sender.family_name}`,
-    object: ` `
+    object: `${sender.given_name} ${sender.family_name}`
   }
   Notification.create(notification);
 }
@@ -637,7 +637,7 @@ async function acceptFriendRequest(friend_id, sender, destination) {
     read: false,
     code: 3,
     subject: `${sender.given_name} ${sender.family_name}`,
-    object: ``
+    object: `${sender.given_name} ${sender.family_name}`
   }
   Notification.create(notification);
 }
