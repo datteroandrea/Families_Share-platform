@@ -1026,93 +1026,88 @@
 /*POST TAG*/
 
 .tag1 {
-  background-color: rgb(182, 55, 55);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(240, 59, 4, 0.603);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag2 {
-  background-color: rgb(55, 78, 206);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(55, 78, 206, 0.637);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag3 {
-  background-color: rgb(8, 170, 81);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(170, 201, 31, 0.623);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag4 {
-  background-color: rgb(201, 174, 23);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(46, 204, 86, 0.692);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag5 {
-  background-color: rgb(99, 27, 158);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(255, 68, 224, 0.541);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag6 {
-  background-color: rgb(168, 47, 142);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(57, 184, 235, 0.699);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .tag7 {
-  background-color: rgb(41, 94, 11);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
+  position: relative;
+  background-color: rgba(125, 9, 179, 0.582);
+  border: none;
+  color: white;
+  padding: 2px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
-
-.tag8 {
-  background-color: rgb(127, 103, 155);
-  margin-top: 1rem;
-  width: 25%;
-  height: 85%;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0rem 0rem;
-  text-align: center;
-}
-
 
 
 .textareaInput {

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Texts from "../Constants/Texts";
-import TagColors from "../Constants/TagColors";
 import withLanguage from "./LanguageContext";
 
 class PostMain extends React.Component {
@@ -16,6 +15,7 @@ class PostMain extends React.Component {
       sell:   "tag6",
       other:  "tag7"
     }
+
     const { language } = this.props;
     const { body, title, tag } = this.props;
     const tagName = Texts[language].postTag[tag];
@@ -24,9 +24,12 @@ class PostMain extends React.Component {
     return (
       <div id="announcementMainContainer" className="horizontalCenter">
         <div className="row no-gutters">
-          <h1 className="dont-break-out">{title}    
-            <input value={tagName} className={tag_col} />
-          </h1>
+          <h1 className="dont-break-out">{title} </h1>
+          <button
+            className={tag_col}
+          >
+            {tagName}
+          </button>
         </div>
         <div className="row no-gutters">
           <p>{body}</p>
