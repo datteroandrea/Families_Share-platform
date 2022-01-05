@@ -7,13 +7,13 @@ class PostMain extends React.Component {
 
   render() {
     const tag_colors = {
-      game:   "tag1",
-      school: "tag2",
-      music:  "tag3",
-      sport:  "tag4",
-      buy:    "tag5",
-      sell:   "tag6",
-      other:  "tag7"
+      game:   "tag t1",
+      school: "tag t2",
+      music:  "tag t3",
+      sport:  "tag t4",
+      buy:    "tag t5",
+      sell:   "tag t6",
+      other:  "tag t7"
     }
 
     const { language } = this.props;
@@ -24,14 +24,10 @@ class PostMain extends React.Component {
     return (
       <div id="announcementMainContainer" className="horizontalCenter">
         <div className="row no-gutters">
-          <h1 className="dont-break-out">{title} </h1>
-          <button
-            className={tag_col}
-          >
-            {tagName}
-          </button>
+          <button className={tag_col}> {tagName} </button>
+          <h1 className="dont-break-out ml-2 pt-1">{title} </h1>
         </div>
-        <div className="row no-gutters">
+        <div className="row no-gutters pt-2">
           <p>{body}</p>
         </div>
       </div>
