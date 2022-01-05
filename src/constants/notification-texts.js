@@ -212,19 +212,19 @@ const it = {
   friends: [
     {
       header: 'Nuova richiesta di amicizia',
-      description: ' ti ha inviato una richiesta di amicizia.'
+      description: 'ti ha inviato una richiesta di amicizia.'
     },
     {
       header: 'Richiesta di amicizia rifiutata',
-      description: ' richiesta di amicizia rifiutata.'
+      description: 'ha rifiutato la tua richiesta di amicizia.'
     },
     {
       header: 'Amicizia rimossa',
-      description: ' l\'amicizia è stata cancellata.'
+      description: 'ha cancellato l\'amicizia.'
     },
     {
       header: 'Amicizia Accettata',
-      description: ' ha accettato la tua richiesta di amicizia.'
+      description: 'ha accettato la tua richiesta di amicizia.'
     }
   ]
 }
