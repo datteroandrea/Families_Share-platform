@@ -125,7 +125,10 @@ class EditPost extends React.Component {
           >
             {
               Object.keys(tags).map((key) => (
-                <option value={key}>{tags[key]}</option>
+                (key == post.tag) ?
+                  <option selected="selected" value={key}>{tags[key]}</option>
+                :
+                  <option value={key}>{tags[key]}</option>
               ))
             }
           </select>
