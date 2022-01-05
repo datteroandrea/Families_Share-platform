@@ -7,6 +7,7 @@ import Texts from "../Constants/Texts";
 const ProfileInfo = ({ language, profile }) => {
   const texts = Texts[language].profileInfo;
   const profileId = profile.user_id;
+  const sessionUserId = JSON.parse(localStorage.getItem("user")).id;
   return (
     <div>
       <div className="row no-gutters profileInfoContainer">
@@ -48,17 +49,21 @@ const ProfileInfo = ({ language, profile }) => {
         </div>
       </div>
       
-      <div className="row no-gutters  profileInfoContainer">
-        <div className="col-2-10">
-          <i className="fas fa-exclamation-triangle center" />
-        </div>
-        <div className="col-8-10">
-          <div className="verticalCenter">
-            <h1>{profile.covid_state ? "🔴" : "🟢"}</h1>
-            <h2>{texts.covid_state}</h2>
+      {profileId == sessionUserId ?
+        (<div className="row no-gutters  profileInfoContainer">
+          <div className="col-2-10">
+            <i className="fas fa-exclamation-triangle center" />
           </div>
-        </div>
-      </div>
+          <div className="col-8-10">
+            <div className="verticalCenter">
+              <h1>{profile.covid_state ? "🔴" : "🟢"}</h1>
+              <h2>{texts.covid_state}</h2>
+            </div>
+          </div>
+        </div>)
+        :
+        (<div></div>)
+      }
 
       <div className="row no-gutters  profileInfoContainer">
         <div className="col-2-10">

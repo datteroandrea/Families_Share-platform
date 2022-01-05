@@ -6,18 +6,6 @@ import BackNavigation from "./BackNavigation";
 import GroupBoardPosts from "./GroupBoardPosts";
 
 
-const styles = {
-  add: {
-    color: "#ffffff",
-    height: "4rem",
-    width: "4rem",
-    borderRadius: "50%",
-    border: "none",
-    backgroundColor: "#ff6f00",
-    zIndex: 100,
-    fontSize: "2rem"
-  }
-};
 
 
 class GroupBoard extends React.Component {
@@ -36,11 +24,6 @@ class GroupBoard extends React.Component {
     }
   };
 
-  addPost = () => {
-    const { history } = this.props;
-    const { pathname } = history.location;
-    history.push(`${pathname}/posts/create`);
-  };
 
   render() {
     const { group } = this.props;
@@ -61,13 +44,6 @@ class GroupBoard extends React.Component {
             position: "fixed"
           }}
         >
-          <Fab
-            color="primary"
-            style={styles.add}
-            onClick={this.addPost}
-          >
-            <i className="fas fa-plus" />
-          </Fab>
         </div>
       </React.Fragment>
     );

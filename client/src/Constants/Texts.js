@@ -1095,28 +1095,15 @@ const en = {
     content: "Content",
     create: "Create"
   },
-  postTag: [
-    {
-      label: "Fun",
-      value: "game",
-    },
-    {
-      label: "School",
-      value: "school",
-    },
-    {
-      label: "Sport",
-      value: "sport",
-    },
-    {
-      label: "Music",
-      value: "music",
-    },
-    {
-      label: "Someother",
-      value: "someother",
-    },
-  ],
+  postTag: {
+    game: "Fun",
+    school: "School",
+    music: "Music",
+    sport: "Sport",
+    buy: "Buy",
+    sell: "Sell",
+    other: "Someother"
+  },
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2454,28 +2441,16 @@ const nl = {
     title: "Titel",
     content: "Inhoud",
     create: "Creëert"
-  },postTag: [
-    {
-      label: "Spel",
-      value: "game",
-    },
-    {
-      label: "School",
-      value: "school",
-    },
-    {
-      label: "Sport",
-      value: "sport",
-    },
-    {
-      label: "Muziek",
-      value: "music",
-    },
-    {
-      label: "Ander",
-      value: "someother",
-    },
-  ],
+  },
+  postTag: {
+    game: "Spel",
+    school: "School",
+    music: "Muziek",
+    sport: "Sport",
+    buy: "Kopen",
+    sell: "Ik verkoop",
+    other: "Ander"
+  },
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3797,28 +3772,15 @@ const it = {
     content: "Contenuto",
     create: "Crea"
   },
-  postTag: [
-    {
-      label: "Svago",
-      value: "game",
-    },
-    {
-      label: "Scuola",
-      value: "school",
-    },
-    {
-      label: "Sport",
-      value: "sport",
-    },
-    {
-      label: "Music",
-      value: "music",
-    },
-    {
-      label: "Altro",
-      value: "someother",
-    },
-  ],
+  postTag: {
+    game: "Svago",
+    school: "Scuola",
+    music: "Musica",
+    sport: "Sport",
+    buy: "Compro",
+    sell: "Vendo",
+    other: "Altro",
+  },
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
   },
@@ -5160,28 +5122,16 @@ const el = {
     title: "Τίτλος",
     content: "Περιεχόμενο",
     create: "Δημιουργώ"
-  },postTag: [
-    {
-      label: "Παιχνίδι",
-      value: "game",
-    },
-    {
-      label: "Σχολείο",
-      value: "school",
-    },
-    {
-      label: "Αθλημα",
-      value: "sport",
-    },
-    {
-      label: "ΜΟΥΣΙΚΗ",
-      value: "music",
-    },
-    {
-      label: "Αλλα",
-      value: "someother",
-    },
-  ],
+  },
+  postTag: {
+    game: "Παιχνίδι",
+    school: "Σχολείο",
+    music: "ΜΟΥΣΙΚΗ",
+    sport: "Αθλημα",
+    buy: "αγοράζω",
+    sell: "Προς πώληση",
+    other: "Αλλα"
+  },
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
   },
@@ -6548,28 +6498,16 @@ const hu = {
     title: "Cím",
     content: "Tartalom",
     create: "Teremt"
-  },postTag: [
-    {
-      label: "Jàtszma",
-      value: "game",
-    },
-    {
-      label: "Iskola",
-      value: "school",
-    },
-    {
-      label: "Sport",
-      value: "sport",
-    },
-    {
-      label: "Zene",
-      value: "music",
-    },
-    {
-      label: "Egyèb",
-      value: "someother",
-    },
-  ],
+  },
+  postTag: {
+    game: "Jàtszma",
+    school: "Iskola",
+    music: "Zene",
+    sport: "Sport",
+    buy: "Veszek",
+    sell: "Eladò",
+    other: "Egyèb"
+  },
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7695,28 +7633,16 @@ const fr = {
     "content": "Contenu",
     "create": "Créer"
   },
-  "postTag": [
-    {
-      "label": "Jeu",
-      "value": "game",
-    },
-    {
-      "label": "L'école",
-      "value": "school",
-    },
-    {
-      "label": "Sport",
-      "value": "sport",
-    },
-    {
-      "label": "Musique",
-      "value": "music",
-    },
-    {
-      "label": "Autre",
-      "value": "someother",
-    },
-  ],
+  "postTag": {
+    "game": "Jeu",
+    "school": "L'école",
+    "music": "Musique",
+    "sport": "Sport",
+    "buy": "j'achète",
+    "sell": "À vendre",
+    "other": "Autre"
+
+  },
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"
   },

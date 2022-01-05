@@ -40,21 +40,20 @@ class EditPost extends React.Component {
       fetchedPost: false,
       title: '',
       content: '',
+      tag: '',
       post: {}
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
+    this.handleTagChange = this.handleTagChange.bind(this);
     this.handleUpdatePost = this.handleUpdatePost.bind(this);
   }
 
   handleGoBack() {
     const { history } = this.props;
-    if (history.length === 1) {
-      history.replace("/myfamiliesshare");
-    } else {
-      history.goBack();
-    }
+    const { group_id } = this.state.group
+    history.replace("/groups/" + group_id + "/board");
   };
 
   handleTitleChange(event) {
@@ -67,6 +66,13 @@ class EditPost extends React.Component {
     const { post } = this.state;
     post.text = event.target.value;
     this.setState({ post: post });
+  }
+
+  handleTagChange(event) {
+    alert("Cambiato in " + event.target.value)
+    const { post } = this.state;
+    post.tag = event.target.value;
+    this.setState({ post: post});
   }
 
   handleUpdatePost() {
@@ -89,6 +95,9 @@ class EditPost extends React.Component {
 
   render() {
     const { fetchedPost, group, post } = this.state;
+    const { language } = this.props;
+    const tags = Texts[language].postTag;
+
     return fetchedPost ? (
       <React.Fragment>
         <BackNavigation title={group.name} fixed onClick={() => this.handleGoBack()} />
@@ -109,6 +118,21 @@ class EditPost extends React.Component {
             onChange={this.handleContentChange}
             required
           />
+          
+          <select
+            className="createPostTypeSelect form-control"
+            onChange={this.handleTagChange}
+          >
+            {
+              Object.keys(tags).map((key) => (
+                (key == post.tag) ?
+                  <option selected="selected" value={key}>{tags[key]}</option>
+                :
+                  <option value={key}>{tags[key]}</option>
+              ))
+            }
+          </select>
+
           <button
             onClick={this.handleUpdatePost}
             type="button"
@@ -127,6 +151,7 @@ class EditPost extends React.Component {
 
 
 EditPost.propTypes = {
+  language: PropTypes.string,
   group: PropTypes.object,
   userIsAdmin: PropTypes.bool,
   history: PropTypes.object

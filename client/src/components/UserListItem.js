@@ -60,7 +60,7 @@ class UserListItem extends React.Component {
         </div>
         <div className="col-8-10">
           <div id="suggestionInfoContainer">
-            <h1>{user.given_name+" "+user.family_name} {covid_alert ? "🔴" : "  "}</h1>
+            <h1>{user.given_name+" "+user.family_name} {/*covid_alert ? "🔴" : "  "*/}</h1>
           </div>
         </div>
       </div>

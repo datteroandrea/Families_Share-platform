@@ -2,12 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import withLanguage from "./LanguageContext";
 import BackNavigation from "./BackNavigation";
-import MySelect from "./MySelect";
 import axios from "axios";
 import Log from "./Log";
 import LoadingSpinner from "./LoadingSpinner";
 import Texts from "../Constants/Texts";
-import Select from 'react-select'
 
 const getGroup = groupId => {
     return axios
@@ -29,11 +27,14 @@ class CreatePost extends React.Component {
             group: {},
             fetchedGroup: false,
             title: '',
-            content: ''
+            content: '',
+            tag: 'game'
         };
 
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleContentChange = this.handleContentChange.bind(this);
+        this.handleContentChange = this.handleContentChange.bind(this);
+        this.handleTagChange = this.handleTagChange.bind(this);
         this.handleCreatePost = this.handleCreatePost.bind(this);
     }
 
@@ -51,15 +52,23 @@ class CreatePost extends React.Component {
         this.setState({ content: event.target.value });
     }
 
+    handleTagChange(event) {
+        alert("Cambiato in " + event.target.value)
+        this.setState({ tag: event.target.value });
+    }
+
     handleCreatePost(event) {
         const title = this.state.title;
         const content = this.state.content;
+        const tag = this.state.tag;
         const group_id = this.state.group.group_id;
+        alert("creo post con tag " + tag)
         axios
             .post(
                 "/api/groups/" + group_id + "/noticeboard/posts/create", {
                 title: title,
-                text: content
+                text: content,
+                tag: tag
             })
         this.handleGoBack();
 
@@ -96,14 +105,6 @@ class CreatePost extends React.Component {
         const texts = Texts[language].createPost;
         const tags = Texts[language].postTag;
 
-        const MyComponent = () => (
-            <Select options={[
-                { value: 'chocolate', label: 'Chocolate' },
-                { value: 'strawberry', label: 'Strawberry' },
-                { value: 'vanilla', label: 'Vanilla' }
-              ]} />
-        )
-
         return fetchedGroup ? (
             <React.Fragment>
                 <BackNavigation title={texts.main} fixed onClick={() => this.handleGoBack()} />
@@ -124,12 +125,16 @@ class CreatePost extends React.Component {
                         onChange={this.handleContentChange}
                         required
                     />
-                    <select>
-                        {tags.map((tag) => (
-                        <option value={tag.value}>{tag.label}</option>
-                        ))}
+                    <select
+                        className="createPostTypeSelect form-control"
+                        onChange={this.handleTagChange}
+                    >
+                        {
+                            Object.keys(tags).map((key) => (
+                                <option value={key}>{tags[key]}</option>
+                            ))
+                        }
                     </select>
-
 
                     <input
                         type="submit"

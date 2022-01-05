@@ -1961,7 +1961,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
   }
 
   const group_id = req.params.groupId;
-  const { title, text } = req.body;
+  const { title, text, tag } = req.body;
   const user_id = req.user_id;
   const post_id = objectid();
 
@@ -1971,6 +1971,7 @@ router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
     owner: user_id,
     title: title,
     text: text,
+    tag: tag,
     date: new Date()
   }
 
@@ -1992,9 +1993,9 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  const { title, text } = req.body.post;
+  const { title, text, tag } = req.body.post;
   Post.findOne({ post_id: post_id }).then((post) => {
-    Post.updateOne({ post_id: post_id }, { title: title, text: text }).then(()=>{
+    Post.updateOne({ post_id: post_id }, { title: title, text: text, tag: tag }).then(()=>{
       return res.status(200).send('Post udpated');
     });
   });
