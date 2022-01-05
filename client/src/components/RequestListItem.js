@@ -73,7 +73,7 @@ class RequestListItem extends React.Component {
         </div>
         <div className="col-8-10">
           <div id="">
-            <h1>{user.given_name+" "+user.family_name} {covid_alert ? "🔴" : "  "}</h1>
+            <h1>{user.given_name+" "+user.family_name} {/*covid_alert ? "🔴" : "  "*/}</h1>
             { showButtons ?
               <button
                 onClick={() => this.handleAcceptRequest(user.user_id)}
