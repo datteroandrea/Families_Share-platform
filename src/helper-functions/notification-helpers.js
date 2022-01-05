@@ -582,7 +582,60 @@ async function sendPushNotifications (messages) {
   }
 }
 
+async function addNewfriend(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 0,
+    subject: `${destination.given_name} ${destination.family_name}`,
+    object: `${sender.given_name} ${sender.family_name} `
+  }
+  Notification.create(notification);
+}
+
+async function removeFriend(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 2,
+    subject: `${destination.given_name} ${destination.family_name}`,
+    object: `${sender.given_name} ${sender.family_name} `
+  }
+  Notification.create(notification);
+}
+
+async function rejectFriendRequest(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 1,
+    subject: `${destination.given_name} ${destination.family_name}`,
+    object: `${sender.given_name} ${sender.family_name} `
+  }
+  Notification.create(notification);
+}
+
+async function acceptFriendRequest(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 3,
+    subject: `${destination.given_name} ${destination.family_name}`,
+    object: `${sender.given_name} ${sender.family_name} `
+  }
+  Notification.create(notification);
+}
+
 module.exports = {
+  addNewfriend,
   newMemberNotification,
   timeslotRequirementsNotification,
   editGroupNotification,
@@ -597,5 +650,8 @@ module.exports = {
   deleteTimeslotNotification,
   timeslotAdminChangesNotification,
   newRequestNotification,
-  newReplyNotification
+  newReplyNotification,
+  removeFriend,
+  rejectFriendRequest,
+  acceptFriendRequest
 }

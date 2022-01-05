@@ -100,6 +100,24 @@ const en = {
       header: 'Group Announcements',
       description: ' posted a new reply in group '
     }
+  ],
+  friends: [
+    {
+      header: 'New Friend Request',
+      description: ' sent you a friend request.'
+    },
+    {
+      header: 'Rejected Friend Request',
+      description: ' rejected your friend request.'
+    },
+    {
+      header: 'Removed Friendship',
+      description: ' removed your friendship.'
+    },
+    {
+      header: 'Accepted Friendship',
+      description: ' accepted your friend request.'
+    }
   ]
 }
 const it = {
@@ -189,6 +207,24 @@ const it = {
     {
       header: 'Avvisi del gruppo',
       description: 'ha pubblicato una nuova risposta '
+    }
+  ],
+  friends: [
+    {
+      header: 'Nuova richiesta di amicizia',
+      description: ' ti ha inviato una richiesta di amicizia.'
+    },
+    {
+      header: 'Richiesta di amicizia rifiutata',
+      description: ' richiesta di amicizia rifiutata.'
+    },
+    {
+      header: 'Amicizia rimossa',
+      description: ' l\'amicizia è stata cancellata.'
+    },
+    {
+      header: 'Amicizia Accettata',
+      description: ' ha accettato la tua richiesta di amicizia.'
     }
   ]
 }

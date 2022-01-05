@@ -2,7 +2,8 @@ const express = require('express')
 const router = new express.Router()
 
 const Profile = require('../models/profile')
-const Notification = require('../models/notification')
+const Notification = require('../models/notification') // rimuovi
+const nh = require('../helper-functions/notification-helpers') // aggiungi funzione notifica addNewFriend, removeFriend, sentFriendRequest
 
 // da testare
 // Search users
@@ -65,16 +66,7 @@ router.post('/:id/addfriend', async (req, res, next) => {
         }
         res.json(profile);
         Profile.findOne({ user_id:id }).then((sender)=>{
-            const notification = {
-                owner_type: 'user',
-                owner_id: friend_id,
-                type: 'members',
-                read: false,
-                code: 0,
-                subject: `${profile.given_name} ${profile.family_name}`,
-                object: `${sender.given_name} ${sender.family_name} ti ha inviato una richiesta di amicizia`
-            }
-            Notification.create(notification);
+            nh.addNewfriend(friend_id, sender, profile);
         });
     })
 });
@@ -96,7 +88,11 @@ router.post('/:id/removefriend', (req, res, next) => {
     { user_id: friend_id, friends_id: id },
         { $pull: { friends_id: id } }
     ).exec();
-
+    Profile.findOne({ user_id: friend_id }).then((profile)=>{
+        Profile.findOne({ user_id:id }).then((sender)=>{
+            nh.removeFriend(friend_id, sender, profile);
+        });
+    });
     return res.status(200).send();
 });
 
@@ -119,6 +115,9 @@ router.post('/:id/acceptrequest', (req, res, next) => {
                 { $push: {friends_id: id} }
             ).exec();
         }
+        Profile.findOne({ user_id:id }).then((sender)=>{
+            nh.acceptFriendRequest(friend_id, sender, profile);
+        });
     })
 
     return res.status(200).send();
@@ -135,7 +134,11 @@ router.post('/:id/declinerequest', (req, res, next) => {
         { user_id: id, pending_friend_requests_id: friend_id },
         { $pull: { pending_friend_requests_id: friend_id } }
     ).exec();
-
+    Profile.findOne({ user_id: friend_id }).then((profile)=>{
+        Profile.findOne({ user_id:id }).then((sender)=>{
+            nh.rejectFriendRequest(friend_id, sender, profile);
+        });
+    });
     return res.status(200).send();
 });
 
