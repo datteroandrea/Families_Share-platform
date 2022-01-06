@@ -71,15 +71,7 @@ const getGroupSettings = groupId => {
 class GroupListItem extends React.Component {
   state = { fetchedGroupData: false, group: {} };
 
-  async get_covid_alert(user_ids) {
-    let covid_alert = false;
-    user_ids.forEach(member => {
-      const user = getUser(member.user_id); // ritorna una promise, con await non compila
-      console.log(user);
-      covid_alert |= user.covid_state;
-    });
-    return covid_alert
-  }
+
 
   async componentDidMount() {
     const { groupId } = this.props;
@@ -90,8 +82,12 @@ class GroupListItem extends React.Component {
     group.members = members.filter(
       member => member.user_accepted && member.group_accepted
     );
-    const covid_alert = this.get_covid_alert(group.members);
-    
+    let covid_alert = false;
+    // Controllo se almeno uno nel gruppo è in stato di emergenza
+    for(let i=0; i<group.members.length; i++) {
+      const user = await getUser(group.members[i].user_id);
+      covid_alert |= user.covid_state;
+    }
     this.setState({ fetchedGroupData: true, covid_alert: covid_alert, group });
   }
 
