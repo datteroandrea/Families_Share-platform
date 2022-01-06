@@ -19,6 +19,11 @@ class PostHeader extends React.Component {
       fetchedOwner: false,
       owner: {}
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleConfirmDialogClose = this.handleConfirmDialogClose.bind(this);
+    this.handleConfirmDialogOpen = this.handleConfirmDialogOpen.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +61,7 @@ class PostHeader extends React.Component {
     }
   }
 
-  handleDelete = () => {
+  handleDelete(){
     const { groupId, handleRefresh } = this.props;
     const { deleteId } = this.state;
     axios
@@ -68,9 +73,9 @@ class PostHeader extends React.Component {
       .catch(error => {
         Log.error(error);
       });
-  };
+  }
 
-  handleEdit = (postId) => {
+  handleEdit(postId) {
     const { groupId, history, handleRefresh } = this.props;
     
     console.log("Post: " + JSON.stringify(postId));
@@ -79,18 +84,18 @@ class PostHeader extends React.Component {
     // ma per qualche ragione mi viene fuori che history = null
     // quindi per il momento lo faccio così
     document.location.href += `/posts/${postId}/edit`
-  };
+  }
 
-  handleConfirmDialogClose = choice => {
+  handleConfirmDialogClose(choice) {
     if (choice === "agree") {
       this.handleDelete();
     }
     this.setState({ deleteId: "", confirmDialogIsOpen: false });
-  };
+  }
 
-  handleConfirmDialogOpen = id => {
+  handleConfirmDialogOpen(id) {
     this.setState({ deleteId: id, confirmDialogIsOpen: true });
-  };
+  }
 
   render() {
     const { language, createdAt, postId, userIsAdmin, title } = this.props;

@@ -39,7 +39,7 @@ PostMain.propTypes = {
   language: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string,
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default withLanguage (PostMain);

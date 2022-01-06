@@ -24,7 +24,7 @@ const styles = {
 };
 
 class GroupBoardPosts extends React.Component {
-  state = { fetchedPosts: false, tag: "all" };
+  state = { fetchedPosts: false, tag: "all", posts:[], select:[]};
 
   componentDidMount() {
     const { groupId } = this.props;
@@ -34,19 +34,26 @@ class GroupBoardPosts extends React.Component {
         const posts = response.data;
         this.setState({
           fetchedPosts: true,
-          posts
+          posts: posts,
+          tag: 'all',
+          select: posts
         });
       })
       .catch(error => {
         Log.error(error);
-        this.setState({ fetchedPosts: true, posts: [] });
+        this.setState({ fetchedPosts: true, posts: [], select:[] });
       });
 
       this.handleTagChange = this.handleTagChange.bind(this);
   }
 
   handleTagChange(event) {
-    this.setState({ tag: event.target.value});
+    const posts = this.state.posts;
+    const new_tag = event.target.value;
+    const selected = (new_tag === "all") ? posts : posts.filter(post => post.tag === new_tag);
+    this.setState({ tag: new_tag, select: selected});
+    console.log(this.state)
+    this.forceUpdate();
   }
 
   refresh = () => {
@@ -72,8 +79,10 @@ class GroupBoardPosts extends React.Component {
   };
 
   renderPosts = () => {
-    const { posts, tag } = this.state;
-    const selectedPosts = (tag === "all") ? posts : posts.filter(post => post.tag === tag);
+    //const { posts, tag, selected } = this.state;
+    const selectedPosts = this.state.select;
+    console.log(selectedPosts);
+    // const selectedPosts = (tag === "all") ? posts : posts.filter(post => post.tag === tag);
     const { userIsAdmin, groupId, history } = this.props;
     const { length } = selectedPosts;
     const blocks = [...Array(Math.ceil(length / 2)).keys()];
