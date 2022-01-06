@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withLanguage from "./LanguageContext";
-import Fab from "@material-ui/core/Fab";
 import BackNavigation from "./BackNavigation";
 import GroupBoardPosts from "./GroupBoardPosts";
 
