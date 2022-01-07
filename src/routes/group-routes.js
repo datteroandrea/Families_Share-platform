@@ -1948,7 +1948,6 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   Post.findOne({ post_id: post_id }).then((post) => {
-    console.log(post);
     return res.json(post);
   });
 });
@@ -1990,7 +1989,6 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
-  console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text, tag } = req.body.post;

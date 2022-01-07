@@ -52,7 +52,6 @@ class GroupBoardPosts extends React.Component {
     const new_tag = event.target.value;
     const selected = (new_tag === "all") ? posts : posts.filter(post => post.tag === new_tag);
     this.setState({ tag: new_tag, select: selected});
-    console.log(this.state)
     this.forceUpdate();
   }
 
@@ -81,7 +80,6 @@ class GroupBoardPosts extends React.Component {
   renderPosts = () => {
     //const { posts, tag, selected } = this.state;
     const selectedPosts = this.state.select;
-    console.log(selectedPosts);
     // const selectedPosts = (tag === "all") ? posts : posts.filter(post => post.tag === tag);
     const { userIsAdmin, groupId, history } = this.props;
     const { length } = selectedPosts;

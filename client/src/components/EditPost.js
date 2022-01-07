@@ -69,7 +69,6 @@ class EditPost extends React.Component {
   }
 
   handleTagChange(event) {
-    alert("Cambiato in " + event.target.value)
     const { post } = this.state;
     post.tag = event.target.value;
     this.setState({ post: post});
@@ -89,7 +88,6 @@ class EditPost extends React.Component {
     const { groupId, postId } = match.params;
     const group = await getGroup(groupId);
     const post = await getPost(groupId, postId);
-    console.log(post);
     this.setState({ group: group, fetchedPost: true, post: post })
   }
 
