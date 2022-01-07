@@ -10,6 +10,7 @@ import TimeslotsList from "./TimeslotsList";
 import Texts from "../Constants/Texts";
 import Log from "./Log";
 import Images from "../Constants/Images";
+import { useDispatch } from "react-redux";
 
 const getMyGroups = userId => {
   return axios
@@ -62,6 +63,7 @@ class MyFamiliesShareScreen extends React.Component {
     super();
     this.state = {
       fetchedUserInfo: false,
+      profileId: "",
       myTimeslots: [],
       myGroups: [],
       pendingInvites: 0
@@ -105,7 +107,8 @@ class MyFamiliesShareScreen extends React.Component {
       dates: uniqueDates,
       myGroups,
       myTimeslots,
-      pendingInvites
+      pendingInvites,
+      profileId: userId
     });
   }
 
@@ -181,13 +184,14 @@ class MyFamiliesShareScreen extends React.Component {
   };
 
   render() {
-    const { pendingInvites, unreadNotifications, fetchedUserInfo } = this.state;
+    const { pendingInvites, unreadNotifications, fetchedUserInfo,profileId } = this.state;
     return (
       <React.Fragment>
         <div id="drawerContainer">
           <MyFamiliesShareHeader
             pendingInvites={pendingInvites}
             pendingNotifications={unreadNotifications}
+            profileId={profileId}
           />
           {fetchedUserInfo && (
             <div id="myFamiliesShareMainContainer">

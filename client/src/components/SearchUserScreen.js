@@ -29,7 +29,7 @@ class SearchUserScreen extends React.Component {
       .get("/api/profiles?searchBy=visibility&visible=true")
       .then(res => {
         const users = res.data;
-        this.setState({ fetchedUsers: true, users, profileId:profileId });
+        this.setState({ fetchedUsers: true, users, profileId: profileId });
         this.handleSearch("");
       })
       .catch(error => {
@@ -135,7 +135,7 @@ class SearchUserScreen extends React.Component {
           ) : (
             <div>
               <div className="row no-gutters" id="searchUserResultsContainer">
-                <h1></h1>
+                <h1>{texts.results}</h1>
               </div>
               <UserList userIds={matchingUsers} />
             </div>
@@ -149,7 +149,8 @@ class SearchUserScreen extends React.Component {
 
 SearchUserScreen.propTypes = {
     language: PropTypes.string,
-    history: PropTypes.object
+    history: PropTypes.object,
+    profileId: PropTypes.string
   };
 
 export default withLanguage(SearchUserScreen);

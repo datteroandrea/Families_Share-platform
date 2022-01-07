@@ -93,6 +93,9 @@ const Reply = require('../models/reply')
 const Group_Settings = require('../models/group-settings')
 const Member = require('../models/member')
 const Group = require('../models/group')
+const NoticeBoard = require('../models/noticeBoard')
+const Post = require('../models/post')
+const PostReply = require('../models/postReply')
 const Plan = require('../models/plan')
 const Notification = require('../models/notification')
 const Announcement = require('../models/announcement')
@@ -191,6 +194,7 @@ router.post('/', async (req, res, next) => {
   const group_id = objectid()
   const image_id = objectid()
   const settings_id = objectid()
+  const board_id = objectid()
   const newCal = {
     summary: name,
     description,
@@ -232,6 +236,11 @@ router.post('/', async (req, res, next) => {
       user_accepted: true
     }
   ]
+  const noticeBoard = {
+    board_id,
+    group_id,
+    posts: []
+  }
   invite_ids.forEach(invite_id => {
     members.push({
       group_id,
@@ -247,6 +256,7 @@ router.post('/', async (req, res, next) => {
     await Member.create(members)
     await Group.create(group)
     await Image.create(image)
+    await NoticeBoard.create(noticeBoard)
     await Group_Settings.create(settings)
     res.status(200).send('Group Created')
   } catch (err) {
@@ -1894,8 +1904,6 @@ router.delete(
   }
 )
 
-const NoticeBoard = require('../models/noticeBoard');
-const Post = require('../models/post');
 
 // da testare
 router.get('/:groupId/noticeboard', (req, res, next) => {
@@ -1905,10 +1913,30 @@ router.get('/:groupId/noticeboard', (req, res, next) => {
   const group_id = req.params.groupId;
   const user_id = req.user_id;
   NoticeBoard.findOne({ group_id: group_id }).then((noticeBoard) => {
-    Post.find({ post_id: { $in: noticeBoard.posts }}).then((posts) => {
+    Post.find({ post_id: { $in: noticeBoard.posts } }).then((posts) => {
       noticeBoard.posts = posts;
       return res.json(noticeBoard);
     });
+  });
+});
+
+router.get('/:groupId/noticeboard/posts', (req, res, next) => {
+  if (!req.user_id) {
+    return res.status(401).send('Not authenticated');
+  }
+  const group_id = req.params.groupId;
+  NoticeBoard.findOne({ group_id: group_id }).then((board) => {
+    if (board !== null) {
+      return Post.find({ post_id: { $in: board.posts } }).exec()
+        .then(posts => {
+          if (posts.length === 0) {
+            return res.status(404).send('NoticeBoard has no posts')
+          }
+          res.json(posts)
+        });
+    } else {
+      return res.status(404).send('NoticeBoard does not exist')
+    }
   });
 });
 
@@ -1919,33 +1947,41 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
   }
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  Post.findOne({ post_id: post_id}).then((post)=>{
-    Profile.findOne({ user_id: post.owner }, (owner)=>{
-      post.owner = owner;
-      return res.json(post);
-    });
+  Post.findOne({ post_id: post_id }).then((post) => {
+    console.log(post);
+    return res.json(post);
   });
 });
 
 // da testare
-router.post('/:groupId/noticeboard/posts/create', (req, res, next) => {
+router.post('/:groupId/noticeboard/posts/create', async (req, res, next) => {
+
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
+
   const group_id = req.params.groupId;
+  const { title, text, tag } = req.body;
   const user_id = req.user_id;
-  const { title, text } = req.body;
+  const post_id = objectid();
 
   const post = {
-    post_id: objectid(),
+    post_id: post_id,
     group_id: group_id,
     owner: user_id,
     title: title,
     text: text,
+    tag: tag,
     date: new Date()
   }
 
-  Post.create(post);
+  await Post.create(post);
+
+  NoticeBoard.findOneAndUpdate(
+    { group_id: group_id },
+    { $push: { posts: post_id } }
+  ).exec();
+
   return res.json(post);
 });
 
@@ -1954,28 +1990,125 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
+  console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
-  const { title, text } = req.body;
-  Post.findOne({ post_id: post_id}).then((post)=>{
-    post.title = title;
-    post.text = text;
-    Profile.updateOne(post);
-    return res.json(post);
+  const { title, text, tag } = req.body.post;
+  Post.findOne({ post_id: post_id }).then((post) => {
+    Post.updateOne({ post_id: post_id }, { title: title, text: text, tag: tag }).then(()=>{
+      return res.status(200).send('Post udpated');
+    });
   });
 });
 
 // da testare
-router.delete('/:groupId/noticeboard/posts/:postid/delete', (req,res,next)=>{
+router.delete('/:groupId/noticeboard/posts/:postid/delete', async (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text } = req.body;
-  Post.deleteOne({ post_id: post_id});
+  await Post.deleteOne({ post_id: post_id }).exec();
   return res.status(200).send('Post was deleted');
 });
 
+router.post(
+  '/:groupId/noticeboard/posts/:postId/replies',
+  async (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const post_id = req.params.postId
+    const group_id = req.params.groupId
+    const user_id = req.user_id
+    try {
+      const member = await Member.findOne({
+        group_id,
+        user_id,
+        group_accepted: true,
+        user_accepted: true
+      })
+      if (!member) {
+        return res.status(401).send('Unauthorized')
+      }
+      if (!req.body.message) {
+        return res.status(400).send('Bad Request')
+      }
+      const reply = {
+        post_id,
+        body: req.body.message,
+        user_id
+      }
+      await PostReply.create(reply)
+      //await nh.newReplyNotification(group_id, req.user_id)
+      res.status(200).send('PostReply was posted')
+    } catch (error) {
+      next(error)
+    }
+  })
+
+
+router.get(
+  '/:groupId/noticeboard/posts/:postId/replies',
+  (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const post_id = req.params.postId
+    const user_id = req.user_id
+    const group_id = req.params.groupId
+    Member.findOne({
+      group_id,
+      user_id,
+      group_accepted: true,
+      user_accepted: true
+    })
+      .then(member => {
+        if (!member) {
+          return res.status(401).send('Unauthorized')
+        }
+        return PostReply.find({ post_id }).then(replies => {
+          if (replies.length === 0) {
+            return res.status(404).send('Announcement has no replies')
+          }
+          res.json(replies)
+        })
+      })
+      .catch(next)
+  }
+)
+
+
+router.delete(
+  '/:groupId/noticeboard/posts/:postId/replies/:replyId',
+  async (req, res, next) => {
+    if (!req.user_id) {
+      return res.status(401).send('Not authenticated')
+    }
+    const postReply_id = req.params.replyId
+    const group_id = req.params.groupId
+    const user_id = req.user_id
+    try {
+      const member = await Member.findOne({
+        group_id,
+        user_id,
+        group_accepted: true,
+        user_accepted: true
+      })
+      if (!member) {
+        return res.status(401).send('Unauthorized')
+      }
+      const reply = await PostReply.findOne({ postReply_id })
+      if (!(member.admin || user_id === reply.user_id)) {
+        return res.status(401).send('Unauthorized')
+      }
+      await PostReply.deleteOne({ postReply_id })
+      res.status(200).send('reply was deleted')
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 
 module.exports = router

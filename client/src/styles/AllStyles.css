@@ -119,6 +119,25 @@
   height: 3.5rem;
   cursor: pointer;
 }
+.acceptButton {
+  padding: 0 2rem;
+  border-radius: 2px;
+  background-color: #00838f;
+  color: #ffffff;
+  border: 2px solid #006972;
+  height: 3.5rem;
+  cursor: pointer;
+}
+.refuseButton {
+  padding: 0 2rem;
+  width: 100px;
+  border-radius: 2px;
+  background-color: #b13a3a;
+  color: #ffffff;
+  border: 2px solid #8a2828;
+  height: 3.5rem;
+  cursor: pointer;
+}
 .findMoreRow {
   cursor: pointer;
   display: flex;
@@ -938,6 +957,112 @@
   padding-left: 1.7rem !important;
   font-family: "Roboto", sans-serif !important;
 }
+.post {
+  width: 70% !important;
+  margin: auto;
+}
+.createPostTitleInput {
+  width: 100% !important;
+  background-color: #dcdcdc !important;
+  border: none;
+  height: 5.6rem !important;
+  margin-top: 10rem !important;
+  border-radius: 3px !important;
+  font-size: 1.5rem !important;
+  padding-left: 1.7rem !important;
+  font-family: "Roboto", sans-serif !important;
+}
+.createPostDescriptionInput {
+  width: 100% !important;
+  background-color: #dcdcdc !important;
+  border: none;
+  height: 30rem !important;
+  margin-top: 2rem !important;
+  border-radius: 3px !important;
+  font-size: 1.5rem !important;
+  padding-left: 1.7rem !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.createPostTypeSelect {
+  width: 100% !important;
+  background-color: #dcdcdc !important;
+  border: none;
+  height: 5.6rem !important;
+  margin-top: 2rem !important;
+  border-radius: 3px !important;
+  font-size: 1.5rem !important;
+  padding-left: 1.7rem !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.toolbarGroupBoard {
+  padding-bottom: 0.3rem;
+  height: 5.6rem;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postTypeToolbar {
+  width: 30% !important;
+  background-color: #dcdcdc !important;
+  border: none;
+  height: 4rem !important;
+  margin-top: 0.8rem !important;
+  margin-bottom: 0.8rem !important;
+  border-radius: 3px !important;
+  font-size: 1.5rem !important;
+  padding-left: 1.7rem !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.createButton {
+  margin-top: 2rem;
+  float:right;
+}
+
+/*POST TAG*/
+.tag {
+  height: 2.6rem;
+  position: relative;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+}
+
+.t1 {
+  background-color: rgba(240, 59, 4, 0.603);
+}
+
+.t2 {
+  background-color: rgba(55, 78, 206, 0.637);
+}
+
+.t3 {
+  background-color: rgba(170, 201, 31, 0.623);
+}
+
+.t4 {
+  background-color: rgba(46, 204, 86, 0.692);
+}
+
+.t5 {
+  background-color: rgba(255, 68, 224, 0.541);
+}
+
+.t6 {
+  background-color: rgba(57, 184, 235, 0.699);
+}
+
+.t7 {
+  background-color: rgba(125, 9, 179, 0.582);
+}
+
 .textareaInput {
   padding-top: 1.5rem !important;
   width: 100% !;

@@ -10,7 +10,7 @@ const texts = require('../constants/notification-texts')
 const { Expo } = require('expo-server-sdk')
 let expo = new Expo()
 
-async function newMemberNotification (group_id, user_id) {
+async function newMemberNotification(group_id, user_id) {
   const group = await Group.findOne({ group_id })
   const profile = await Profile.findOne({ user_id })
   const members = await Member.find({ group_id, group_accepted: true, user_accepted: true })
@@ -38,7 +38,7 @@ async function newMemberNotification (group_id, user_id) {
   }
 };
 
-async function newActivityNotification (group_id, user_id) {
+async function newActivityNotification(group_id, user_id) {
   const object = await Group.findOne({ group_id })
   const subject = await Profile.findOne({ user_id })
   const members = await Member.find({ group_id, user_id: { $ne: user_id }, group_accepted: true, user_accepted: true }).distinct('user_id')
@@ -73,7 +73,7 @@ async function newActivityNotification (group_id, user_id) {
   }
 };
 
-async function newAnnouncementNotification (group_id, user_id) {
+async function newAnnouncementNotification(group_id, user_id) {
   const object = await Group.findOne({ group_id })
   const subject = await Profile.findOne({ user_id })
   const members = await Member.find({ group_id, user_id: { $ne: user_id }, group_accepted: true, user_accepted: true }).distinct('user_id')
@@ -108,7 +108,7 @@ async function newAnnouncementNotification (group_id, user_id) {
   }
 };
 
-async function newReplyNotification (group_id, user_id) {
+async function newReplyNotification(group_id, user_id) {
   const object = await Group.findOne({ group_id })
   const subject = await Profile.findOne({ user_id })
   const members = await Member.find({ group_id, user_id: { $ne: user_id }, group_accepted: true, user_accepted: true }).distinct('user_id')
@@ -143,7 +143,7 @@ async function newReplyNotification (group_id, user_id) {
   }
 };
 
-async function editGroupNotification (group_id, user_id, changes) {
+async function editGroupNotification(group_id, user_id, changes) {
   const group = await Group.findOne({ group_id })
   const settings = await Settings.findOne({ group_id })
   const profile = await Profile.findOne({ user_id })
@@ -206,7 +206,7 @@ async function editGroupNotification (group_id, user_id, changes) {
   }
 };
 
-async function removeMemberNotification (member_id, group_id) {
+async function removeMemberNotification(member_id, group_id) {
   const subject = await Profile.findOne({ user_id: member_id })
   const object = await Group.findOne({ group_id })
   const members = await Member.find({ group_id, group_accepted: true, user_accepted: true })
@@ -235,7 +235,7 @@ async function removeMemberNotification (member_id, group_id) {
   console.log('Remove member Notification created')
 };
 
-async function timeslotRequirementsNotification (timeslotName, participants, groupId, activityId, timeslotId) {
+async function timeslotRequirementsNotification(timeslotName, participants, groupId, activityId, timeslotId) {
   const devices = await Device.find({ user_id: { $in: participants } })
   const users = await User.find({ user_id: { $in: participants } })
   const notifications = []
@@ -264,7 +264,7 @@ async function timeslotRequirementsNotification (timeslotName, participants, gro
   await sendPushNotifications(messages)
 }
 
-async function timeslotMajorChangeNotification (timeslotName, participants, groupId, activityId, timeslotId) {
+async function timeslotMajorChangeNotification(timeslotName, participants, groupId, activityId, timeslotId) {
   const devices = await Device.find({ user_id: { $in: participants } })
   const users = await User.find({ user_id: { $in: participants } })
   const notifications = []
@@ -293,7 +293,7 @@ async function timeslotMajorChangeNotification (timeslotName, participants, grou
   await sendPushNotifications(messages)
 }
 
-async function timeslotAdminChangesNotification (timeslotName, changes, userId, groupId, activityId, timeslotId) {
+async function timeslotAdminChangesNotification(timeslotName, changes, userId, groupId, activityId, timeslotId) {
   const participants = Object.keys(changes)
   const devices = await Device.find({ user_id: { $in: participants } })
   const users = await User.find({ user_id: { $in: participants } })
@@ -315,9 +315,8 @@ async function timeslotAdminChangesNotification (timeslotName, changes, userId, 
       to: device.device_id,
       sound: 'default',
       title: texts[language]['activities'][6]['header'],
-      body: `${profile.given_name} ${profile.family_name} ${
-        texts[language]['activities'][changes[device.user_id] === 'add' ? 6 : 7]['description']
-      } ${timeslotName}`,
+      body: `${profile.given_name} ${profile.family_name} ${texts[language]['activities'][changes[device.user_id] === 'add' ? 6 : 7]['description']
+        } ${timeslotName}`,
       data: {
         url: `$${process.env.CITYLAB_URI}/groups/${groupId}/activities/${activityId}/timeslots/${timeslotId}`
       }
@@ -326,7 +325,7 @@ async function timeslotAdminChangesNotification (timeslotName, changes, userId, 
   await sendPushNotifications(messages)
 }
 
-async function timeslotStatusChangeNotification (timeslotName, status, participants, groupId, activityId, timeslotId) {
+async function timeslotStatusChangeNotification(timeslotName, status, participants, groupId, activityId, timeslotId) {
   const devices = await Device.find({ user_id: { $in: participants } })
   const users = await User.find({ user_id: { $in: participants } })
   const notifications = users.map(user => ({
@@ -353,13 +352,13 @@ async function timeslotStatusChangeNotification (timeslotName, status, participa
   await sendPushNotifications(messages)
 }
 
-async function deleteActivityNotification (user_id, activityName, timeslots) {
+async function deleteActivityNotification(user_id, activityName, timeslots) {
   const subject = await Profile.findOne({ user_id })
   let userIds = []
   timeslots.map(async (event) => {
     userIds = userIds.concat(JSON.parse(event.extendedProperties.shared.parents))
   })
-  userIds = [ ...new Set(userIds) ].filter(id => id !== user_id)
+  userIds = [...new Set(userIds)].filter(id => id !== user_id)
   const users = await User.find({ user_id: { $in: userIds } })
   const devices = await Device.find({ user_id: { $in: userIds } })
   const notifications = []
@@ -388,7 +387,7 @@ async function deleteActivityNotification (user_id, activityName, timeslots) {
   await sendPushNotifications(messages)
 }
 
-async function deleteTimeslotNotification (user_id, timeslot) {
+async function deleteTimeslotNotification(user_id, timeslot) {
   const subject = await Profile.findOne({ user_id })
   const userIds = timeslot.parents.filter(id => id !== user_id)
   const users = await User.find({ user_id: { $in: userIds } })
@@ -419,7 +418,7 @@ async function deleteTimeslotNotification (user_id, timeslot) {
   await sendPushNotifications(messages)
 }
 
-async function newRequestNotification (user_id, group_id) {
+async function newRequestNotification(user_id, group_id) {
   const admins = await Member.find({ group_id, user_accepted: true, group_accepted: true, admin: true }).distinct('user_id')
   const users = await User.find({ user_id: { $in: admins } })
   const user = await Profile.findOne({ user_id })
@@ -449,7 +448,7 @@ async function newRequestNotification (user_id, group_id) {
   await sendPushNotifications(messages)
 }
 
-async function planStateNotification (planName, participants, state, groupId, planId) {
+async function planStateNotification(planName, participants, state, groupId, planId) {
   const devices = await Device.find({ user_id: { $in: participants } })
   const users = await User.find({ user_id: { $in: participants } })
   const notifications = users.map(user => ({
@@ -476,7 +475,7 @@ async function planStateNotification (planName, participants, state, groupId, pl
   await sendPushNotifications(messages)
 }
 
-function getNotificationDescription (notification, language) {
+function getNotificationDescription(notification, language) {
   const {
     type, code, subject, object
   } = notification
@@ -550,12 +549,21 @@ function getNotificationDescription (notification, language) {
         default:
           return ''
       }
+    case 'friends':
+      switch (code) {
+        case 0:
+          return `${object} ${description}.`
+        case 1:
+          return `${object} ${description}.`
+        default:
+          return `${object} ${description}.`
+      }
     default:
       return ''
   }
 }
 
-async function sendPushNotifications (messages) {
+async function sendPushNotifications(messages) {
   try {
     const invalidTokens = []
     const notifications = []
@@ -582,7 +590,60 @@ async function sendPushNotifications (messages) {
   }
 }
 
+async function addNewfriend(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 0,
+    subject: `${sender.given_name} ${sender.family_name}`,
+    object: `${sender.given_name} ${sender.family_name}`
+  }
+  Notification.create(notification);
+}
+
+async function removeFriend(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 2,
+    subject: `${sender.given_name} ${sender.family_name}`,
+    object: `${sender.given_name} ${sender.family_name}`
+  }
+  Notification.create(notification);
+}
+
+async function rejectFriendRequest(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 1,
+    subject: `${sender.given_name} ${sender.family_name}`,
+    object: `${sender.given_name} ${sender.family_name}`
+  }
+  Notification.create(notification);
+}
+
+async function acceptFriendRequest(friend_id, sender, destination) {
+  const notification = {
+    owner_type: 'user',
+    owner_id: friend_id,
+    type: 'friends',
+    read: false,
+    code: 3,
+    subject: `${sender.given_name} ${sender.family_name}`,
+    object: `${sender.given_name} ${sender.family_name}`
+  }
+  Notification.create(notification);
+}
+
 module.exports = {
+  addNewfriend,
   newMemberNotification,
   timeslotRequirementsNotification,
   editGroupNotification,
@@ -597,5 +658,8 @@ module.exports = {
   deleteTimeslotNotification,
   timeslotAdminChangesNotification,
   newRequestNotification,
-  newReplyNotification
+  newReplyNotification,
+  removeFriend,
+  rejectFriendRequest,
+  acceptFriendRequest
 }

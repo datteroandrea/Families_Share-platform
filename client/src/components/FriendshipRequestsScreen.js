@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import Texts from "../Constants/Texts";
 import FriendshipsNavbar from "./FriendshipsNavbar"
 import Log from "./Log";
-import ProfilesAutoComplete from "./ProfilesAutoComplete";
-import UserList from "./UserList";
+import RequestList from "./RequestList";
 
 class FriendshipRequestsScreen extends React.Component {
   constructor(props) {
@@ -14,9 +13,6 @@ class FriendshipRequestsScreen extends React.Component {
     this.state = {
       fetchedUsers: false,
       profileId: "",
-      searchInput: "",
-      searchedForInput: false,
-      searchBarIsVisible: false,
       requests: []
     };
   }
@@ -27,7 +23,6 @@ class FriendshipRequestsScreen extends React.Component {
     axios
       .get(`/api/friends/${profileId}/requests`)
       .then(res => {
-        console.log(res.data);
         res.data.forEach(request => {
           requests.push(request);
         });
@@ -44,12 +39,9 @@ class FriendshipRequestsScreen extends React.Component {
     const {
       fetchedUsers,
       profileId,
-      searchBarIsVisible,
-      searchInput,
-      searchedForInput,
       requests
     } = this.state;
-    const texts = Texts[language].searchUserScreen;
+    const texts = Texts[language].friendshipRequestScreen;
     return (
       fetchedUsers && (
         <React.Fragment>
@@ -67,15 +59,19 @@ class FriendshipRequestsScreen extends React.Component {
               className="col-7-10 "
               style={{ display: "flex", alignItems: "center" }}
             >
+              <h1>
+                {texts.backNavTitle}
+              </h1>
             </div>
           </div>
           <div>
             <div className="row no-gutters" id="searchUserResultsContainer">
-              <h1></h1>
+              
             </div>
-            <UserList userIds={requests} />
+            <RequestList userIds={requests}/>
+            {requests.length === 0 ? <h2 className="text-center align-center mt-5">{texts.noResults}</h2> : ""}
           </div>
-          <FriendshipsNavbar allowNavigation={true} profileId={profileId} />
+          <FriendshipsNavbar allowNavigation={true} profileId={profileId}/>
         </React.Fragment >
       )
     );
@@ -84,7 +80,8 @@ class FriendshipRequestsScreen extends React.Component {
 
 FriendshipRequestsScreen.propTypes = {
   language: PropTypes.string,
-  history: PropTypes.object
+  history: PropTypes.object,
+  profileId: PropTypes.string
 };
 
 export default withLanguage(FriendshipRequestsScreen);

@@ -52,7 +52,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
       } else if (value === "requests") {
         history.replace("/"+profileId+"/requests");
       } else {
-        history.replace("/"+profileId+"/search");
+        history.replace("/"+profileId+"/searchUser");
       }
     }
   };
@@ -65,7 +65,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
   const flags = [
     activeTab === "friendships",
     activeTab === "requests",
-    activeTab === "search"
+    activeTab === "searchUser"
   ];
   return (
     // Aggiungere rotte per ogni tab
@@ -98,7 +98,7 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
           }
         />
         <BottomNavigationAction
-          value="search"
+          value="searchUser"
           label={texts.searchTab}
           icon={
             flags[2] ? (
@@ -116,7 +116,8 @@ const FriendshipsNavbar = ({ history, language, allowNavigation, profileId }) =>
 FriendshipsNavbar.propTypes = {
   allowNavigation: PropTypes.bool,
   history: PropTypes.object,
-  language: PropTypes.string
+  language: PropTypes.string,
+  profileId: PropTypes.string
 };
 
 export default withRouter(withLanguage(FriendshipsNavbar));

@@ -184,7 +184,8 @@ const en = {
       "You haven't added any children yet. Click the child icon to add a new child"
   },
   myFriendshipsScreen: {
-    backNavTitle: "My Friendships"
+    backNavTitle: "My Friendships",
+    noResult: "You have no friend yet"
   },
   friendshipsNavbar: {
     friendshipsTab: "Friendships",
@@ -198,6 +199,14 @@ const en = {
     backNavTitle: "User search",
     example: "e.g. Mario Rossi",
     results: "Results"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Pending Requests",
+    noResults: "Currently there are no new friend requests",
+  },
+  requestListItem: {
+    accept: "Accept",
+    refuse: "Refuse"
   },
   myCalendarScreen: {
     backNavTitle: "My Calendar"
@@ -1077,6 +1086,24 @@ const en = {
   announcementReplies: {
     new: "Your comment..."
   },
+  postReplies: {
+    new: "Reply"
+  },
+  createPost: {
+    main: "Create Post",
+    title: "Title",
+    content: "Content",
+    create: "Create"
+  },
+  postTag: {
+    game: "Fun",
+    school: "School",
+    music: "Music",
+    sport: "Sport",
+    buy: "Buy",
+    sell: "Sell",
+    other: "Someother"
+  },
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -1527,7 +1554,8 @@ const nl = {
       "Je hebt nog geen kinderen toegevoegd. Klik op het kindpictogram om een ​​nieuw kind toe te voegen"
   },
   myFriendshipsScreen: {
-    backNavTitle: "Mijn Vriendschappen"
+    backNavTitle: "Mijn Vriendschappen",
+    noResult: "Je hebt nog geen vrienden"
   },
   friendshipsNavbar: {
     friendshipsTab: "Vriendschappen",
@@ -1541,6 +1569,14 @@ const nl = {
     backNavTitle: "Gebruikers zoeken",
     results: "Resultaten",
     example: "bijv. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Openstaande verzoeken",
+    noResults: "Er zijn momenteel geen nieuwe vriendschapsverzoeken",
+  },
+  requestListItem: {
+    accept: "Aanvaarden",
+    refuse: "Weigert"
   },
   myCalendarScreen: {
     backNavTitle: "Mijn Kalender"
@@ -2394,7 +2430,27 @@ const nl = {
     new: "Nieuw bericht",
     maxFilesError: "U kunt maximaal 3 bestanden uploaden."
   },
-  announcementReplies: { new: "Je bericht…" },
+  announcementReplies: {
+    new: "Je bericht…"
+  },
+  postReplies: {
+    new: "Antwoord"
+  },
+  createPost: {
+    main: "Bericht maken",
+    title: "Titel",
+    content: "Inhoud",
+    create: "Creëert"
+  },
+  postTag: {
+    game: "Spel",
+    school: "School",
+    music: "Muziek",
+    sport: "Sport",
+    buy: "Kopen",
+    sell: "Ik verkoop",
+    other: "Ander"
+  },
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -2828,7 +2884,9 @@ const it = {
       "Non hai ancora aggiunto figli. Fare clic sull'icona figlio per aggiungere un nuovo figlio"
   },
   myFriendshipsScreen: {
-    backNavTitle: "Le mie amicizie"
+    backNavTitle: "Le mie amicizie",
+    noResult: "Non hai ancora nessuna amicizia"
+
   },
   friendshipsNavbar: {
     friendshipsTab: "Amicizie",
@@ -2842,6 +2900,14 @@ const it = {
     backNavTitle: "Ricerca Utente",
     results: "Risultati",
     example: "per esempio. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Richieste in sospeso",
+    noResults: "Al momento non ci sono nuove richieste di amiciza",
+  },
+  requestListItem: {
+    accept: "Accetta",
+    refuse: "Rifiuta"
   },
   myCalendarScreen: {
     backNavTitle: "Il mio calendario"
@@ -3697,6 +3763,24 @@ const it = {
   announcementReplies: {
     new: "Il tuo commento..."
   },
+  postReplies: {
+    new: "Rispondi al post"
+  },
+  createPost: {
+    main: "Crea Post",
+    title: "Titolo",
+    content: "Contenuto",
+    create: "Crea"
+  },
+  postTag: {
+    game: "Svago",
+    school: "Scuola",
+    music: "Musica",
+    sport: "Sport",
+    buy: "Compro",
+    sell: "Vendo",
+    other: "Altro",
+  },
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
   },
@@ -4150,7 +4234,8 @@ const el = {
       "Δεν έχετε προσθέσει ακόμη παιδιά. Κάντε κλικ στο εικονίδιο για να προσθέσετε ένα νέο παιδί"
   },
   myFriendshipsScreen: {
-    backNavTitle: "τις φιλίες μου"
+    backNavTitle: "τις φιλίες μου",
+    noResult: "Δεν έχεις φίλους ακόμα"
   },
   friendshipsNavbar: {
     friendshipsTab: "Φιλίες",
@@ -4164,6 +4249,14 @@ const el = {
     backNavTitle: "Αναζήτηση χρήστη",
     results: "Αποτελέσματα",
     example: "π.χ. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Εκκρεμείς αιτήσεις",
+    noResults: "Αυτήν τη στιγμή δεν υπάρχουν νέα αιτήματα φιλίας",
+  },
+  requestListItem: {
+    accept: "αποδέχομαι",
+    refuse: "αρνείται"
   },
   myCalendarScreen: {
     backNavTitle: "Το ημερολόγιο μου"
@@ -5021,6 +5114,24 @@ const el = {
     confirmDialogTitle:
       "Είστε σίγουροι ότι θέλετε να διαγράψετε την απάντησή σας;"
   },
+  postReplies: {
+    new: "απάντηση"
+  },
+  createPost: {
+    main: "Δημιουργία ανάρτησης",
+    title: "Τίτλος",
+    content: "Περιεχόμενο",
+    create: "Δημιουργώ"
+  },
+  postTag: {
+    game: "Παιχνίδι",
+    school: "Σχολείο",
+    music: "ΜΟΥΣΙΚΗ",
+    sport: "Αθλημα",
+    buy: "αγοράζω",
+    sell: "Προς πώληση",
+    other: "Αλλα"
+  },
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
   },
@@ -5467,7 +5578,8 @@ const hu = {
       "Még nem adott meg gyermeket. Kattintson a gyermek ikonra új gyermek hozzáadásáért"
   },
   myFriendshipsScreen: {
-    backNavTitle: "a barátságaim"
+    backNavTitle: "a barátságaim",
+    noResult: "Még nincsenek barátaid"
   },
   friendshipsNavbar: {
     friendshipsTab: "Barátságok",
@@ -5481,6 +5593,14 @@ const hu = {
     backNavTitle: "Felhasználói keresés",
     results: "Eredmények",
     example: "Pl. Mario Rossi"
+  },
+  friendshipRequestScreen: {
+    backNavTitle: "Függőben lévő Kérés",
+    noResults: "Jelenleg nincsenek új baráti kérések",
+  },
+  requestListItem: {
+    accept: "Elfogad",
+    refuse: "Megtagadja"
   },
   myCalendarScreen: {
     backNavTitle: "Eseménynaptáram"
@@ -6370,6 +6490,24 @@ const hu = {
   announcementReplies: {
     new: "Véleménye"
   },
+  postReplies: {
+    new: "Válasz"
+  },
+  createPost: {
+    main: "Bejegyzés létrehozása",
+    title: "Cím",
+    content: "Tartalom",
+    create: "Teremt"
+  },
+  postTag: {
+    game: "Jàtszma",
+    school: "Iskola",
+    music: "Zene",
+    sport: "Sport",
+    buy: "Veszek",
+    sell: "Eladò",
+    other: "Egyèb"
+  },
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -6807,7 +6945,8 @@ const fr = {
     "addChildPrompt": "Vous n'avez pas encore ajouté d'enfants. Cliquez sur l'icône enfant pour ajouter un nouvel enfant"
   },
   "myFriendshipsScreen": {
-    "backNavTitle": "mes amitiés"
+    "backNavTitle": "mes amitiés",
+    "noResult": "Vous n'avez pas encore d'amis"
   },
   "friendshipsNavbar": {
     "friendshipsTab": "Amitiés",
@@ -6821,6 +6960,14 @@ const fr = {
     "backNavTitle": "Recherche d'utilisateurs",
     "results": "Résultats",
     "example": "p. ex., Mario Rossi"
+  },
+  "friendshipRequestScreen": {
+    "backNavTitle": "Requêtes en cours",
+    "noResults": "Il n'y a actuellement aucune nouvelle demande d'ami",
+  },
+  "requestListItem": {
+    "accept": "Accepte",
+    "refuse": "Refuse"
   },
   "myCalendarScreen": {
     "backNavTitle": "Mon calendrier"
@@ -7476,6 +7623,25 @@ const fr = {
   },
   "announcementReplies": {
     "new": "Votre réponse..."
+  },
+  "postReplies": {
+    "new": "Réplique"
+  },
+  "createPost": {
+    "main": "Créer un article",
+    "title": "Titre",
+    "content": "Contenu",
+    "create": "Créer"
+  },
+  "postTag": {
+    "game": "Jeu",
+    "school": "L'école",
+    "music": "Musique",
+    "sport": "Sport",
+    "buy": "j'achète",
+    "sell": "À vendre",
+    "other": "Autre"
+
   },
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"

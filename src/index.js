@@ -23,6 +23,8 @@ mongoose.set('useUnifiedTopology', true)
 mongoose.connect(process.env[dbHost]) // { autoIndex: false } set this to false in production to disable auto creating indexes
 mongoose.Promise = global.Promise
 
+const birthday = require('./helper-functions/birthday')
+
 const app = express()
 
 if (process.env.CITYLAB !== 'ALL') {
