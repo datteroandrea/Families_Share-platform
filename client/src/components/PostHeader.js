@@ -43,19 +43,19 @@ class PostHeader extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const { userId } = this.props;
-    if (userId !== props.userId) {
+    const { ownerId } = this.props;
+    if (ownerId !== props.ownerId) {
       this.setState({ fetchedProfile: false });
       axios
-        .get(`/api/users/${props.userId}/profile`)
+        .get(`/api/users/${props.ownerId}/profile`)
         .then(response => {
-          this.setState({ fetchedProfile: true, profile: response.data });
+          this.setState({ fetchedProfile: true, owner: response.data });
         })
         .catch(error => {
           Log.error(error);
           this.setState({
             fetchedProfile: true,
-            profile: { image: { path: "" }, family_name: "", given_name: "" }
+            owner: { image: { path: "" }, family_name: "", given_name: "" }
           });
         });
     }
@@ -98,10 +98,11 @@ class PostHeader extends React.Component {
   }
 
   render() {
-    const { language, createdAt, postId, userIsAdmin, title } = this.props;
+    const { language, createdAt, postId, userIsAdmin } = this.props;
     const texts = Texts[language].announcementHeader;
     const { owner, confirmDialogIsOpen, fetchedOwner } = this.state;
     const userId = JSON.parse(localStorage.getItem("user")).id;
+
     return (
       <div id="announcementHeaderContainer">
         <ConfirmDialog

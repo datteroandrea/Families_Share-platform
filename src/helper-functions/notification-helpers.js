@@ -555,6 +555,8 @@ function getNotificationDescription(notification, language) {
           return `${object} ${description}.`
         case 1:
           return `${object} ${description}.`
+        case 1:
+          return `${object} ${description}.`
         default:
           return `${object} ${description}.`
       }
@@ -588,6 +590,26 @@ async function sendPushNotifications(messages) {
     }
     console.error(e)
   }
+}
+
+async function newFriendCovidState(profile, covid_state) {
+  if(eval(covid_state) == true) {
+    code = 4;
+  } else {
+    code = 5;
+  }
+  profile.friends_id.forEach((friend_id)=>{
+    let notification = {
+      owner_type: 'user',
+      owner_id: friend_id,
+      type: 'friends',
+      read: false,
+      code: code,
+      subject: `${profile.given_name} ${profile.family_name}`,
+      object: `${profile.given_name} ${profile.family_name}`
+    }
+    Notification.create(notification);
+  });
 }
 
 async function addNewfriend(friend_id, sender, destination) {
@@ -644,6 +666,7 @@ async function acceptFriendRequest(friend_id, sender, destination) {
 
 module.exports = {
   addNewfriend,
+  newFriendCovidState,
   newMemberNotification,
   timeslotRequirementsNotification,
   editGroupNotification,

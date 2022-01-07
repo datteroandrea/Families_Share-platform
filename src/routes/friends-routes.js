@@ -2,7 +2,6 @@ const express = require('express')
 const router = new express.Router()
 
 const Profile = require('../models/profile')
-const Notification = require('../models/notification') // rimuovi
 const nh = require('../helper-functions/notification-helpers') // aggiungi funzione notifica addNewFriend, removeFriend, sentFriendRequest
 
 // da testare

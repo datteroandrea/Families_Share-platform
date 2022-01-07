@@ -31,6 +31,24 @@ class PostReplies extends React.Component {
       });
   }
 
+  componentWillReceiveProps(props) {
+    const { groupId } = this.props;
+    const { postId } = this.props;
+    if (groupId !== props.groupId || postId !== props.postId) {
+      this.setState({ fetchedReplies: false });
+      axios
+      .get(`/api/groups/${props.groupId}/noticeboard/posts/${props.postId}/replies`)
+        .then(response => {
+          const replies = response.data;
+          this.setState({ fetchedReplies: true, replies });
+        })
+        .catch(error => {
+          Log.error(error);
+        this.setState({ fetchedReplies: true, replies: [] });
+        });
+    }
+  }
+
   refresh = () => {
     const { groupId } = this.props;
     const { postId } = this.props;

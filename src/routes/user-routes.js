@@ -788,8 +788,12 @@ router.patch('/:id/profile', profileUpload.single('photo'), async (req, res, nex
     city
   }
   try {
+    let profile = await Profile.findOne({ user_id })
     await Address.updateOne({ address_id: req.body.address_id }, addressPatch)
     await Profile.updateOne({ user_id }, profilePatch)
+    if(profile.covid_state != covid_state) {
+      nh.newFriendCovidState(profile, covid_state);
+    }
     if (file) {
       const fileName = file.filename.split('.')
       const imagePatch = {
