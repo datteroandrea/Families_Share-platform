@@ -605,9 +605,7 @@ async function newFriendCovidState(profile) {
       object: `${profile.given_name} ${profile.family_name}`
     }
     console.log(notification);
-    Notification.create({
-      notification
-    });
+    Notification.create(notification);
   });
 }
 
