@@ -149,6 +149,7 @@ class GroupBoardPosts extends React.Component {
     const { fetchedPosts } = this.state;
     const { language } = this.props;
     const tags = Texts[language].postTag;
+    const allTag = Texts[language].allTag;
     
     return (
       <div>
@@ -157,7 +158,7 @@ class GroupBoardPosts extends React.Component {
             {Object.keys(tags).map((key) => (
               <option value={key}>{tags[key]}</option>
             ))}
-            <option value= "all" selected="selected">All</option>
+            <option value= "all" selected="selected">{allTag}</option>
           </select>
           <Fab
             color="primary"

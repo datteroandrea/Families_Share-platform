@@ -1104,6 +1104,7 @@ const en = {
     sell: "Sell",
     other: "Someother"
   },
+  allTag: "All",
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2451,6 +2452,7 @@ const nl = {
     sell: "Ik verkoop",
     other: "Ander"
   },
+  allTag: "Allemaal",
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3781,6 +3783,7 @@ const it = {
     sell: "Vendo",
     other: "Altro",
   },
+  allTag: "Tutti",
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
   },
@@ -5132,6 +5135,7 @@ const el = {
     sell: "Προς πώληση",
     other: "Αλλα"
   },
+  allTag: "Ολα",
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
   },
@@ -6508,6 +6512,7 @@ const hu = {
     sell: "Eladò",
     other: "Egyèb"
   },
+  allTag: "Minden",
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7643,6 +7648,7 @@ const fr = {
     "other": "Autre"
 
   },
+  "allTag": "Tous",
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"
   },
