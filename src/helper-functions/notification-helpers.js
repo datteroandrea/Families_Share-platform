@@ -593,13 +593,18 @@ async function sendPushNotifications(messages) {
 }
 
 async function newFriendCovidState(profile, covid_state) {
+  if(eval(covid_state) == true) {
+    code = 4;
+  } else {
+    code = 5;
+  }
   profile.friends_id.forEach((friend_id)=>{
     let notification = {
       owner_type: 'user',
       owner_id: friend_id,
       type: 'friends',
       read: false,
-      code: (covid_state)? 4 : 5,
+      code: code,
       subject: `${profile.given_name} ${profile.family_name}`,
       object: `${profile.given_name} ${profile.family_name}`
     }
