@@ -594,17 +594,16 @@ async function sendPushNotifications(messages) {
 
 async function newFriendCovidState(profile) {
   console.log(profile);
-  const notification = {
-    owner_type: 'user',
-    owner_id: friend_id,
-    type: 'friends',
-    read: false,
-    code: 4,
-    subject: `${profile.given_name} ${profile.family_name}`,
-    object: `${profile.given_name} ${profile.family_name}`
-  }
-  
   profile.friends_id.forEach((friend_id)=>{
+    let notification = {
+      owner_type: 'user',
+      owner_id: friend_id,
+      type: 'friends',
+      read: false,
+      code: 4,
+      subject: `${profile.given_name} ${profile.family_name}`,
+      object: `${profile.given_name} ${profile.family_name}`
+    }
     console.log(notification);
     Notification.create({
       notification
