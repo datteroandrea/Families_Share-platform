@@ -229,6 +229,10 @@ const it = {
     {
       header: 'Avviso Emergenza Covid!',
       description: ' attualmente ha contratto il virus!'
+    },
+    {
+      header: 'Avviso Emergenza Covid!',
+      description: ' è ufficialmente guarito dal virus!'
     }
   ]
 }
