@@ -225,6 +225,10 @@ const it = {
     {
       header: 'Amicizia Accettata',
       description: 'ha accettato la tua richiesta di amicizia'
+    },
+    {
+      header: 'Avviso Emergenza Covid!',
+      description: ' attualmente ha contratto il virus!'
     }
   ]
 }
