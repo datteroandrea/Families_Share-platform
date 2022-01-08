@@ -80,6 +80,9 @@ class PostHeader extends React.Component {
     
     console.log("Post: " + JSON.stringify(postId));
     console.log("History: " + JSON.stringify(history));
+    // Da fare: bruttissimo dovremmo sistemarlo con history
+    // ma per qualche ragione mi viene fuori che history = null
+    // quindi per il momento lo faccio così
     document.location.href += `/posts/${postId}/edit`
   }
 

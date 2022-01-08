@@ -9,7 +9,6 @@ const nh = require('../helper-functions/notification-helpers') // aggiungi funzi
 router.get('/:id/searchUser', (req, res, next) => {
     const { name } = req.query;
     Profile.find({ text: { $search: name } }, { given_name: 1 }).exec().then((profiles) => {
-        console.log("Debug found profiles: " + JSON.stringify(profiles));
         res.json(profiles);
     });
 });
@@ -74,10 +73,8 @@ router.post('/:id/addfriend', async (req, res, next) => {
 // Remove friendship
 router.post('/:id/removefriend', (req, res, next) => {
     const id = req.user_id;    //id dell'utente loggato
-    console.log(id);
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.params.id;  //id utente a cui voglio togliere amicizia
-    console.log(friend_id)
     Profile.updateOne(
         { user_id: id, friends_id: friend_id },
         { $pull: { friends_id: friend_id } }
@@ -98,12 +95,9 @@ router.post('/:id/removefriend', (req, res, next) => {
 // da testare
 // Add friendship
 router.post('/:id/acceptrequest', (req, res, next) => {
-    console.log("Entrato");
     const id = req.user_id;  //id dell'utente loggato
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.params.id;  //id utente a cui voglio accettare richiesta
-    console.log('user_id '+ id);
-    console.log('friend_id '+ friend_id);
     Profile.findOneAndUpdate(
         { user_id: id, pending_friend_requests_id: friend_id},
         { $pull: { pending_friend_requests_id: friend_id }, $push: { friends_id: friend_id } }
@@ -125,7 +119,6 @@ router.post('/:id/acceptrequest', (req, res, next) => {
 // da testare
 // Remove friendship
 router.post('/:id/declinerequest', (req, res, next) => {
-    console.log("Entrato-refuse");
     const id = req.user_id;
     if (!id) { return res.status(401).send('Not authenticated') }
     const friend_id = req.params.id;
