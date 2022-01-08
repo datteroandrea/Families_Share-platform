@@ -96,6 +96,7 @@ class EditPost extends React.Component {
   render() {
     const { fetchedPost, group, post } = this.state;
     const { language } = this.props;
+    const texts = Texts[language].createPost;
     const tags = Texts[language].postTag;
 
     return fetchedPost ? (
@@ -108,6 +109,7 @@ class EditPost extends React.Component {
             className="createPostTitleInput form-control"
             value={post.title}
             onChange={this.handleTitleChange}
+            placeholder={texts.title}
             required
           />
           <textarea
@@ -115,6 +117,7 @@ class EditPost extends React.Component {
             name="description"
             className="createPostDescriptionInput form-control"
             value={post.text}
+            placeholder={texts.content}
             onChange={this.handleContentChange}
             required
           />
@@ -138,7 +141,7 @@ class EditPost extends React.Component {
             type="button"
             className="findOutMore createButton"
           >
-            Update Post
+            {texts.update}
           </button>
         </form>
 

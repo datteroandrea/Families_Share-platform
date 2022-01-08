@@ -1093,7 +1093,8 @@ const en = {
     main: "Create Post",
     title: "Title",
     content: "Content",
-    create: "Create"
+    create: "Create",
+    update: "Update"
   },
   postTag: {
     game: "Fun",
@@ -2441,7 +2442,8 @@ const nl = {
     main: "Bericht maken",
     title: "Titel",
     content: "Inhoud",
-    create: "Creëert"
+    create: "Creëert",
+    update: "Bijwerken"
   },
   postTag: {
     game: "Spel",
@@ -3772,7 +3774,8 @@ const it = {
     main: "Crea Post",
     title: "Titolo",
     content: "Contenuto",
-    create: "Crea"
+    create: "Crea",
+    update: "Aggiorna"
   },
   postTag: {
     game: "Svago",
@@ -5124,7 +5127,8 @@ const el = {
     main: "Δημιουργία ανάρτησης",
     title: "Τίτλος",
     content: "Περιεχόμενο",
-    create: "Δημιουργώ"
+    create: "Δημιουργώ",
+    update: "Εκσυγχρονίζω"
   },
   postTag: {
     game: "Παιχνίδι",
@@ -6501,7 +6505,8 @@ const hu = {
     main: "Bejegyzés létrehozása",
     title: "Cím",
     content: "Tartalom",
-    create: "Teremt"
+    create: "Teremt",
+    update: "Frissítés"
   },
   postTag: {
     game: "Jàtszma",
@@ -7636,7 +7641,8 @@ const fr = {
     "main": "Créer un article",
     "title": "Titre",
     "content": "Contenu",
-    "create": "Créer"
+    "create": "Créer",
+    "update": "Mettre à jour"
   },
   "postTag": {
     "game": "Jeu",
