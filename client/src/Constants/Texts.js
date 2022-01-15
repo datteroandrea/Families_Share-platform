@@ -1093,7 +1093,8 @@ const en = {
     main: "Create Post",
     title: "Title",
     content: "Content",
-    create: "Create"
+    create: "Create",
+    update: "Update"
   },
   postTag: {
     game: "Fun",
@@ -1104,6 +1105,7 @@ const en = {
     sell: "Sell",
     other: "Someother"
   },
+  allTag: "All",
   reply: {
     confirmDialogTitle: "Are you sure you want to delete your reply?"
   },
@@ -2440,7 +2442,8 @@ const nl = {
     main: "Bericht maken",
     title: "Titel",
     content: "Inhoud",
-    create: "Creëert"
+    create: "Creëert",
+    update: "Bijwerken"
   },
   postTag: {
     game: "Spel",
@@ -2451,6 +2454,7 @@ const nl = {
     sell: "Ik verkoop",
     other: "Ander"
   },
+  allTag: "Allemaal",
   reply: {
     confirmDialogTitle: "Weet je zeker dat je je bericht wilt verwijderen?"
   },
@@ -3770,7 +3774,8 @@ const it = {
     main: "Crea Post",
     title: "Titolo",
     content: "Contenuto",
-    create: "Crea"
+    create: "Crea",
+    update: "Aggiorna"
   },
   postTag: {
     game: "Svago",
@@ -3781,6 +3786,7 @@ const it = {
     sell: "Vendo",
     other: "Altro",
   },
+  allTag: "Tutti",
   reply: {
     confirmDialogTitle: "Confermi di voler eliminare la tua risposta?"
   },
@@ -5121,7 +5127,8 @@ const el = {
     main: "Δημιουργία ανάρτησης",
     title: "Τίτλος",
     content: "Περιεχόμενο",
-    create: "Δημιουργώ"
+    create: "Δημιουργώ",
+    update: "Εκσυγχρονίζω"
   },
   postTag: {
     game: "Παιχνίδι",
@@ -5132,6 +5139,7 @@ const el = {
     sell: "Προς πώληση",
     other: "Αλλα"
   },
+  allTag: "Ολα",
   groupHeader: {
     confirmDialogTitle: "Είστε σίγουροι ότι θέλετε να διαγράψετε την ομάδα σας;"
   },
@@ -6497,7 +6505,8 @@ const hu = {
     main: "Bejegyzés létrehozása",
     title: "Cím",
     content: "Tartalom",
-    create: "Teremt"
+    create: "Teremt",
+    update: "Frissítés"
   },
   postTag: {
     game: "Jàtszma",
@@ -6508,6 +6517,7 @@ const hu = {
     sell: "Eladò",
     other: "Egyèb"
   },
+  allTag: "Minden",
   reply: {
     confirmDialogTitle: "Biztosan törölni szeretné válaszát?"
   },
@@ -7631,7 +7641,8 @@ const fr = {
     "main": "Créer un article",
     "title": "Titre",
     "content": "Contenu",
-    "create": "Créer"
+    "create": "Créer",
+    "update": "Mettre à jour"
   },
   "postTag": {
     "game": "Jeu",
@@ -7643,6 +7654,7 @@ const fr = {
     "other": "Autre"
 
   },
+  "allTag": "Tous",
   "reply": {
     "confirmDialogTitle": "Êtes-vous sûr de vouloir supprimer votre réponse ?"
   },

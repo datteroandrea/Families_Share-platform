@@ -53,7 +53,6 @@ class CreatePost extends React.Component {
     }
 
     handleTagChange(event) {
-        alert("Cambiato in " + event.target.value)
         this.setState({ tag: event.target.value });
     }
 
@@ -62,7 +61,6 @@ class CreatePost extends React.Component {
         const content = this.state.content;
         const tag = this.state.tag;
         const group_id = this.state.group.group_id;
-        alert("creo post con tag " + tag)
         axios
             .post(
                 "/api/groups/" + group_id + "/noticeboard/posts/create", {
@@ -71,24 +69,6 @@ class CreatePost extends React.Component {
                 tag: tag
             })
         this.handleGoBack();
-
-        /*.post(
-            "/api/groups/"+group_id+"/noticeboard/posts/create", {
-                title: title,
-                text: content
-            }
-        ).then(
-            response => {
-                alert("Sono nel then");
-                Log.info(response);
-                this.handleGoBack();
-          }
-        ).catch(
-            error => {
-                alert("Sono nell'errore");
-                Log.error(error);
-          }
-        );*/
     }
 
     async componentDidMount() {

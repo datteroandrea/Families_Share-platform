@@ -93,9 +93,9 @@ const Reply = require('../models/reply')
 const Group_Settings = require('../models/group-settings')
 const Member = require('../models/member')
 const Group = require('../models/group')
-const NoticeBoard = require('../models/noticeBoard')
+const NoticeBoard = require('../models/notice-board')
 const Post = require('../models/post')
-const PostReply = require('../models/postReply')
+const PostReply = require('../models/post-reply')
 const Plan = require('../models/plan')
 const Notification = require('../models/notification')
 const Announcement = require('../models/announcement')
@@ -1948,7 +1948,6 @@ router.get('/:groupId/noticeboard/posts/:postid', (req, res, next) => {
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   Post.findOne({ post_id: post_id }).then((post) => {
-    console.log(post);
     return res.json(post);
   });
 });
@@ -1990,7 +1989,6 @@ router.post('/:groupId/noticeboard/posts/:postid/edit', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated');
   }
-  console.log(req.body);
   const group_id = req.params.groupId;
   const post_id = req.params.postid;
   const { title, text, tag } = req.body.post;

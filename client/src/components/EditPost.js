@@ -69,7 +69,6 @@ class EditPost extends React.Component {
   }
 
   handleTagChange(event) {
-    alert("Cambiato in " + event.target.value)
     const { post } = this.state;
     post.tag = event.target.value;
     this.setState({ post: post});
@@ -89,13 +88,13 @@ class EditPost extends React.Component {
     const { groupId, postId } = match.params;
     const group = await getGroup(groupId);
     const post = await getPost(groupId, postId);
-    console.log(post);
     this.setState({ group: group, fetchedPost: true, post: post })
   }
 
   render() {
     const { fetchedPost, group, post } = this.state;
     const { language } = this.props;
+    const texts = Texts[language].createPost;
     const tags = Texts[language].postTag;
 
     return fetchedPost ? (
@@ -108,6 +107,7 @@ class EditPost extends React.Component {
             className="createPostTitleInput form-control"
             value={post.title}
             onChange={this.handleTitleChange}
+            placeholder={texts.title}
             required
           />
           <textarea
@@ -115,6 +115,7 @@ class EditPost extends React.Component {
             name="description"
             className="createPostDescriptionInput form-control"
             value={post.text}
+            placeholder={texts.content}
             onChange={this.handleContentChange}
             required
           />
@@ -138,7 +139,7 @@ class EditPost extends React.Component {
             type="button"
             className="findOutMore createButton"
           >
-            Update Post
+            {texts.update}
           </button>
         </form>
 
